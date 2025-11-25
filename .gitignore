@@ -70,3 +70,9 @@ node_modules/
 .DS_Store
 Public/Images/*
 !Public/Images/.gitkeep
+!Public/Images/web/
+!Public/Images/web/**
+
+!Public/Images/web/**
+
+!Public/Images/web/**
