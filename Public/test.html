@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Head Start -->
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Case Study Demo</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="test.css" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Syne:wght@400..800&family=Texturina:ital,opsz,wght@0,12..72,100..900;1,12..72,100..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet" />
+
+  <!-- Icons -->
+  <script src="https://kit.fontawesome.com/159c5c66b8.js" crossorigin="anonymous"></script>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script>
+
+  <!-- GSAP -->
+  <script src="Gsap/gsap.min.js"></script>
+  <script src="Gsap/ScrollTrigger.min.js"></script>
+  <script src="Gsap/ScrollToPlugin.min.js"></script>
+</head>
+<!-- Head Start -->
+
+<!-- Body Start -->
+
+<body>
+
+  <!-- Header Start -->
+  <header class="globalHeader">
+    <div class="nav-wrapper">
+      <a href="index.html" class="logoBox" aria-label="Home"></a>
+      <nav class="primaryNav" role="navigation" aria-label="Primary">
+        <a href="#">Resume</a>
+        <a href="#" class="btn-link">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <!-- Header End -->
+
+  <!-- Main Start -->
+  <main class="main" role="main">
+
+    <!-- ───────── Hero Start ───────── -->
+    <section class="hero" aria-label="Hero">
+      <picture class="heroMedia">
+        <img src="Images/Mockups/metleHeader.png" alt="" loading="eager" fetchpriority="high" decoding="async" />
+      </picture>
+    </section>
+    <!-- ───────── Hero End ───────── -->
+
+    <!-- ───────── Columns Start ───────── -->
+    <section class="csColumns" aria-label="Case Study Body">
+
+      <!-- Left Column Start -->
+      <div class="leftColumn">
+        <div class="tableOfContents">
+          <div class="tableOfContentsHeader" style="color: black;">Contents</div>
+          <nav class="contentsList" role="navigation" aria-label="Page contents">
+            <a href="#sec-overview">Research</a>
+            <a href="#sec-research">Synthesis</a>
+            <a href="#sec-concepts">Ideation</a>
+            <a href="#sec-design">Reflection</a>
+            <a href="#sec-testing">Final Designs</a>
+          </nav>
+        </div>
+      </div>
+      <!-- Left Column End -->
+
+      <!-- Right Column Start -->
+      <div class="rightColumn">
+
+        <!-- Overview -->
+        <section id="sec-overview" class="rightSection anchor-target" aria-labelledby="title-overview">
+
+          <div class="csHeading">
+            Metle <br> Streaming Service
+          </div>
+
+          <div class="csFrame">
+            <div class="csSub">Overview</div>
+            <div class="csBody">Metle is a personal project built from lived experience, designed to support emotional
+              wellbeing through music, reflection, and intentional listening.</div>
+          </div>
+
+          <div class="csTwoColumn">
+            <div class="csColumn">
+              <div class="csSub">TOOLS</div>
+              <div class="csBody">
+                <li>Figma</li>
+                <li>Adobe</li>
+              </div>
+            </div>
+
+            <div class="csColumn">
+              <div class="csSub">ROLE</div>
+              <div class="csBody">
+                <li>Programming</li>
+                <li>UX & UI</li>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="csPicFrame">
+            <div class="csPic"><img src="">
+            </div>
+          </div>
+
+          <!-- <div class="overview">
+          <div class="splitBar">
+            <div class="splitBar__panel splitBar__left">
+              <h3 class="splitBar__heading">Tools</h3>
+              <ul class="splitBar__list">
+                <li>Adobe Suite</li>
+                <li>Figma</li>
+              </ul>
+            </div>
+            <div class="splitBar__panel splitBar__right">
+              <h3 class="splitBar__heading">Roles</h3>
+              <ul class="splitBar__list">
+                <li>Programming</li>
+                <li>UX &amp; UI</li>
+              </ul>
+            </div>
+          </div> -->
+
+        </section>
+
+        <!-- Research Start -->
+        <section id="sec-research" class="rightSection anchor-target disc" aria-labelledby="title-discovery">
+
+          <div class="csFrame">
+            <div class="csSub">Discovery</div>
+            <div class="csBody">People already turn to music to manage their emotions to unwind, feel understood, or
+              boost their energy. While users often form strong emotional bonds with songs and artists, they don’t
+              always have a way to reflect on or express the meaning behind those moments. There’s a growing desire for
+              more intentional, mindful listening instead of just tuning in passively.</div>
+          </div>
+
+          <div class="csPicFrame">
+
+            <div class="csInfoFrame">
+              <div class="csIcon"></div>
+              <div class="csInfoText">
+                <div class="csSub">1 in 35</div>
+                <div class="csBody">Young Australians experience depression</div>
+              </div>
+            </div>
+
+            <div class="csInfoFrame">
+              <div class="csIcon"></div>
+              <div class="csInfoText">
+                <div class="csSub">Suicide</div>
+                <div class="csBody">Is the biggest killer of young Australians</div>
+              </div>
+            </div>
+
+            <div class="csInfoFrame">
+              <div class="csIcon"></div>
+              <div class="csInfoText">
+                <div class="csSub">5 Hours</div>
+                <div class="csBody">Is the average time Young Australians spend listening to music daily</div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="csPicFrame">
+
+            <!-- Accordion Start -->
+            <div class="csSub">The Five Whys</div>
+            <div class="accordion dottedAcc" id="researchAcc">
+              <!-- Accordian Tab One -->
+              <div class="acc-item">
+                <button class="acc-button" type="button" aria-expanded="false" aria-controls="qa1" id="qa1-h">
+                  Why are young people struggling?
+                  <svg class="acc-caret" viewBox="0 0 20 20" aria-hidden="true">
+                    <path d="M7 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </button>
+                <div id="qa1" class="acc-panel" role="region" aria-labelledby="qa1-h">
+                  <div class="acc-inner">
+                    <p class="list">Social pressures, financial stress, and limited access to tailored support
+                      contribute
+                      to rising
+                      distress.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Accordian Tab Two -->
+              <div class="acc-item">
+                <button class="acc-button" type="button" aria-expanded="false" aria-controls="qa2" id="qa2-h">
+                  Why aren't they getting help?
+                  <svg class="acc-caret" viewBox="0 0 20 20" aria-hidden="true">
+                    <path d="M7 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </button>
+                <div id="qa2" class="acc-panel" role="region" aria-labelledby="qa2-h">
+                  <div class="acc-inner">
+                    <p class="list">Stigma, long wait times, and a lack of youth-friendly tools make it harder to seek
+                      support early.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Accordian Tab Three -->
+              <div class="acc-item">
+                <button class="acc-button" type="button" aria-expanded="false" aria-controls="qa3" id="qa3-h">
+                  Why do they turn to music?
+                  <svg class="acc-caret" viewBox="0 0 20 20" aria-hidden="true">
+                    <path d="M7 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </button>
+                <div id="qa3" class="acc-panel" role="region" aria-labelledby="qa3-h">
+                  <div class="acc-inner">
+                    <p class="list">Music offers immediate mood regulation, a sense of belonging, and private space for
+                      reflection.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Accordian Tab Four -->
+              <div class="acc-item">
+                <button class="acc-button" type="button" aria-expanded="false" aria-controls="qa4" id="qa4-h">
+                  Why don't current platforms help more intentially?
+                  <svg class="acc-caret" viewBox="0 0 20 20" aria-hidden="true">
+                    <path d="M7 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </button>
+                <div id="qa4" class="acc-panel" role="region" aria-labelledby="qa4-h">
+                  <div class="acc-inner">
+                    <p class="list">Most platforms optimise for playtime, not wellbeing; reflection and guidance tools
+                      are
+                      minimal.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Accordian Tab Five -->
+              <div class="acc-item">
+                <button class="acc-button" type="button" aria-expanded="false" aria-controls="qa5" id="qa5-h">
+                  Why can't music also be mental health support?
+                  <svg class="acc-caret" viewBox="0 0 20 20" aria-hidden="true">
+                    <path d="M7 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </button>
+                <div id="qa5" class="acc-panel" role="region" aria-labelledby="qa5-h">
+                  <div class="acc-inner">
+                    <p class="list">With mindful features, music can prompt healthy habits, reflection, and help-seeking
+                      at the right
+                      moment.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Accordion End -->
+          </div>
+
+          <div class="csFrame">
+            <div class="csBody">These statistics show a clear opportunity to build a platform that helps young people
+              manage their mental health through music.</div>
+          </div>
+          <div class="csSubHeading" style="font-weight: 300; font-size: 48px;">From This Research <b>Three Key
+              <br>Personas</b> Were Discovered</div>
+          <div class="csPicFrame">
+            <div class="csPic"><img src="">
+            </div>
+          </div>
+        </section>
+
+
+        <!--<section class="persona">
+
+           <div class="personaContainer">
+              <h2>Persona 1</h2>
+              <div class="personaImage">
+
+              </div>
+              <div class="personaInfo">
+                <div class="yellowLine"></div>
+                <div class="infoText">
+                  <div class="job">Job Description</div>
+                  <div class="age">Age</div>
+                </div>
+              </div>
+              <p class="bio">
+                This persona is a detail-oriented marketing manager who values efficiency and clear communication.
+              </p>
+            </div>
+
+            <div class="personaContainer">
+              <h2>Persona 1</h2>
+              <div class="personaImage">
+
+              </div>
+              <div class="personaInfo">
+                <div class="yellowLine"></div>
+                <div class="infoText">
+                  <div class="job">Job Description</div>
+                  <div class="age">Age</div>
+                </div>
+              </div>
+              <p class="bio">
+                This persona is a detail-oriented marketing manager who values efficiency and clear communication.
+              </p>
+            </div>
+
+            <div class="personaContainer">
+              <h2>Persona 1</h2>
+              <div class="personaImage">
+
+              </div>
+              <div class="personaInfo">
+                <div class="yellowLine"></div>
+                <div class="infoText">
+                  <div class="job">Job Description</div>
+                  <div class="age">Age</div>
+                </div>
+              </div>
+              <p class="bio">
+                This persona is a detail-oriented marketing manager who values efficiency and clear communication.
+              </p>
+            </div> 
+
+        </section>-->
+
+
+
+
+        <section class="rightSection anchor-target" id="sec-matrix">
+
+          <div class="csFrame">
+            <div class="csSub">Competitive Analysis</div>
+            <div class="csBody">I conducted a competitive analysis to identify commonalities among competitors and
+              gather valuable insights for building our product. This research allowed us to differentiate ourselves and
+              provided a basis for product development.</div>
+          </div>
+
+          <!-- <h3 class="rightTitle">Current Landscape &amp; Assumptions</h3> -->
+          <div class="csPicFrame">
+            <ul class="matrix">
+              <li class="matrix__row matrix__head">
+                <span>Category</span>
+                <span>Brand A</span>
+                <span>Brand B</span>
+              </li>
+              <li class="matrix__row">
+                <span>Guided personalisation setup</span>
+                <span class="yes">Y</span>
+                <span class="yes">Y</span>
+              </li>
+              <li class="matrix__row">
+                <span>User onboarding experience</span>
+                <span class="yes">Y</span>
+                <span class="yes">Y</span>
+              </li>
+              <li class="matrix__row">
+                <span>Real-time collaboration tools</span>
+                <span class="no">N</span>
+                <span class="yes">Y</span>
+              </li>
+              <li class="matrix__row">
+                <span>Advanced analytics dashboard</span>
+                <span class="no">N</span>
+                <span class="no">N</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="csFrame">
+            <div class="csSub">User Flow</div>
+            <div class="csBody">I created a visual user flow to align with the feature functionality before designing
+              the interface. This also contributes to a smoother navigation experience, helping users accomplish tasks
+              efficiently.</div>
+          </div>
+          <div class="csPicFrame">
+            <div class="csPic"><img src="/Images/Cs/userFlow.png">
+            </div>
+          </div>
+
+          <div class="csFrame">
+            <div class="csSub">User Journey Mapping</div>
+            <div class="csBody">After discovering the three main personas, I created a User Journey Mapping to identify
+              persona, goals, scenarios, and steps for users when using Metle. </div>
+          </div>
+          <div class="csPicFrame">
+            <div class="csPic"><img src="/Images/Cs/userJourneyMap.png">
+            </div>
+          </div>
+
+        </section>
+
+        <!-- Research End -->
+
+        <!-- Concepts Start -->
+        <section id="sec-concepts" class="rightSection anchor-target concepts">
+          <div class="csSubHeading" style="font-weight: 300; font-size: 48px;">Understand <b>Current<br>Landscape</b> &
+            Assumptions</div>
+          <div class="csFrame">
+            <div class="csBody">The current streaming market is dominated by Spotify and Apple Music. While these
+              platforms are beloved for their algorithms, branding, and features like Wrapped, they don’t directly
+              support emotional regulation or mental health.</div>
+          </div>
+
+          <div class="csSubHeading" style="font-weight: 300; font-size: 48px;">CORRELATION BETWEEN <br><b>ENERGY AND
+              MOOD</b></div>
+          <div class="csFrame">
+            <div class="csSub">Russell’s Circumplex Model of Affect</div>
+            <div class="csBody">Energy and mood are two distinct emotional dimensions, but when mapped together, they
+              give a richer picture of how someone is feeling.</div>
+            <div class="csBody">Together, they create a 2D emotional space often used in psychology (like in ), allowing
+              users to land somewhere between extremes.</div>
+          </div>
+          <div class="csPicFrame">
+            <div class="csPic"><img src="/Images/Cs/moodMap.png">
+            </div>
+          </div>
+          <div class="csFrame">
+            <div class="csBody">After exploring user behavior and mental health challenges through the Five Whys and
+              persona development, it became clear that people needed a simple and visual way to reflect on how they
+              feel — without needing to articulate it in words.</div>
+            <div class="csBody">This led to the concept of a Mood Map: a tool that lets users place themselves on a
+              visual spectrum of energy and emotion. It makes emotional reflection more intuitive, less intimidating,
+              and helps the app tailor music recommendations without users needing to “explain” their mood.</div>
+          </div>
+
+          <div class="csPicFrame">
+            <ul class="matrix">
+              <li class="matrix__row matrix__head">
+                <span>MOOD / ENERGY </span>
+                <span>POSITIVE MOOD</span>
+                <span>NEGATIVE MOOD</span>
+              </li>
+              <li class="matrix__row">
+                <span>High Energy</span>
+                <span>Excited, Joyful</span>
+                <span>Anxious, Angry</span>
+              </li>
+              <li class="matrix__row">
+                <span>Low Energy</span>
+                <span>Calm, Relaxed</span>
+                <span>Sad, Depressed</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="csFrame">
+            <div class="csSub">Pros And Cons</div>
+            <div class="csBody">Its Important to explore the negatives that could come from this also</div>
+          </div>
+
+          <div class="csTwoColumn">
+            <div class="csColumn">
+              <div class="csSub" style="color: green;">PROS</div>
+              <div class="csBody">
+                <li>Mood Boost</li>
+                <li>Emotional Expression</li>
+                <li>Coping Mechanism</li>
+                <li>Self Discovery</li>
+                <li>Belonging</li>
+              </div>
+            </div>
+
+            <div class="csColumn">
+              <div class="csSub" style="color: red;">CONS</div>
+              <div class="csBody">
+                <li>Social Isolation</li>
+                <li>Feeding Negative Emotions</li>
+                <li>Professional Help Needed</li>
+              </div>
+
+            </div>
+          </div>
+
+
+          <div class="csFrame">
+            <div class="csSub">A Music Player That Feels More Musical</div>
+            <div class="csBody">I also reimagined the music player itself. Spotify’s interface is clean, but I wanted
+              mine to feel a little warmer. A bit more connected to the act of listening. That’s why I designed the
+              player to visually incorporate a record/vinyl element not just as a design motif, but as a way to ground
+              the user in the experience of music. It’s a subtle nod to physical music culture, but in a way that still
+              fits within a digital, modern space.</div>
+          </div>
+
+
+          <!-- <div class="csPicFrame">
+
+            <div class="snap-x no-scrollbar always">
+              <section class="gallery-slide">
+                <img src="Images/mysteryDungeon.jpeg" alt="" style="width: 100%; height: 100%; object-fit: cover;" />
+              </section>
+              <section class="gallery-slide">
+                <img src="Images/wingullPelliper.png" alt="" style="width: 100%; height: 100%; object-fit: cover;" />
+
+              </section>
+              <section class="gallery-slide">
+                <img src="Images/wooperdooper.png" alt="" style="width: 100%; height: 100%; object-fit: cover;" />
+
+              </section>
+            </div>
+          </div> -->
+          <!-- (concepts content unchanged) -->
+        </section>
+        <!-- Concepts End -->
+
+        <!-- Design Start -->
+        <section id="sec-design" class="rightSection anchor-target" aria-labelledby="title-design">
+          <div class="csFrame">
+            <div class="csSubHeading" style="font-weight: 300; font-size: 48px;">Project Strategy</div>
+            <div class="csFrame">
+              <div class="csSub">Early Wireframes</div>
+              <div class="csBody">Develop a basic prototype in Figma to visualise the project's core structure.
+              </div>
+              <div class="csPic"><img src="/Images/Cs/earlyWireframes.png">
+              </div>
+            </div>
+
+            <div class="csFrame">
+              <div class="csSub">UI Design</div>
+              <div class="csBody">Design the user interface to be visually appealing and consistent.
+              </div>
+              <div class="csPic"><img src="">
+              </div>
+            </div>
+
+          </div>
+        </section>
+        <!-- Design End -->
+
+        <!-- Testing Start -->
+        <section id="sec-testing" class="rightSection anchor-target" aria-labelledby="title-testing">
+          <h3 id="title-testing" class="rightTitle">Testing &amp; Next Steps</h3>
+        </section>
+        <!-- Testing End -->
+      </div>
+      <!-- Right Column End -->
+
+
+    </section>
+    <!-- ───────── Columns End ───────── -->
+
+
+    <!-- ───────── Final Display Start ───────── -->
+    <h1 style="margin-top: 80px;">Finished Design</h1>
+    <section class="finalDisplay" aria-label="Final Display">
+      <div class="finalInner">
+        <div class="snap-x no-scrollbar always">
+          <section class="gallery-slide">
+            <img src="Images/mysteryDungeon.jpeg" alt="" style="width: 100%; height: 100%; object-fit: cover;" />
+          </section>
+          <section class="gallery-slide">
+            <img src="Images/wingullPelliper.png" alt="" style="width: 100%; height: 100%; object-fit: cover;" />
+
+          </section>
+          <section class="gallery-slide">
+            <img src="Images/wooperdooper.png" alt="" style="width: 100%; height: 100%; object-fit: cover;" />
+
+          </section>
+          <!-- <img class="finalImg" src="Images/mysteryDungeon.jpeg" alt="Metle prototype centered" />
+        <div class="dots">
+          <span class="dot"></span>
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div> -->
+    </section>
+
+
+
+
+
+    <!-- ───────── More Projects Start ───────── -->
+    <section class="moreProjects" aria-labelledby="title-more-projects">
+      <h2 id="title-more-projects" class="sectionTitle">OTHER PROJECTS</h2>
+
+      <div class="moreGrid">
+        <a class="projCard" href="test.html" aria-label="Metle case study">
+          <div class="thumb" aria-hidden="true">
+            <img src="Images/Mockups/buyThisCoolHat.png" alt="Metle case study cover">
+          </div>
+          <div class="kicker">Case Study</div>
+          <h3 class="projTitle">Metle</h3>
+          <div class="meta">App</div>
+        </a>
+
+        <a class="projCard" href="test2.html" aria-label="University Assignment case study">
+          <div class="thumb" aria-hidden="true">
+            <img src="Images/Mockups/metleDisplay.png" alt="University assignment app cover">
+          </div>
+          <div class="kicker">Case Study</div>
+          <h3 class="projTitle">Portfolio</h3>
+          <div class="meta">App</div>
+        </a>
+
+        <a class="projCard" href="test3.html" aria-label="Stream Sense website">
+          <div class="thumb" aria-hidden="true">
+            <img src="Images/Mockups/ResponsiveDesignPortfolio.png" alt="Stream Sense website cover">
+          </div>
+          <div class="kicker">Work</div>
+          <h3 class="projTitle">Uni</h3>
+          <div class="meta">Website</div>
+        </a>
+      </div>
+
+
+      <div class="sectionRule" aria-hidden="true"></div>
+    </section>
+    <!-- ───────── More Projects End ───────── -->
+
+
+    <!-- ───────── Contact strip Start ───────── -->
+    <section class="contactStrip" aria-label="Contact">
+      <div class="contactStrip__inner">
+        <div class="contactStrip__left">
+          <div class="kicker">GET IN TOUCH</div>
+          <div class="contactStrip__line">
+            <a class="contactStrip__email" href="mailto:lachiemcghie@gmail.com">lachiemcghie@gmail.com</a>
+          </div>
+        </div>
+
+        <nav class="contactStrip__social" aria-label="Social links">
+          <a href="https://www.linkedin.com/in/your-handle" aria-label="LinkedIn" target="_blank" rel="noopener">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="https://www.figma.com/@your-handle" aria-label="Figma" target="_blank" rel="noopener">
+            <i class="fa-brands fa-figma"></i>
+          </a>
+        </nav>
+      </div>
+    </section>
+    <!-- ───────── Contact strip End ───────── -->
+
+  </main>
+  <!-- Main End -->
+
+  <!-- JS Start -->
+  <script src="test.js"></script>
+  <!-- JS End -->
+
+</body>
+<!-- Body End -->
+
+</html>

@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Metle — Case Study | Lachie McGhie</title>
+
+    <meta name="description"
+        content="Metle is a concept streaming service focused on intentional listening and emotional wellbeing. Research, design, prototypes, and reflections." />
+    <link rel="icon"
+        href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO2HqWkAAAAASUVORK5CYII=">
+
+    <script defer src="https://kit.fontawesome.com/159c5c66b8.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="global.css" />
+    <link rel="stylesheet" href="caseStudy.css" />
+    <meta name="theme-color" content="#0e0e11">
+
+</head>
+
+<body>
+
+    <!-- ========= HEADER ========= -->
+    <header>
+        <div class="headerInner">
+            <a href="index.html" class="headerLogoLink" aria-label="Home">
+                <div class="headerLogo"></div>
+            </a>
+
+            <!-- hamburger (mobile) -->
+            <button class="menuBtn" type="button" aria-label="Open menu" aria-expanded="false"
+                aria-controls="mobileMenu">
+                <svg class="menuIcon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M3 6h18v2H3zM3 11h18v2H3zM3 16h18v2H3z" fill="currentColor" />
+                </svg>
+            </button>
+
+            <!-- desktop links -->
+            <nav class="headerNav" aria-label="Primary">
+                <!-- <a class="nav" href="#">ABOUT</a> -->
+                <a class="nav" href="Data/UX Design Resume.pdf" target="_blank">RÉSUMÉ</a>
+                <button class="themeToggle" id="themeToggle" aria-label="Toggle color theme" aria-pressed="false">
+                    <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                        <path
+                            d="M12 4V2m0 20v-2m8-8h2M2 12h2m12.95 6.95 1.41 1.41M4.64 4.64 6.05 6.05m0 11.9-1.41 1.41m12.9-12.9 1.41-1.41"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" fill="currentColor" />
+                    </svg>
+                </button>
+            </nav>
+
+
+
+        </div>
+    </header>
+
+    <!-- mobile menu -->
+    <nav id="mobileMenu" class="mobileMenu" hidden aria-label="Mobile">
+        <ul>
+            <li><a href="aboutMe.html">ABOUT</a></li>
+            <li><a href="mailto:lachiemcghie@gmail.com">RÉSUMÉ</a></li>
+        </ul>
+    </nav>
+
+    <!-- ===== HERO (CS) ===== -->
+    <div class="container">
+        <section class="heroCS container">
+            <!-- <div class="heroCS-head">
+                <p class="heroCS-date">Published 00 Jan 2025</p>
+                <h1 class="heroCS-title">Uni Case Study</h1>
+                <p class="heroCS-sub">How do we make international food more accessible?</p>
+                <div class="heroCS-chips">
+                    <span class="chip">Design</span>
+                    <span class="chip">Research</span>
+                    <span class="chip">Prototype</span>
+                    <span class="chip">Testing</span>
+                </div>
+            </div> -->
+
+            <figure class="heroCS-media">
+                <div class="heroMediaBox" aria-label="Hero image placeholder"><img src="Images/uniHero.png"></div>
+            </figure>
+        </section>
+    </div>
+
+    <!-- ===== MAIN (2 columns) ===== -->
+    <main class="container mainContainer">
+        <!-- Left (sticky TOC) -->
+        <aside class="leftContainer">
+            <nav class="toc" aria-label="Contents">
+                <h2 class="tocHeader">Contents</h2>
+                <div class="tocContainer">
+                    <a class="contents" href="#overview" data-target="overview"><span
+                            class="currentSectionIcon"></span><span class="currentSectionText">Overview</span></a>
+                    <a class="contents" href="#research" data-target="research"><span
+                            class="currentSectionIcon"></span><span class="currentSectionText">Research</span></a>
+                    <a class="contents" href="#ideate" data-target="ideate"><span
+                            class="currentSectionIcon"></span><span class="currentSectionText">Ideate</span></a>
+                    <a class="contents" href="#prototype" data-target="prototype"><span
+                            class="currentSectionIcon"></span><span class="currentSectionText">Prototype</span></a>
+                    <a class="contents" href="#testing" data-target="testing"><span
+                            class="currentSectionIcon"></span><span class="currentSectionText">Reflection</span></a>
+                    <a class="contents" href="#final" data-target="final"><span class="currentSectionIcon"></span><span
+                            class="currentSectionText">Final Design</span></a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Right (content) -->
+        <div class="rightContainer">
+            <!-- Overview -->
+            <section id="overview" aria-labelledby="overview-h">
+                <h2 id="overview-h" class="subHeading">Overview</h2>
+
+                <p>
+                    This project was completed during a recent university trimester. We began by identifying a
+                    real-world problem we were experiencing and designed an app as the solution.
+                </p>
+
+                <p>
+                    The work ran across three stages: <b>Stage One</b> explored the problem space and possible
+                    solutions; <b>Stage Two</b> developed the chosen approach into a working prototype; and <b>Stage
+                        Three</b> tested the prototype and iterated based on feedback.
+                </p>
+
+                <div class="divider" aria-hidden="true"></div>
+            </section>
+
+
+            <!-- Research -->
+            <section id="research">
+                <h2 class="subHeading">Research</h2>
+
+                <p>
+                    To understand the problem space, I ran a “Five Why’s” exploration focused on why people seek
+                    products they first experienced overseas. The themes point to nostalgia, uniqueness, access
+                    barriers, and the limits of local/online options.
+                </p>
+
+                <h3 class="subHeading">The Five Why’s</h3>
+
+                <div class="accordionContainer">
+                    <!-- 1 -->
+                    <div class="accordionPanel">
+                        <button class="accordionButton" aria-expanded="true" aria-controls="p1">
+                            <h2 id="t1">Why would someone seek out products they’ve had overseas?</h2>
+                            <i class="chevron fa-solid fa-chevron-up" aria-hidden="true"></i>
+                        </button>
+                        <div class="accordionContent" id="p1" role="region" aria-labelledby="t1" aria-hidden="false">
+                            <div>
+                                <hr>
+                                <p>
+                                    Travellers often look for products they discovered overseas due to nostalgia and
+                                    sentimental value, unique flavour or perceived quality. These items can revive
+                                    meaningful memories and tastes not found locally. People who have lived abroad may
+                                    also face language friction in mainstream supermarkets and prefer familiar brands to
+                                    maintain cultural habits.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2 -->
+                    <div class="accordionPanel">
+                        <button class="accordionButton" aria-expanded="false" aria-controls="p2">
+                            <h2 id="t2">Why would someone have to seek out these products?</h2>
+                            <i class="chevron fa-solid fa-chevron-up" aria-hidden="true"></i>
+                        </button>
+                        <div class="accordionContent" id="p2" role="region" aria-labelledby="t2" aria-hidden="true">
+                            <div>
+                                <hr>
+                                <p>
+                                    They’re not widely available. The specialised or regional nature of these goods
+                                    means they’re usually limited to specific shops, ethnic grocers, or niche online
+                                    marketplaces, so people must actively hunt for them.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3 -->
+                    <div class="accordionPanel">
+                        <button class="accordionButton" aria-expanded="false" aria-controls="p3">
+                            <h2 id="t3">Why can’t you get these products at common supermarkets?</h2>
+                            <i class="chevron fa-solid fa-chevron-up" aria-hidden="true"></i>
+                        </button>
+                        <div class="accordionContent" id="p3" role="region" aria-labelledby="t3" aria-hidden="true">
+                            <div>
+                                <hr>
+                                <p>
+                                    Major supermarkets prioritise broad-appeal inventory. Niche items have lower overall
+                                    demand, and some require special storage, import arrangements, or complex
+                                    sourcing—raising costs and reducing shelf viability.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4 -->
+                    <div class="accordionPanel">
+                        <button class="accordionButton" aria-expanded="false" aria-controls="p4">
+                            <h2 id="t4">Why wouldn’t someone just order it online?</h2>
+                            <i class="chevron fa-solid fa-chevron-up" aria-hidden="true"></i>
+                        </button>
+                        <div class="accordionContent" id="p4" role="region" aria-labelledby="t4" aria-hidden="true">
+                            <div>
+                                <hr>
+                                <p>
+                                    High shipping costs, long delivery times, and patchy availability make it
+                                    inconvenient. Quality/authenticity concerns, import rules, and customs fees can
+                                    complicate things—plus the logistics of being home for delivery and planning ahead
+                                    for perishables.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5 -->
+                    <div class="accordionPanel">
+                        <button class="accordionButton" aria-expanded="false" aria-controls="p5">
+                            <h2 id="t5">Why wouldn’t you use an alternative that’s “similar”?</h2>
+                            <i class="chevron fa-solid fa-chevron-up" aria-hidden="true"></i>
+                        </button>
+                        <div class="accordionContent" id="p5" role="region" aria-labelledby="t5" aria-hidden="true">
+                            <div>
+                                <hr>
+                                <p>
+                                    Originals often have specific flavours, ingredients, or preparation methods that
+                                    substitutes can’t replicate. Emotional connection and cultural meaning also make the
+                                    “real thing” irreplaceable for many buyers.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Evidence / artefact -->
+                <div class="imageContainer">
+                    <div class="imageBox">
+                        <img src="Images/Cs/Uni/surveyResults.png"
+                            alt="Survey results highlighting demand for overseas products and barriers to access">
+                    </div>
+                </div>
+
+                <div class="divider" aria-hidden="true"></div>
+            </section>
+
+
+            <!-- Ideate -->
+            <section id="ideate">
+                <h2 class="subHeading">Ideate</h2>
+                <p class="bodyCopy">
+                    Guided by early research insights, I explored solution directions through a focused persona and
+                    mapped the core user goal into flows, then shaped the information architecture and low-fidelity
+                    wireframes.
+                </p>
+
+                <!-- Persona -->
+                <div class="personaContainer">
+                    <article class="persona">
+                        <div class="personaLeft">
+                            <div class="personaHeading">Nathan</div>
+                            <div class="personaImage" aria-hidden="true"><img src="Images/nathan.png"></div>
+                        </div>
+
+                        <div class="personaRight">
+                            <div class="personaSubContainer">
+                                <div class="indent"></div>
+                                <div class="personaSubHeadingContainer">
+                                    <div class="personaSub">High School Student / Hospitality</div>
+                                    <div class="personaSub">17 Years Old</div>
+                                    <div class="personaSub">Sydney, Australia</div>
+                                    <div class="personaSub">Doesn’t Shop</div>
+                                    <div class="personaSub">Mum, Dad, Brother, Friends</div>
+                                </div>
+                            </div>
+
+                            <div class="personaBody">
+                                <div class="listItem">
+                                    <b>Wants &amp; Needs</b>
+                                    <ul class="bodyCopy list">
+                                        <li class="liWhite">Play video games online with friends</li>
+                                        <li class="liWhite">Get good grades in high school</li>
+                                        <li class="liWhite">Figure out a potential career path</li>
+                                        <li class="liWhite">Meet more like-minded people</li>
+                                    </ul>
+                                </div>
+
+                                <div class="listItem">
+                                    <b>Frustrations</b>
+                                    <ul class="bodyCopy list">
+                                        <li class="liWhite">Managing a balanced diet</li>
+                                        <li class="liWhite">Dealing with parental expectations</li>
+                                        <li class="liWhite">Balancing schoolwork with job/social life</li>
+                                        <li class="liWhite">Navigating peer pressure</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Goal + User Flow visual -->
+                    <div class="imageContainer">
+                        <div class="cite">
+                            <b>Goal:</b> try a new snack recommended by his American friend while playing video games.
+                        </div>
+                        <div class="imageBox">
+                            <img src="Images/Cs/Uni/userFlow.png"
+                                alt="User flow for Nathan discovering and trying a recommended snack">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Information Architecture -->
+                <h3 class="subHeading">Information Architecture</h3>
+                <div class="imageContainer">
+                    <div class="imageBox">
+                        <img src="Images/Cs/Uni/Info Architecture.png"
+                            alt="Information architecture diagram showing primary sections and key tasks">
+                    </div>
+                </div>
+
+                <!-- Wireframes -->
+                <h3 class="subHeading">Wireframes</h3>
+                <div class="imageContainer">
+                    <div class="imageBox">
+                        <img src="Images/Cs/Uni/mockup.png" alt="Low-fidelity wireframes for key screens">
+                    </div>
+                </div>
+
+                <div class="divider" aria-hidden="true"></div>
+            </section>
+
+
+            <!-- Prototype -->
+            <section id="prototype">
+                <h2 class="subHeading">Prototype</h2>
+
+                <!-- Low-Fidelity Wireframes -->
+                <h3 class="subHeading">Low-Fidelity Wireframes</h3>
+                <div class="imageContainer">
+                    <div class="imageBox">
+                        <!-- swap in an image when ready -->
+                        <div class="imgPlaceholder" aria-label="Wireframes placeholder"></div>
+                    </div>
+                </div>
+
+                <!-- Optional paired spread example (keep/remove as needed) -->
+                <h3 class="subHeading">Blended</h3>
+                <div class="doubleSpread">
+                    <div class="leftSpread">
+                        <div class="imgPlaceholder" aria-label="Blended mock placeholder"></div>
+                    </div>
+                    <div class="rightSpread">
+                        <p class="bodyCopy">In early prototyping I explored alternative layouts and navigation patterns
+                            to validate content density and readability before committing to visuals.</p>
+                    </div>
+                </div>
+
+                <h3 class="subHeading">Music Player</h3>
+                <div class="doubleSpread">
+                    <div class="leftSpread">
+                        <div class="imgPlaceholder" aria-label="Music player placeholder"></div>
+                    </div>
+                    <div class="rightSpread">
+                        <p class="bodyCopy">I iterated on core controls and feedback states with a focus on clarity,
+                            reach targets, and progressive disclosure of secondary actions.</p>
+                    </div>
+                </div>
+
+                <!-- Branding block (optional) -->
+                <h3 class="subHeading">Branding</h3>
+                <p class="bodyCopy">Logo, type, and spacing tokens were tested against dark/light modes to ensure
+                    legibility and tone consistency.</p>
+                <div class="imageContainer">
+                    <div class="imageBox">
+                        <div class="imgPlaceholder" aria-label="Logo placeholder"></div>
+                    </div>
+                </div>
+
+                <div class="divider" aria-hidden="true"></div>
+            </section>
+
+            <!-- Testing / Reflection -->
+            <section id="testing">
+                <h2 class="subHeading">Reflection</h2>
+
+                <div class="imageContainer">
+                    <div class="imageBox">
+                        <img src="Images/Cs/Uni/interviewResults.png" alt="Interview and testing results summary">
+                    </div>
+                </div>
+
+                <div class="divider" aria-hidden="true"></div>
+            </section>
+    </main>
+
+    <!-- ===== FINAL ===== -->
+    <div class="container">
+        <section id="final" class="finalHero">
+            <div class="finalHero-head">
+                <h2 class="finalHero-title">Final Design</h2>
+                <p class="finalHero-sub">
+                    This is a live case study documenting how I designed and built this portfolio. You’ll be able to
+                    interact with it directly and give real-time feedback, helping shape my growth while experiencing my
+                    UX
+                    thinking first-hand.
+                </p>
+                <hr class="finalHero-rule">
+            </div>
+
+            <figure class="finalHero-media">
+                <video class="finalVideo" src="Images/uniDemo.mp4" autoplay muted loop playsinline preload="metadata"
+                    aria-label="Final design demo video">
+                    Your browser does not support the video tag.
+                </video>
+            </figure>
+
+
+        </section>
+    </div>
+
+
+    <!-- ===== PREVIOUS / NEXT (rail) ===== -->
+    <div class="container">
+        <nav class="rail" aria-labelledby="rail-title">
+            <h2 id="rail-title" class="sr-only">Project navigation</h2>
+
+            <!-- PREVIOUS -->
+            <a class="railLink is-prev" href="portfolioCasestudy.html" aria-label="Previous project: Metle">
+                <span class="railLabel">
+                    <!-- Replace the path with your index.html arrow if you have a custom one -->
+                    <svg class="railArrow" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M15.5 5.5L9 12l6.5 6.5" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <span class="railText"><em>Previous</em> project</span>
+                </span>
+
+                <!-- Poster that fades out on hover -->
+                <figure class="railPreview" aria-hidden="true">
+                    <img class="railImg" src="Images/portfolioThumb.png" alt="Portfolio Casestudy" />
+                </figure>
+            </a>
+
+            <!-- NEXT -->
+            <a class="railLink is-next" href="metleCasestudy.html" aria-label="Next project: Portfolio (Live)">
+                <span class="railLabel">
+                    <span class="railText"><em>Next</em> project</span>
+                    <svg class="railArrow" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M8.5 5.5L15 12l-6.5 6.5" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+
+                <!-- Poster that fades out on hover -->
+                <figure class="railPreview" aria-hidden="true">
+                    <img class="railImg" src="Images/metleThumbnail.png" alt="Metle Casestudy" />
+                </figure>
+            </a>
+        </nav>
+    </div>
+
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" role="contentinfo">
+        <div class="footerInner">
+            <div class="footerWrapper">
+                <div class="emailContainer">
+                    <div class="kicker"><i class="fa-solid fa-envelope" aria-hidden="true"></i>GET IN TOUCH</div>
+                    <div class="footerEmail"><a class="emailAddress"
+                            href="mailto:lachiemcghie@gmail.com">lachiemcghie@gmail.com</a></div>
+                    <nav class="socialsContainer" aria-label="Social links">
+                        <a href="https://www.instagram.com/lachoutlaws/" aria-label="LinkedIn" target="_blank"
+                            rel="noopener">
+                            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                        </a>
+                        <!-- <a href="https://www.figma.com/@your-handle" aria-label="Figma" target="_blank" rel="noopener">
+              <i class="fa-brands fa-figma" aria-hidden="true"></i>
+            </a> -->
+                    </nav>
+                </div>
+                <div class="footerRight" aria-hidden="true"></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="reveal.js"></script>
+    <script src="caseStudy.js"></script>
+</body>
+
+</html>

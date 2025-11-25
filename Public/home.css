@@ -1,0 +1,1561 @@
+/* ========== Core tokens (Dark default) ========== */
+:root {
+    /* Palette */
+    --bg: #0e0e11;
+    --fg: #e7e7ea;
+    --muted: #9aa1a6;
+    --accent: #79DAFF;
+    --accent50: #79DAFFaa;
+    --accent-ink: #06141a;
+
+    /* Surfaces */
+    --card: #16161a;
+    --surface-0: var(--bg);
+    --surface-1: var(--card);
+    --surface-2: color-mix(in oklab, var(--bg) 80%, white 12%);
+
+    /* Lines */
+    --line-weak: #ffffff14;
+    --line-mid: #ffffff26;
+
+    /* Gradients */
+    --grad-a: #0f0f12;
+    --grad-b: #0d0d10;
+
+    /* Overlay / hints */
+    --scrim: rgba(8, 8, 10, .86);
+    --edge-hint: rgba(173, 216, 230, .30);
+    --thumb-bg: #222;
+
+    /* Shadows */
+    --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+    --shadow-thumb: 0 6px 14px rgba(0, 0, 0, .12);
+    --shadow-thumb-hover: 0 12px 22px rgba(0, 0, 0, .18);
+    --glass-top-hl: rgba(255, 255, 255, .14);
+    --glass-shadow: var(--shadow);
+
+    /* Sizes / spacing */
+    --gap: 16px;
+    --radius: 18px;
+    --radius-sm: 10px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --pad: 20px;
+    --leftCol: minmax(220px, 320px);
+    --container-max: 1400px;
+    --header-h: 100px;
+    --gutter-x: var(--pad);
+
+    /* Gallery */
+    --peek: 96px;
+    --panel-w: 340px;
+    --stage-raise: 40px;
+    --poster-col: 420px;
+    --btn-outline-w: 2px;
+
+    /* Small shadow tokens */
+    --shadow-s: inset 0 1px 2px #ffffff30, 0 1px 2px #00000030, 0 2px 4px #00000015;
+    --shadow-m: inset 0 1px 2px #ffffff50, 0 2px 4px #00000030, 0 4px 8px #00000015;
+    --shadow-l: inset 0 1px 2px #ffffff70, 0 4px 6px #00000030, 0 6px 10px #00000015;
+}
+
+/* ========== Light theme overrides ========== */
+:root[data-theme="light"] {
+    --bg: #f6f7f9;
+    --fg: #111318;
+    --muted: #5d646b;
+    --accent: #2AA7FF;
+    --accent50: color-mix(in oklab, var(--accent) 66%, transparent);
+
+    --card: #fff;
+    --surface-0: var(--bg);
+    --surface-1: var(--card);
+    --surface-2: color-mix(in oklab, #fff 88%, #c9d1d9 12%);
+
+    --line-weak: #00000012;
+    --line-mid: #0000001f;
+    --grad-a: #f7f8fa;
+    --grad-b: #eef1f6;
+
+    --scrim: rgba(240, 242, 245, .86);
+    --edge-hint: rgba(0, 123, 193, .18);
+    --thumb-bg: #e9edf3;
+
+    --glass-top-hl: rgba(255, 255, 255, .65);
+    --glass-shadow: 0 10px 24px rgba(0, 0, 0, .10);
+
+    --shadow: 0 10px 24px rgba(0, 0, 0, .10);
+    --shadow-thumb: 0 6px 12px rgba(0, 0, 0, .10);
+    --shadow-thumb-hover: 0 12px 20px rgba(0, 0, 0, .16);
+
+    --shadow-s: inset 0 1px 2px #ffffff20, 0 1px 2px #00000025, 0 2px 4px #00000012;
+    --shadow-m: inset 0 1px 2px #ffffff30, 0 2px 4px #00000025, 0 4px 8px #00000012;
+    --shadow-l: inset 0 1px 2px #ffffff36, 0 4px 6px #00000025, 0 6px 10px #00000012;
+}
+
+/* ========== Base ========== */
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+html {
+    scroll-padding-top: calc(var(--header-h) + 12px);
+}
+
+/* support legacy + new section offset */
+.yRow,
+.projectsRow {
+    scroll-margin-top: calc(var(--header-h) + 12px);
+}
+
+body {
+    margin: 0;
+    background: var(--surface-0);
+    color: var(--fg);
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+}
+
+/* smooth theme transitions on main surfaces */
+html,
+body,
+header,
+.footer,
+.yearCard,
+.caseCard,
+.projectCard,
+.yWorksLists__thumb,
+.projectRowWorksThumbnail {
+    transition: background-color .25s ease, color .25s ease, border-color .25s ease;
+}
+
+/* ========== Container ========== */
+.container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: var(--pad);
+}
+
+/* ========== HeroIntro (with subtle purple glow + portrait card) ========== */
+.heroIntro {
+    position: relative;
+    isolation: isolate;
+    padding: clamp(8px, 2.2vw, 28px) var(--pad) clamp(16px, 3vw, 32px);
+    padding-top: 100px;
+    background: var(--bg);
+    color: var(--fg);
+    overflow: clip;
+}
+
+.heroIntro__bg {
+    position: absolute;
+    inset: -12% -2% -8%;
+    background:
+        radial-gradient(90% 70% at 12% 10%, color-mix(in oklab, #8b7dff 16%, transparent) 0%, transparent 55%),
+        radial-gradient(80% 60% at 88% 18%, color-mix(in oklab, #ff7ce6 10%, transparent) 0%, transparent 60%),
+        radial-gradient(100% 80% at 40% 100%, color-mix(in oklab, #6cd2ff 8%, transparent) 0%, transparent 65%),
+        linear-gradient(180deg, color-mix(in oklab, var(--fg) 2%, transparent), transparent 60%);
+    transform: translateY(-6%);
+    filter: blur(26px) saturate(1.02) contrast(1.02);
+    opacity: .62;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.heroIntro .container {
+    max-width: min(var(--container-max), 1100px);
+}
+
+.heroIntro__kicker {
+    margin: 0 0 10px;
+    color: var(--muted);
+    font: 800 12px/1 system-ui;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+}
+
+.heroIntro__title {
+    margin: 6px 0 clamp(6px, 1.4vw, 12px);
+    font: 900 clamp(28px, 6vw, 72px)/.98 Inter, system-ui;
+    letter-spacing: -.01em;
+    color: var(--fg);
+}
+
+.u-accent {
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-underline-offset: .18em;
+}
+
+.heroIntro__sub {
+    margin: 0 0 clamp(10px, 1.8vw, 14px);
+    color: color-mix(in oklab, var(--fg) 92%, white 8%);
+    font: 500 clamp(16px, 2.2vw, 20px)/1.6 Inter, system-ui;
+    max-width: 72ch;
+}
+
+.heroIntro__chips {
+    --chip-bg: color-mix(in oklab, var(--accent) 16%, transparent);
+    --chip-ink: color-mix(in oklab, var(--accent) 85%, white 15%);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0;
+    margin: 0 0 clamp(8px, 1.6vw, 12px);
+    list-style: none;
+}
+
+.heroIntro .chip {
+    padding: 8px 12px;
+    border-radius: 999px;
+    font: 700 12px/1 system-ui;
+    letter-spacing: .03em;
+    background: var(--chip-bg);
+    color: var(--chip-ink);
+    border: 1px solid color-mix(in oklab, var(--accent) 40%, transparent);
+}
+
+.heroIntro .chip--soft {
+    background: color-mix(in oklab, var(--accent) 10%, transparent);
+    color: color-mix(in oklab, var(--accent) 70%, white 30%);
+    border-color: color-mix(in oklab, var(--accent) 28%, transparent);
+}
+
+/* layout */
+.heroIntroGrid {
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: clamp(16px, 2.5vw, 28px);
+    align-items: center;
+}
+
+.heroRight {
+    min-width: 0;
+    display: grid;
+    place-items: center;
+}
+
+/* portrait card */
+.avatarCard {
+    position: relative;
+    width: min(440px, 42vw);
+    aspect-ratio: 4/5;
+    border-radius: 20px;
+    background: color-mix(in oklab, var(--surface-1) 90%, transparent);
+    border: 1px solid var(--line-weak);
+    overflow: clip;
+    box-shadow: var(--shadow);
+    isolation: isolate;
+}
+
+.avatarGlow {
+    position: absolute;
+    inset: -18% -14%;
+    background:
+        radial-gradient(60% 50% at 25% 18%, color-mix(in oklab, var(--accent) 24%, transparent) 0%, transparent 60%),
+        radial-gradient(70% 55% at 85% 25%, color-mix(in oklab, #a46cff 22%, transparent) 0%, transparent 62%),
+        radial-gradient(80% 65% at 50% 90%, color-mix(in oklab, #ff72c6 18%, transparent) 0%, transparent 65%);
+    filter: blur(26px) saturate(1.05);
+    opacity: .9;
+    z-index: 0;
+}
+
+.avatarFrame {
+    position: absolute;
+    inset: 10px;
+    border-radius: 16px;
+    background: linear-gradient(180deg, #ffffff12, #0000);
+    box-shadow: inset 0 1px 2px var(--glass-top-hl);
+    overflow: hidden;
+    z-index: 1;
+}
+
+.avatarFrame::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--fg) 10%, transparent);
+    pointer-events: none;
+}
+
+.avatarFrame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1.02);
+    transition: transform .4s cubic-bezier(.2, .8, .2, 1), filter .4s;
+}
+
+.avatarCard:hover .avatarFrame img {
+    transform: scale(1.04);
+}
+
+.avatarBadge {
+    position: absolute;
+    left: 16px;
+    bottom: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--bg) 65%, transparent);
+    border: 1px solid var(--line-weak);
+    color: var(--fg);
+    font: 600 12px/1 Inter, system-ui;
+    z-index: 2;
+    backdrop-filter: blur(6px);
+}
+
+.avatarBadge .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--accent) 80%, white 20%);
+    box-shadow: 0 0 10px color-mix(in oklab, var(--accent) 60%, transparent);
+}
+
+/* ========== Rows (legacy .yRow + new .projectsRow) ========== */
+.yRow,
+.projectsRow {
+    display: grid;
+    grid-template-columns: var(--leftCol) 1fr;
+    gap: clamp(18px, 3vw, 36px);
+    align-items: start;
+    padding: 24px 0;
+    border-top: 1px dashed var(--line-weak);
+}
+
+.yRow:first-of-type,
+.projectsRow:first-of-type {
+    border-top: none;
+}
+
+.yCol-left,
+.projectsRowTOC {
+    position: sticky;
+    top: calc(var(--header-h) + 12px);
+    align-self: start;
+}
+
+.yearCard,
+.projectsTOC {
+    border-radius: 16px;
+    padding: 18px 16px;
+    backdrop-filter: blur(4px);
+}
+
+/* Titles */
+.yWorks__title,
+.projectsTOCTitle {
+    font-weight: 800;
+    letter-spacing: .02em;
+    margin: 6px 0 10px;
+    font-size: clamp(24px, 3.2vw, 36px);
+    color: var(--fg);
+}
+
+.yWorks__title>span>span,
+.projectsTOCTitle>span>span {
+    border-bottom: 2px solid var(--accent);
+}
+
+/* TOC lists */
+.yWorks__titleLists,
+.projectsTOCLists {
+    list-style: none;
+    margin: 10px 0 0;
+    padding: 0;
+    display: grid;
+    gap: 4px;
+}
+
+.yWorks__titleLists li,
+.projectsTOCLists li {
+    padding: 6px 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 12px;
+    position: relative;
+}
+
+.yWorks__titleLists--num,
+.projectsTOCLists--number {
+    opacity: .45;
+    font-variant-numeric: tabular-nums;
+    min-width: 2.2ch;
+    line-height: 1;
+    align-self: center;
+}
+
+.yWorks__titleLists--title,
+.projectsTOCLists--title {
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.15;
+}
+
+.yWorks__titleLists--date,
+.projectsTOCLists--subtitle {
+    color: var(--muted);
+    font-size: .9rem;
+    margin: 2px 0 0;
+    line-height: 1.2;
+}
+
+/* hover link state */
+.yWorks__titleLists li.is-linked::before,
+.projectsTOCLists li.is-linked::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: color-mix(in oklab, var(--fg) 8%, transparent);
+    pointer-events: none;
+}
+
+.yWorks__titleLists li.is-linked .yWorks__titleLists--title,
+.projectsTOCLists li.is-linked .projectsTOCLists--title {
+    color: #fff;
+}
+
+:root[data-theme="light"] .yWorks__titleLists li.is-linked .yWorks__titleLists--title,
+:root[data-theme="light"] .projectsTOCLists li.is-linked .projectsTOCLists--title {
+    color: #000;
+}
+
+.yWorks__titleLists li.is-linked .yWorks__titleLists--date,
+.projectsTOCLists li.is-linked .projectsTOCLists--subtitle {
+    color: var(--accent);
+}
+
+/* legacy nav buttons */
+.yWorks__title__nav {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.yWorks__title__nav__btn a {
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--bg) 70%, white 8%);
+    border: 1px solid color-mix(in oklab, var(--fg) 14%, transparent);
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, .28), 0 6px 14px rgba(0, 0, 0, .22);
+    position: relative;
+    transition: .18s;
+}
+
+.yWorks__title__nav__btn a span::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: conic-gradient(from 315deg, #0000 0 25%, var(--fg) 0 35%, #0000 0 65%, var(--fg) 0 75%, #0000 0);
+    mask: radial-gradient(circle at 45% 50%, #0000 35%, #000 0) subtract,
+        radial-gradient(circle at 55% 50%, #0000 35%, #000 0);
+    opacity: .6;
+}
+
+.yWorks__title__nav__btn.is-prev a span::before {
+    transform: scaleX(-1);
+}
+
+.yWorks__title__nav__btn.is-next.is-standBy a {
+    opacity: .35;
+    pointer-events: none;
+}
+
+.yCol-right,
+.projectsRowContent {
+    min-width: 0;
+}
+
+/* Tile grids */
+.yWorksLists,
+.projectRowWorks {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: var(--gap);
+}
+
+.yWorksLists>li,
+.projectRowWorks>li {
+    position: relative;
+}
+
+/* Thumbs */
+.yWorksLists__thumb,
+.projectRowWorksThumbnail {
+    background: var(--thumb-bg) center/cover no-repeat;
+    border-radius: 18px;
+    padding-top: 150%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transform: translateZ(0);
+    transition: transform .18s ease, filter .18s ease, box-shadow .18s ease;
+}
+
+.yWorksLists__thumb img,
+.projectRowWorksThumbnail img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+}
+
+.yWorksLists__thumb::after,
+.projectRowWorksThumbnail::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    box-shadow: inset 0 0 0 0px var(--accent);
+    opacity: 0;
+    transition: all .25s;
+}
+
+.link-a a {
+    display: block;
+}
+
+.link-a a:focus .yWorksLists__thumb::after,
+.link-a a:hover .yWorksLists__thumb::after,
+.link-a a:focus .projectRowWorksThumbnail::after,
+.link-a a:hover .projectRowWorksThumbnail::after {
+    box-shadow: inset 0 0 0 3px var(--accent);
+    opacity: .85;
+}
+
+.yWorksLists>li.is-linked .yWorksLists__thumb,
+.projectRowWorks>li.is-linked .projectRowWorksThumbnail {
+    transform: translateY(-2px);
+    filter: brightness(1.05) contrast(1.03);
+    box-shadow: var(--shadow-thumb-hover);
+}
+
+.yWorksLists>li.is-linked .yWorksLists__thumb::after,
+.projectRowWorks>li.is-linked .projectRowWorksThumbnail::after {
+    box-shadow: inset 0 0 0 3px var(--accent);
+    opacity: .85;
+}
+
+/* subtle hover zoom for tile image */
+.projectRowWorksThumbnail {
+    overflow: hidden;
+}
+
+.projectRowWorksThumbnail img {
+    transition: transform .6s cubic-bezier(.2, .8, .2, 1);
+}
+
+.link-a a:hover .projectRowWorksThumbnail img {
+    transform: scale(1.06);
+}
+
+.link-a a:hover .projectRowWorksThumbnail {
+    transform: scale(1.03);
+}
+
+/* ========== Fullscreen Overlay Gallery ========== */
+.galleryContainer {
+    position: fixed;
+    inset: 0;
+    background: var(--scrim);
+    backdrop-filter: blur(4px);
+    z-index: 130;
+    display: none;
+}
+
+.galleryContainer.is-open {
+    display: grid;
+    grid-template-rows: 1fr auto;
+}
+
+.galleryClose {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    border: 1px solid var(--line-weak);
+    background: color-mix(in oklab, var(--surface-1) 65%, transparent);
+    color: var(--fg);
+    cursor: pointer;
+    font-size: 20px;
+    z-index: 3;
+}
+
+.galleryOverlay {
+    width: 100vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    min-height: 0;
+    display: grid;
+    place-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Sections */
+.gallerySection.is-center {
+    position: relative;
+    z-index: 2;
+    width: clamp(680px, 70vw, 1280px);
+    max-height: 100%;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    padding: 0;
+}
+
+.gallerySection.is-left,
+.gallerySection.is-right {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    width: var(--panel-w);
+    height: min(48vh, 420px);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.gallerySection.is-left {
+    left: 0;
+    transform: translate(calc(-100% + var(--peek)), calc(-50% - var(--stage-raise)));
+}
+
+.gallerySection.is-right {
+    right: 0;
+    transform: translate(calc(100% - var(--peek)), calc(-50% - var(--stage-raise)));
+}
+
+/* Arrows */
+.gallerySectionArrow {
+    position: absolute;
+    inset-block: 0;
+    margin: auto 0;
+    width: var(--peek);
+    display: grid;
+    place-items: center;
+    font-size: clamp(20px, 5vw, 40px);
+    color: var(--fg);
+    background: none;
+    border: 0;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.gallerySectionArrow.is-prev {
+    right: 0;
+    padding-right: 8px;
+}
+
+.gallerySectionArrow.is-next {
+    left: 0;
+    padding-left: 8px;
+}
+
+.gallerySectionArrow:focus-visible {
+    outline: var(--btn-outline-w) solid var(--accent);
+    outline-offset: -2px;
+}
+
+.gallerySectionArrowIcon {
+    width: 58px;
+    height: 16px;
+    display: block;
+    color: currentColor;
+    pointer-events: none;
+}
+
+.gallerySectionArrow:hover .gallerySectionArrowIcon {
+    transform: translateX(2px);
+    transition: transform .12s ease;
+}
+
+.gallerySectionArrow.is-prev:hover .gallerySectionArrowIcon {
+    transform: translateX(-2px);
+}
+
+/* Side previews */
+.gallerySectionPreview {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    z-index: 0;
+    opacity: 0;
+    filter: brightness(.9);
+    transition: opacity .25s ease, filter .25s ease;
+}
+
+.gallerySection.is-left:hover .gallerySectionPreview.is-prev,
+.gallerySection.is-right:hover .gallerySectionPreview.is-next {
+    opacity: .8;
+    filter: brightness(1);
+}
+
+/* Edge glows */
+.gallerySectionGlow {
+    position: fixed;
+    top: 0;
+    height: calc(var(--vh, 1vh) * 100);
+    width: 15px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease;
+    z-index: 8;
+}
+
+.gallerySectionGlow.is-left {
+    left: 0;
+    background: linear-gradient(to right, var(--edge-hint), rgba(0, 0, 0, 0));
+}
+
+.gallerySectionGlow.is-right {
+    right: 0;
+    background: linear-gradient(to left, var(--edge-hint), rgba(0, 0, 0, 0));
+}
+
+.gallerySection.is-left:hover~.gallerySectionGlow.is-left,
+.gallerySection.is-right:hover~.gallerySectionGlow.is-right,
+.gallerySectionArrow:focus-visible~.gallerySectionGlow {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Card */
+.projectCard {
+    width: 100%;
+    height: min-content;
+    display: grid;
+    justify-items: center;
+    align-content: start;
+    padding: 0;
+    border-radius: var(--radius-lg);
+    background: var(--surface-2);
+    border: 1px solid var(--line-weak);
+    box-shadow: inset 0 1px 2px var(--glass-top-hl), var(--glass-shadow);
+}
+
+.projectCardBody {
+    width: min(1120px, 92%);
+    max-height: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr var(--poster-col);
+    gap: 16px;
+    border-radius: var(--radius-lg);
+    overflow: auto;
+    padding: clamp(24px, 6vh, 56px) clamp(16px, 5vw, 48px);
+    align-items: center;
+}
+
+.projectCardInfoContainer>* {
+    margin: 0;
+}
+
+.projectCardInfoContainer>*+* {
+    margin-top: 14px;
+}
+
+.projectCardTitle {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1.25;
+    letter-spacing: .2px;
+    color: var(--fg);
+}
+
+.projectCardSubtitle {
+    color: var(--muted);
+    font: 500 13px/1.4 system-ui;
+    letter-spacing: .12em;
+    margin-top: 4px;
+}
+
+.projectCardHeading {
+    color: var(--fg);
+    font: 700 12px/1 system-ui;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    margin-top: 18px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--line-mid);
+    width: min-content;
+}
+
+.projectCardInfo {
+    color: var(--fg);
+    opacity: .92;
+    font: 500 14px/1.55 system-ui;
+}
+
+.projectCardButtonsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 6px;
+}
+
+.projectCardButton.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    height: auto;
+    padding: 12px 16px;
+    border-radius: 9999px;
+    border: none;
+    background: var(--accent50);
+    color: var(--accent-ink);
+    font: 600 14px/1 Inter, system-ui;
+    letter-spacing: .01em;
+    text-decoration: none;
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, .35), 0 4px 10px rgba(0, 0, 0, .20);
+    transform: translateY(0);
+    transition: box-shadow .25s ease, transform .18s ease, filter .25s ease;
+    will-change: transform;
+}
+
+.projectCardButton.btn:hover,
+.projectCardButton.btn:focus-visible {
+    background: var(--accent);
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, .35), 0 6px 14px rgba(0, 0, 0, .25);
+    transform: translateY(-1px);
+    outline: none;
+}
+
+.projectCardButton.btn:active {
+    transform: translateY(0);
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, .35), 0 3px 6px rgba(0, 0, 0, .22);
+}
+
+.projectCardMediaContainer {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+}
+
+.projectCardMediaContainer img#casePoster.projectCardMedia {
+    width: 85%;
+    margin: 0 auto;
+    max-width: var(--poster-col);
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+}
+
+/* Bottom bar (mobile overlay nav) */
+.gallerySectionBottomBar {
+    width: 100%;
+    height: 50px;
+    background: var(--surface-1);
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    z-index: 140;
+}
+
+.gallerySectionBottomBar .gallerySectionArrow {
+    position: static;
+    height: 44px;
+    padding: 0 8px;
+    display: grid;
+    place-items: center;
+    background: transparent;
+    border: 0;
+    color: var(--fg);
+}
+
+.gallerySectionSpacer {
+    width: 1px;
+    height: 1px;
+}
+
+
+
+/* ========== Utilities ========== */
+.btn.is-disabled,
+.btn[aria-disabled="true"] {
+    opacity: .5;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.sr-only {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Reveal-on-scroll default anim */
+.reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity .5s ease, transform .5s ease;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 980px) {
+    .heroIntroGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .heroRight {
+        order: -1;
+    }
+
+    /* photo above title on mid screens */
+    .avatarCard {
+        width: min(520px, 86vw);
+    }
+}
+
+@media (max-width: 820px) {
+
+    .yRow,
+    .projectsRow {
+        grid-template-columns: 1fr;
+    }
+
+    .yCol-left,
+    .projectsRowTOC {
+        position: static;
+    }
+}
+
+@media (max-width: 720px) {
+    :root {
+        --header-h: 50px;
+        --bottom-h: calc(50px + env(safe-area-inset-bottom));
+        --gutter-x: 16px;
+        --rail-w: 72px;
+        --rail-pad: 18px;
+    }
+
+    .headerNav {
+        display: none;
+    }
+
+    .menuBtn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .mobileMenu {
+        top: var(--header-h);
+    }
+
+    /* tighter rows */
+    .yRow,
+    .projectsRow {
+        padding: 12px 0;
+    }
+
+    /* collapse overlay side panes */
+    .gallerySection.is-left,
+    .gallerySection.is-right {
+        width: 1px;
+        top: 0;
+        bottom: 0;
+        height: 100%;
+        transform: none;
+        border-radius: 0;
+    }
+
+    .gallerySectionPreview,
+    .gallerySection.is-left .gallerySectionArrow,
+    .gallerySection.is-right .gallerySectionArrow,
+    .gallerySectionGlow {
+        display: none !important;
+    }
+
+    .gallerySection.is-center {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        overflow: hidden;
+    }
+
+    /* project card overlays */
+    .projectCard {
+        width: 100% !important;
+        height: 100% !important;
+        padding: 0 0 var(--bottom-h) 0;
+        background: transparent !important;
+        border-radius: 0;
+    }
+
+    .projectCardBody {
+        width: 100% !important;
+        max-width: none !important;
+        box-sizing: border-box;
+        padding: 16px 16px 0;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: min-content 1fr;
+        gap: 16px;
+        min-height: 0;
+        overflow: hidden;
+        background: transparent !important;
+    }
+
+    /* keep heading/info hidden on mobile, but show CTA (restored below) */
+    .projectCardHeading,
+    .projectCardInfo {
+        display: none !important;
+    }
+
+    .projectCardMediaContainer {
+        min-height: 0;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        border-radius: 0;
+    }
+
+    .projectCardMediaContainer img#casePoster.projectCardMedia {
+        width: auto !important;
+        max-width: 100% !important;
+        height: 100% !important;
+        max-height: 100% !important;
+        object-fit: contain !important;
+        aspect-ratio: auto !important;
+        border-radius: 0 !important;
+        margin: 0 !important;
+    }
+
+    .gallerySectionBottomBar {
+        display: flex;
+        background: color-mix(in oklab, var(--bg) 94%, black 6%);
+        padding-bottom: calc(env(safe-area-inset-bottom) + 56px);
+        /* room for CTA */
+    }
+
+    /* Mobile year rail hidden (we add our own sticky rail UI in JS) */
+    .yCol-left,
+    .projectsRowTOC {
+        display: none !important;
+    }
+
+    .yRow,
+    .projectsRow {
+        position: relative;
+        grid-template-columns: 1fr !important;
+        padding-left: calc(var(--rail-w) + 8px);
+        border-top: none;
+    }
+
+    .mobileYear {
+        position: sticky;
+        top: calc(var(--header-h) + 12px);
+        width: var(--rail-w);
+        padding: 20px 8px;
+        margin-left: calc(-1 * (var(--rail-w) + 8px));
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        pointer-events: none;
+        z-index: 5;
+    }
+
+    .mobileYear .chev {
+        pointer-events: auto;
+        width: 34px;
+        height: 34px;
+        border-radius: 8px;
+        border: 1px solid color-mix(in oklab, var(--fg) 14%, transparent);
+        background: color-mix(in oklab, var(--surface-1) 92%, var(--bg) 8%);
+        color: var(--fg);
+        display: grid;
+        place-items: center;
+    }
+
+    .mobileYear .chev:active {
+        transform: translateY(1px);
+    }
+
+    .mobileYear .yearText {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+        font: 800 36px/.95 system-ui;
+        letter-spacing: .02em;
+        color: var(--fg);
+        text-shadow: 0 8px 22px rgba(0, 0, 0, .25);
+        word-break: break-word;
+        text-align: center;
+    }
+
+    .yWorksLists,
+    .projectRowWorks {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        grid-auto-rows: minmax(48vh, auto);
+        gap: 16px !important;
+        scroll-snap-type: y mandatory;
+    }
+
+    .yWorksLists:has(> li:only-child),
+    .projectRowWorks:has(> li:only-child) {
+        grid-auto-rows: minmax(42vh, auto);
+    }
+
+    .yWorksLists>li,
+    .projectRowWorks>li {
+        scroll-snap-align: start;
+    }
+
+    .yWorksLists__thumb,
+    .projectRowWorksThumbnail {
+        border-radius: 18px;
+        height: 100%;
+        padding: 0;
+        overflow: hidden;
+        background: var(--thumb-bg) center/cover no-repeat;
+        box-shadow: var(--shadow);
+    }
+
+    .yWorksLists__thumb img,
+    .projectRowWorksThumbnail img {
+        position: static;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        opacity: 1;
+    }
+
+    /* --- Restore/float CTA on mobile (single place) --- */
+    .projectCardButtonsContainer {
+        display: flex !important;
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: calc(12px + var(--bottom-h, 50px));
+        z-index: 160;
+        gap: 10px;
+        padding: 8px 10px;
+        border-radius: 999px;
+        background: color-mix(in oklab, #000 30%, transparent);
+        backdrop-filter: blur(10px) saturate(120%);
+        -webkit-backdrop-filter: blur(10px) saturate(120%);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, .28);
+        border: 1px solid color-mix(in oklab, var(--fg) 10%, transparent);
+    }
+
+    .projectCardButton.btn {
+        height: 44px;
+        padding: 0 18px;
+        box-shadow: none;
+    }
+
+    /* hero tweaks for small screens */
+    .heroIntro {
+        padding-top: 12px;
+        padding-bottom: 18px;
+    }
+
+    .heroIntroGrid {
+        gap: 14px;
+    }
+
+    .heroIntro__title {
+        line-height: 1.02;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        scroll-behavior: auto !important;
+    }
+
+    header,
+    .heroIntro,
+    .yWorksLists__thumb,
+    .projectRowWorksThumbnail,
+    .galleryContainer,
+    .reveal {
+        transition: none !important;
+    }
+}
+
+.caseLink[hidden] {
+    display: none !important;
+}
+
+/* Gradient text utility */
+:root {
+    /* tweak these stops to taste */
+    --name-gradient: linear-gradient(90deg,
+            #ff7b6e 0%,
+            #ff5bbd 25%,
+            #8a46ff 55%,
+            #63b4ff 100%);
+}
+
+/* sensible fallback: use normal color unless the browser supports clip */
+.name-gradient {
+    color: var(--fg);
+    /* fallback solid */
+}
+
+@supports (-webkit-background-clip:text) or (background-clip:text) {
+    .name-gradient {
+        background: var(--name-gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+    }
+}
+
+/* Optional: gentle shimmer on hover */
+.name-gradient.is-anim {
+    background-size: 200% 100%;
+    transition: background-position .8s cubic-bezier(.2, .8, .2, 1);
+}
+
+.name-gradient.is-anim:hover {
+    background-position: 100% 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .name-gradient.is-anim {
+        transition: none;
+        background-size: 100% 100%;
+    }
+}
+
+/* --- Tile image hover zoom (image only) --- */
+.projectRowWorksThumbnail {
+    overflow: hidden;
+    /* clip the zoom */
+}
+
+.projectRowWorksThumbnail img {
+    display: block;
+    transform: scale(1);
+    transition: transform 260ms cubic-bezier(.2, .8, .2, 1);
+    will-change: transform;
+}
+
+/* Hovering the tile or being “linked” from the TOC will zoom the IMG */
+.projectRowWorks li:hover .projectRowWorksThumbnail img,
+.projectRowWorks li.is-linked .projectRowWorksThumbnail img {
+    transform: scale(1.06);
+    /* adjust amount as you like */
+}
+
+/* Optional: subtle elevation on hover/linked */
+.projectRowWorks li:hover .projectRowWorksThumbnail,
+.projectRowWorks li.is-linked .projectRowWorksThumbnail {
+    filter: saturate(1.02);
+}
+
+/* --- Left TOC highlight when linked/hovered --- */
+.projectsTOCLists li.is-linked .projectsTOCLists--title,
+.projectsTOCLists li.is-linked .projectsTOCLists--subtitle {
+    color: var(--accent, #79DAFF);
+}
+
+.projectsTOCLists li.is-linked .projectsTOCLists--number span {
+    color: var(--accent, #79DAFF);
+}
+
+/* === FIXES — put at very end of CSS === */
+
+/* 1) Show desktop thumbnails that use <img> (they were opacity:0 earlier) */
+.yWorksLists__thumb img,
+.projectRowWorksThumbnail img {
+    opacity: 1 !important;
+}
+
+/* 2) Scale the IMG on hover/linked, not the wrapper */
+.link-a a:hover .projectRowWorksThumbnail,
+.link-a a:hover .yWorksLists__thumb {
+    transform: none !important;
+}
+
+/* 3) Keep the image zoom when hovered or linked (already defined, this ensures priority) */
+.projectRowWorks li:hover .projectRowWorksThumbnail img,
+.projectRowWorks li.is-linked .projectRowWorksThumbnail img,
+.yWorksLists>li:hover .yWorksLists__thumb img,
+.yWorksLists>li.is-linked .yWorksLists__thumb img {
+    transform: scale(1.06) !important;
+}
+
+/* ======= FX GRADIENT SYSTEM (scoped utilities) ======= */
+
+/* palette + opacities */
+:root {
+    --g-pink: #ff5bbd;
+    --g-coral: #ff7b6e;
+    --g-violet: #8a46ff;
+    --g-cyan: #63b4ff;
+    --g-blue: #5aa3ff;
+    --g-teal: #2fd7c8;
+
+    --g-strong: .45;
+    --g-soft: .25;
+    --g-faint: .12;
+
+    --g-vignette: rgba(0, 0, 0, .55);
+    --g-drift: 38s;
+}
+
+:root[data-theme="light"] {
+    --g-vignette: rgba(0, 0, 0, .10);
+    --g-strong: .38;
+    --g-soft: .22;
+    --g-faint: .10;
+}
+
+/* base layer */
+.fx-bg {
+    position: absolute;
+    inset: -10% -6%;
+    pointer-events: none;
+    z-index: -1;
+    filter: saturate(105%) contrast(102%);
+    will-change: transform, opacity;
+}
+
+/* optional soft edge darken */
+.fx-bg.vignette::after {
+    content: "";
+    position: absolute;
+    inset: -5%;
+    background:
+        radial-gradient(120% 100% at 50% 100%, transparent 0 55%, var(--g-vignette) 100%),
+        radial-gradient(140% 120% at 0% 0%, transparent 0 60%, var(--g-vignette) 100%),
+        radial-gradient(140% 120% at 100% 0%, transparent 0 60%, var(--g-vignette) 100%);
+    mix-blend-mode: multiply;
+}
+
+/* looks */
+.fx-aurora {
+    background:
+        radial-gradient(60% 45% at 18% 18%, color-mix(in oklab, var(--g-pink) 16%, transparent) 0 60%, transparent 70%),
+        radial-gradient(70% 52% at 82% 22%, color-mix(in oklab, var(--g-violet) 18%, transparent) 0 60%, transparent 70%),
+        radial-gradient(90% 65% at 45% 95%, color-mix(in oklab, var(--g-cyan) 14%, transparent) 0 62%, transparent 72%);
+    opacity: .85;
+    filter: blur(26px);
+}
+
+.fx-corners {
+    background:
+        radial-gradient(60% 60% at 0% 0%, color-mix(in oklab, var(--g-coral) var(--g-soft), transparent) 0 55%, transparent 70%),
+        radial-gradient(60% 60% at 100% 0%, color-mix(in oklab, var(--g-violet) var(--g-soft), transparent) 0 55%, transparent 70%),
+        radial-gradient(70% 70% at 100% 100%, color-mix(in oklab, var(--g-cyan) var(--g-soft), transparent) 0 55%, transparent 70%),
+        radial-gradient(70% 70% at 0% 100%, color-mix(in oklab, var(--g-teal) var(--g-faint), transparent) 0 55%, transparent 70%);
+    opacity: .9;
+    filter: blur(30px);
+}
+
+.fx-wash {
+    background:
+        linear-gradient(160deg,
+            color-mix(in oklab, var(--g-blue) 10%, transparent) 0%,
+            transparent 38% 62%,
+            color-mix(in oklab, var(--g-pink) 10%, transparent) 100%);
+    opacity: .75;
+    filter: blur(18px);
+}
+
+.fx-beams {
+    background:
+        conic-gradient(from 300deg at 15% 20%,
+            color-mix(in oklab, var(--g-cyan) 12%, transparent),
+            transparent 20% 70%,
+            color-mix(in oklab, var(--g-violet) 10%, transparent) 90% 100%);
+    opacity: .55;
+    filter: blur(22px);
+}
+
+/* gentle drift */
+@keyframes g-drift-a {
+    from {
+        transform: translate3d(-2%, -1%, 0)
+    }
+
+    to {
+        transform: translate3d(2%, 1%, 0)
+    }
+}
+
+@keyframes g-drift-b {
+    from {
+        transform: translate3d(1%, 2%, 0)
+    }
+
+    to {
+        transform: translate3d(-1%, -2%, 0)
+    }
+}
+
+.fx-anim-a {
+    animation: g-drift-a var(--g-drift) ease-in-out infinite alternate;
+}
+
+.fx-anim-b {
+    animation: g-drift-b calc(var(--g-drift)*1.2) ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .fx-anim-a,
+    .fx-anim-b {
+        animation: none !important;
+    }
+}
+
+/* optional portrait edge glow */
+.avatarCard::before {
+    content: "";
+    position: absolute;
+    inset: -4% -6% -4% 60%;
+    background: linear-gradient(90deg, color-mix(in oklab, var(--g-violet) 26%, transparent), transparent 60%);
+    filter: blur(24px);
+    opacity: .85;
+    pointer-events: none;
+}
+
+.galleryTopLabel {
+    position: absolute;
+    top: 12px;
+    left: 18px;
+    z-index: 5;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font: 800 11px/1 system-ui, -apple-system, Segoe UI, Inter, sans-serif;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--fg);
+    background: color-mix(in oklab, var(--bg) 72%, transparent);
+    border: 1px solid var(--line-weak);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, .22), inset 0 1px 2px var(--glass-top-hl);
+    pointer-events: none;
+}
+
+/* keep – already present */
+.gallerySection.is-center {
+    position: relative;
+}
+
+/* upgrade this block */
+.galleryTopLabel {
+    position: absolute;
+    top: 18px;
+    left: 25px;
+    z-index: 100;
+    /* was 5 */
+    padding: 6px 10px;
+    border-radius: 999px;
+    font: 800 11px/1 system-ui, -apple-system, Segoe UI, Inter, sans-serif;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--fg);
+    background: color-mix(in oklab, var(--bg) 72%, transparent);
+    border: 1px solid var(--line-weak);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, .22), inset 0 1px 2px var(--glass-top-hl);
+    pointer-events: none;
+}
+
+/* Default hidden state stays hidden, but we still set the gap value */
+#gallery .projectCardButtonsContainer {
+    display: none;
+    margin-top: var(--cta-gap, clamp(14px, 2.2vw, 28px));
+    /* ⬅️ space above the button */
+}
+
+/* When a slide has a link, the container shows with the same gap */
+#gallery.has-cta .projectCardButtonsContainer {
+    display: flex;
+    /* or block, depending on your layout */
+}
+
+/* Ensure the label is positioned relative to the CENTER section */
+.gallerySection.is-center { position: relative; }
+
+/* Top-left pill inside the center section, all screen sizes */
+.galleryTopLabel{
+  position: absolute;
+  left: clamp(10px, 1.2vw, 16px);
+  top:  clamp(10px, 1.2vw, 16px);
+  z-index: 3;                 /* above the poster but under close button */
+  pointer-events: none;       /* never block clicks on the poster */
+  padding: 6px 10px;
+  border-radius: 999px;
+  font: 700 12px/1.1 system-ui, -apple-system, Segoe UI, Inter, Roboto, Arial, sans-serif;
+  letter-spacing: .03em;
+  color: color-mix(in oklab, var(--accent) 85%, white 15%);
+  background: color-mix(in oklab, var(--accent) 18%, transparent);
+  border: 1px solid color-mix(in oklab, var(--accent) 45%, transparent);
+}
+
+/* ===== Gallery top label (fixed size + pinned position) ===== */
+.galleryTopLabel{
+  position:absolute;         /* pinned; not part of the card’s flow */
+  z-index:50;                /* above the card */
+  top:0; left:0;             /* JS sets the exact offsets per slide */
+  transform:none!important;  /* ignore any parent transforms */
+  pointer-events:none;       /* purely decorative */
+  white-space:nowrap;
+  padding:6px 10px;
+  border-radius:999px;
+  font-weight:700;
+  font-size:12px;            /* fixed size so it never grows/shrinks */
+  line-height:1.1;
+  letter-spacing:.02em;
+
+  /* styling — match your pill look */
+  color:var(--fg);
+  background:rgba(120,160,180,.15);
+  border:1px solid rgba(120,160,180,.35);
+  backdrop-filter:blur(6px);
+}
+
+

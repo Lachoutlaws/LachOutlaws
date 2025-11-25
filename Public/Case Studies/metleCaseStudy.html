@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head Starts -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Metle</title>
+  <link rel="icon" href="data:,">
+  
+  <!-- CSS Links Start -->
+  <link href="../global.css" rel="stylesheet">
+  <!-- <link href="caseStudy.css" rel="stylesheet"> -->
+  <link href="caseStudyGlobal.css" rel="stylesheet">
+
+  <!-- CSS Links End -->
+  
+  <!-- Google Fonts Link Start -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Syne:wght@400..800&family=Texturina:ital,opsz,wght@0,12..72,100..900;1,12..72,100..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <!-- Google Fonts Link End -->
+
+  <!-- Font Awesome Links -->
+  <script src="https://kit.fontawesome.com/159c5c66b8.js" crossorigin="anonymous"></script>
+
+<!-- Firebase Core SDK -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<!-- Firebase Firestore SDK -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<!-- Firebase Analytics SDK -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script>
+
+
+      <!-- GSAP Links -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script> <!-- GSAP Core -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script> <!-- ScrollTrigger Plugin -->
+  <script src="../Gsap/TextPlugin.min.js"></script> <!-- ScrambleText Plugin -->
+
+</head>
+<!-- Head Ends -->
+
+<!-- Body Starts -->
+<body>
+
+<!-- Cursor Start -->
+<div class="cursor"></div>
+<!-- Cursor End -->
+
+<!-- Navigation Bar/Header Starts -->
+<header>
+  <header class="globalHeader">
+    <div class="nav-wrapper">
+      <a href="../index.html" class="logo hover-this">
+        <img src="../Images/Logo.svg" alt="Logo" />
+      </a>
+      <nav>
+        <a href="../index.html" class="hover-this">Home</a>
+        <a href="../work.html" class="hover-this">Work</a>
+        <a href="../play/play.html" class="hover-this">Play</a>
+        <a href="#" class="hover-this">Resume</a>
+        <a href="#" class="hover-this">Contact</a>
+      </nav>
+    </div>
+    <div class="scrollProgressBar"></div>
+  </header>  
+<!-- Navigation Bar/Header Ends -->
+
+
+<div class="main">
+
+  <!-- Hero Image -->
+  <div class="heroImage">
+    <div class="expiryContainer">CASE STUDY: METLE – PERSONAL PROJECT</div>
+  </div>
+
+  <div class="section">
+    <div class="label">INTRODUCTION</div>
+    <div class="heading">Metle</div>
+    <p class="bodyCopy">
+      Sometimes a playlist is more than just background noise — it’s how we cope. Metle is a personal project built from lived experience, designed to support emotional wellbeing through music, reflection, and intentional listening.
+    </p>
+  </div>
+
+  <div class="blackBox">
+    <div class="label">PROBLEM</div>
+    <div class="heading">The Challenge</div>
+    <div class="subHeader">Creating a music platform rooted in mental health support</div>
+  
+    <div class="cards">
+      <div class="bodyCopyHeader"><div class="circle"></div>Why Metle?</div>
+      <p class="bodyCopy">Many people, including myself, use music as a tool for mental health. It helps manage anxiety, lift moods, and offer comfort. But current music streaming apps don’t support emotional regulation directly.</p>
+    </div>
+  
+    <div class="cards">
+      <div class="bodyCopyHeader"><div class="circle"></div>What's Missing?</div>
+      <p class="bodyCopy">Spotify and Apple Music lack mood awareness, journaling tools, and the ability to track how music impacts our emotional state over time.</p>
+    </div>
+  
+    <div class="cards">
+      <div class="bodyCopyHeader"><div class="circle"></div>Key Stats</div>
+      <p class="bodyCopy">
+        Suicide is the leading cause of death for young Australians.<br>
+        1 in 35 young Australians experience depression.<br>
+        The average youth listens to music up to 5 hours a day.
+      </p>
+    </div>
+  
+    <div class="cards">
+      <div class="bodyCopyHeader"><div class="circle"></div>Opportunity</div>
+      <p class="bodyCopy">There’s a clear opportunity to turn passive listening into emotional healing — especially for young people navigating mental health challenges.</p>
+    </div>
+  </div>
+
+  <div class="section whatToKnow">
+    <div class="label">CONTEXT</div>
+    <div class="heading">Who It's For</div>
+    <p class="bodyCopy">Metle is a music streaming platform and mental health tool for users aged 15–29 who use music to regulate mood, reflect emotionally, or cope with anxiety.</p>
+  
+    <div class="bodyCopyHeader">Concept Summary</div>
+    <p class="bodyCopy">It combines mood-based listening with journaling, progress tracking, and support resources to create a more intentional, emotionally aware music experience.</p>
+  
+    <div class="bodyCopyHeader">What Makes It Different</div>
+    <p class="bodyCopy">
+      Users select how they feel or how they want to feel using a Mood Grid.<br>
+      Metle suggests genres based on that emotion and tempo, e.g.:
+      <br>• Fast + Sad = Metal
+      <br>• Slow + Calm = Lo-fi
+      <br>• Fast + Happy = Hyperpop
+    </p>
+    <p class="bodyCopy">After listening, users journal how they feel — creating a music-linked mood history.</p>
+  </div>
+
+  <div class="section bringingItToLife">
+    <div class="label">FEATURES</div>
+    <div class="heading">Feature Highlights</div>
+  
+    <div class="bodyCopyHeader">Mood Map</div>
+    <p class="bodyCopy">A 16-quadrant system based on tempo and mood. It's colour-coded and consistent across the UI to visually represent energy and emotion.</p>
+  
+    <div class="bodyCopyHeader">Journaling + Calendar</div>
+    <p class="bodyCopy">Reflections are tied to mood and music. The user’s emotional patterns are visualised in a calm, clean calendar interface. Entries can be locked for privacy.</p>
+  
+    <div class="bodyCopyHeader">UI & Personalisation</div>
+    <p class="bodyCopy">Includes an interactive vinyl player with custom art, rotating animation, circular progress bar, and dynamic backgrounds that reflect the music’s tone.</p>
+  
+    <div class="bodyCopyHeader">Crisis Support</div>
+    <p class="bodyCopy">Quick links to helplines, local services, and educational content remind users to seek help when needed.</p>
+  </div>
+
+  <div class="section bringingItToLife">
+    <div class="label">BRANDING</div>
+    <div class="heading">Tone & Identity</div>
+  
+    <div class="bodyCopyHeader">Name & Logo</div>
+    <p class="bodyCopy">Metle = mental + metal. The logo is a stylised “M” formed from a musical note, with colour mapping from the mood grid to represent emotional states.</p>
+  
+    <div class="bodyCopyHeader">Tone</div>
+    <p class="bodyCopy">Supportive and empowering — never patronising. Metle exists to make music feel like a friend, not just a soundtrack.</p>
+  </div>
+
+  <div class="section bringingItToLife">
+    <div class="label">PROTOTYPE</div>
+    <div class="heading">Testing & Next Steps</div>
+  
+    <div class="bodyCopyHeader">Prototype</div>
+    <p class="bodyCopy">Built in Figma. Includes flows for login, mood map, genre suggestions, journal entries, playlist, and account settings.</p>
+  
+    <div class="bodyCopyHeader">Planned Testing</div>
+    <p class="bodyCopy">Testing will focus on mood map clarity, journaling comfort, and emotional impact. Participants will include teens and young adults who use music for emotional regulation.</p>
+  </div>
+
+  <div class="section reflection">
+    <div class="label">REFLECTION</div>
+    <div class="heading">Designing With Emotion</div>
+    <div class="subHeader">Building More Than a Product</div>
+  
+    <div class="bodyCopyHeader">What I Learned</div>
+    <p class="bodyCopy">Metle taught me to design for emotional nuance, privacy, and real-world safety. It showed me how UX can be a space for healing, not just usability.</p>
+  
+    <div class="bodyCopyHeader">What’s Next</div>
+    <p class="bodyCopy">Expand genre–mood pairings, test journal/calendar UX, explore Spotify API integration, and seek partnerships with mental health orgs or the NDIS.</p>
+  
+    <div class="bodyCopyHeader">Final Thought</div>
+    <p class="bodyCopy">Music helped me get through hard times. Metle is my way of paying that forward.</p>
+  </div>
+  
+</div>
+
+<footer>
+  <div class="footerContent">
+    <p>&copy; 2025 Lachoutlaws. All rights reserved.</p>
+    <div class="socialLinks">
+      <a href="https://twitter.com" target="_blank" class="hoverMe"><i class="fab fa-twitter"></i></a>
+      <a href="https://github.com" target="_blank" class="hoverMe"><i class="fab fa-github"></i></a>
+      <a href="https://instagram.com" target="_blank" class="hoverMe"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+</footer>
+  <!-- Javascript Start -->
+  <script type="module" src="caseStudy.js"></script>
+  <script type="module" src="../app.js"></script>
+  <script type="module" src="../firestore.js"></script>
+  <!-- Javascript End -->
+</body>
+<!-- Body Ends -->
+
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Head Starts -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Project One</title>
+  <link rel="icon" href="data:,">
+  <!-- CSS Links Start -->
+  <!-- <link href="../global.css" rel="stylesheet"> -->
+  <link href="caseStudyGlobal.css" rel="stylesheet">
+  <!-- <link href="caseStudy.css" rel="stylesheet"> -->
+  <!-- CSS Links End -->
+
+  <!-- Google Fonts Link Start -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Syne:wght@400..800&family=Texturina:ital,opsz,wght@0,12..72,100..900;1,12..72,100..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <!-- Google Fonts Link End -->
+
+  <!-- Font Awesome Links Starts -->
+  <script src="https://kit.fontawesome.com/159c5c66b8.js" crossorigin="anonymous"></script>
+  <!-- Font Awesome Links Ends -->
+
+  <!-- Firebase Starts -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script> <!-- Firebase Core SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script> <!-- Firebase Firestore SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script> <!-- Firebase Analytics SDK -->
+  <!-- Firebase Ends -->
+
+  <!-- GSAP Links Start -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script> <!-- GSAP Core -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script> <!-- ScrollTrigger Plugin -->
+  <script src="../Gsap/TextPlugin.min.js"></script> <!-- ScrambleText Plugin -->
+  <script src="../Gsap/DrawSVGPlugin.min.js"></script> <!-- DrawSVG Plugin -->
+  <!-- GSAP Links Ends -->
+</head>
+<!-- Head Ends -->
+
+<!-- Body Starts -->
+<body>
+
+<!-- Cursor Start -->
+<div class="cursor"></div>
+<!-- Cursor End -->
+
+<!-- Navigation Bar/Header Starts -->
+<header class="globalHeader">
+  <div class="nav-wrapper">
+    <a href="../index.html" class="logoBox">L</a>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../work.html">Work</a>
+      <a href="../play/play.html">Play</a>
+      <a href="#" class="resume">Resume</a>
+      <a href="#" class="btn-link">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Navigation Bar/Header Ends -->
+
+<!-- Main Start -->
+<div class="main">
+  <!-- Hero Image Starts -->
+  <div class="heroImage">
+    <div class="expiryContainer">
+      LAST UPDATED: 04/04/2025
+    </div>
+  </div>
+  <!-- Hero Image Ends -->
+
+  <!-- Introduction Starts -->
+  <div class="section">      
+    <div class="label">INTRODUCTION</div>
+    <div class="heading">Live Case Study</div>
+    <p class="bodyCopy">This is a live case study documenting how I designed and built this portfolio. You'll be able to interact with it directly and give real-time feedback, helping shape my growth while experiencing my UX thinking first-hand.</p>
+    <i class="fa-solid fa-circle-down fa-2xl"></i>
+  </div>
+  <!-- Introduction Starts -->
+
+  <!-- What To Know Starts -->
+  <div class="section whatToKnow">
+    <div class="label">Before We Start</div>
+    <div class="heading">What To Know</div>
+    <div class="textSection" data-extended="Hello"></div>
+    <div class="bodyCopyHeader">Extended Content</div>
+    <p class="bodyCopy">The Extended Content toggle puts you, the viewer, in control. I created this feature as a way to recognise that not all viewers of my portfolio will want to consume my content in the same way.</p>
+    <p class="bodyCopy">By clicking the 'Extended mode' option, additional details about my process will appear. The transition is smooth, featuring a typing animation. It can also be toggled on or off at any point, with no reloads and no interruptions.</p>
+    <div class="bodyCopyHeader">User Feedback</div>
+    <p class="bodyCopy">This survey is designed to test my UX decisions and improve both the design and experience of this portfolio. It is based on real feedback from users like yourself. All responses are completely anonymous.</p>
+    <p class="bodyCopy">The questions are short and multiple choice, appearing naturally as you scroll. They auto-submit once you move on from the question, so they will be easy to answer without breaking your attention.</p>
+    <p class="bodyCopy">All feedback is valuable. Whether you answer some, none, or all of the questions, I appreciate it greatly.</p>
+    <p class="bodyCopy">The final question at the bottom of the page is open-ended and includes a submit button. This is for optional, more detailed feedback.</p>
+  </div>
+  <!-- What To Know Ends -->
+
+  <!-- Black Box Starts -->
+  <div class="blackBox">
+    <div class="label">Problem</div>
+    <div class="heading">The Challenge</div>
+    <div class="subHeader">Identifying user needs, limitations, and opportunities</div>
+    <div class="cards">
+      <div class="bodyCopyHeader">
+        <div class="circle"></div>
+        What challenge was I facing?
+      </div>
+      <p class="bodyCopy">The UX industry is highly competitive, particularly for junior designers who are just emerging from study and looking to break into the field. Without real client work to show, I needed a way to stand out.</p>
+    </div>
+    <div class="cards">
+      <div class="bodyCopyHeader">
+        <div class="circle"></div>
+        Who Is Affected By This Problem?
+      </div>
+      <p class="bodyCopy">Junior designers like me who have recently finished university and are entering a highly competitive industry.</p>
+    </div>
+    <div class="cards">
+      <div class="bodyCopyHeader">
+        <div class="circle"></div>
+        Why Was It A Problem?
+      </div>
+      <p class="bodyCopy">With so much competition, my portfolio risked being overlooked. I needed to find a way to demonstrate my skills in a way that felt real and engaging.</p>
+    </div>
+    <div class="cards">
+      <div class="bodyCopyHeader">
+        <div class="circle"></div>
+          What Decision Did This Lead To?
+      </div>
+      <p class="bodyCopy">It led me to turn my portfolio into a live case study. I also included survey questions throughout the case study to gather valuable feedback directly from my target audience, hiring managers.</p>
+    </div>
+    <div class="cards">
+      <div class="bodyCopyHeader">
+        <div class="circle"></div>
+        Backend & Technical Setup
+      </div>
+      <p class="bodyCopy">I had limited time, a full schedule balancing work and family, and technical limitations. I had to teach myself backend fundamentals in order to build and host this project on my own.</p>
+    </div>
+    <div class="cards">
+      <div class="bodyCopyHeader">
+        <div class="circle"></div>
+        How Did This Affect My Thinking
+      </div>
+      <p class="bodyCopy">It made me step back and rethink what a portfolio could be. I started asking myself what kind of experience I could create, what questions would the user be wanting answered and which UX practices would help me do it well.</p>
+    </div>
+  </div>
+  <!-- Black Box Ends -->
+
+  <!-- Accordion Starts -->
+  <div class="section rolesAccordion">
+    <div class="label">ROLE</div>
+    <div class="heading">Roles & Responsibilities</div>
+    <div class="accordion">
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <div class="accordion-title">Strategy & UX Design</div>
+          <div class="accordion-icon">▾</div>
+        </div>
+        <div class="accordion-content">
+          <p>Framed the portfolio as a live case study with real user feedback</p>
+          <p>Identified the target audience and crafted a feedback loop</p>
+          <p>Researched competitors and mapped user journeys</p>
+          <p>Defined user problems and goals</p>
+          <p>Created content hierarchy and extended/regular modes</p>
+        </div>
+      </div>
+    </div>
+    <div class="accordion">
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <div class="accordion-title">UI & Frontend Development</div>
+          <div class="accordion-icon">▾</div>
+        </div>
+        <div class="accordion-content">
+          <p>Designed layouts and components in Figma</p>
+          <p>Applied typography, spacing, colour, and grids</p>
+          <p>Built a custom, accessible interface using HTML, CSS, and JavaScript</p>
+          <p>Implemented animations and interactions with GSAP</p>
+          <p>Video Editing and Rendering</p>
+        </div>
+      </div>
+    </div>
+    <div class="accordion">
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <div class="accordion-title">Writing & Microcopy</div>
+          <div class="accordion-icon">▾</div>
+        </div>
+        <div class="accordion-content">
+          <p>Wrote clear, purposeful headings, prompts, and labels</p>
+          <p>Balanced friendly tone with professionalism</p>
+          <p>Crafted consistent voice across regular and extended content</p>
+        </div>
+      </div>
+    </div>
+    <div class="accordion">
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <div class="accordion-title">Analytics & Project Management</div>
+          <div class="accordion-icon">▾</div>
+        </div>
+        <div class="accordion-content">
+          <p>Embedded survey system to gather real user feedback</p>
+          <p>Planned ongoing iterations based on usage insights</p>
+          <p>Managed timeline, workflows, and documentation independently</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Accordion Ends -->
+
+  <!-- Question Starts -->
+  <div class="section multipleChoice">
+    <div class="formGroup">
+      <label>Do the animations enhance the experience?</label>
+      <div class="options  hover-this">
+        <input type="radio" id="animations1" name="animations" value="Great">
+        <label for="animations1">Great</label>
+        <input type="radio" id="animations2" name="animations" value="Satisfactory">
+        <label for="animations2">Satisfactory</label>
+        <input type="radio" id="animations3" name="animations" value="Needs Improvement">
+        <label for="animations3">Needs Improvement</label>
+      </div>
+      <div class="whenSubmitted"></div>
+    </div>
+  </div>
+  <!-- Question Ends -->
+
+  <!-- Bringing It To Life Starts -->
+  <div class="section bringingItToLife">  
+    <div class="label">APPLICATION</div>
+    <div class="heading">Bringing It To Life</div>
+    <div class="bodyCopyHeader">The Approach</div>
+    <p class="bodyCopy">I began by asking a simple question: what should a UX portfolio actually do? To find out, I looked at a range of portfolios from successful designers. I paid attention to how they presented their work, how their content was structured, what felt effective, and what didn't.</p>
+    <p class="bodyCopy">Through this research, one thing became clear. If I'm applying for UX roles, my portfolio needs to reflect good UX. It should be easy to navigate, respectful of the viewer's time, and engaging enough to stand out.</p>
+    <p class="bodyCopy">I also realised that reaching my target audience, hiring managers, wasn't going to be easy. Most portfolios don't provide a way for the viewer to participate or leave feedback, which felt like a missed opportunity. I saw a gap.</p>
+    <p class="bodyCopy">That's when I started thinking differently. What if my portfolio wasn't a static showcase, but a living product? Something that could grow and evolve through real user input. That thought became the foundation for what you're experiencing now. It is a live case study shaped by real feedback.</p>
+    <div class="bodyCopyHeader">Methods</div>
+    <p class="bodyCopy">Researched successful UX portfolios to understand what worked well and what didn't</p>
+    <p class="bodyCopy">Ideated ways to push the concept further and create something more interactive</p>
+    <p class="bodyCopy">Prototyped the layout, flow, and features in Figma</p>
+    <p class="bodyCopy">Built and launched the site as a live testing space where hiring managers like you are now part of the process</p>
+    <div class="bodyCopyHeader">Tools</div>
+    <div class="toolsContainer">
+      <p>Figma - UI design, prototyping</p>
+      <p>GSAP - Animations, typing effects</p>
+      <p>Visual Studio Code - Code editor</p>
+      <p>Illustrator - Custom graphics, icons</p>
+      <p>HTML, CSS, JavaScript</p>
+      <p>Firebase CLI - Hosting and Deploying</p>
+      <p>Photoshop - Image editing</p>
+      <p>Firebase - Backend, survey responses</p>
+      <p>Git / GitHub - version-controlled</p>
+    </div>
+    <div class="bodyCopyHeader">Staying User Focused</div>
+    <p class="bodyCopy">Hiring managers were always at the core of my thinking. I kept asking:</p>
+    <p class="bodyCopy">What questions do hiring managers want answered?</p>
+    <p class="bodyCopy">How can I respect their time?</p>
+    <p class="bodyCopy">How can I create a memorable experience?</p>
+    <p class="bodyCopy">These questions shaped everything from structure to tone. I made sure key information was easy to find, kept case studies concise by default, and added the option to explore more through extended content. I also embedded a short survey throughout the experience so viewers could give feedback without being interrupted. All of these choices were made to respect time, reduce friction, and make the experience feel intentional.</p>
+  </div>
+  <!-- Bringing It To Life Ends -->
+
+  <!-- Question Starts -->
+  <div class="section multipleChoice">
+    <div class="formGroup">
+      <label>How would you rate my portfolio?</label>
+      <div class="options hover-this">
+        <input type="radio" id="rating1" name="rating" value="Great">
+        <label for="rating1">Great</label>
+        <input type="radio" id="rating2" name="rating" value="Satisfactory">
+        <label for="rating2">Satisfactory</label>
+        <input type="radio" id="rating3" name="rating" value="Needs Improvement">
+        <label for="rating3">Needs Improvement</label>
+      </div>
+      <div class="whenSubmitted"></div>
+    </div>  
+  </div>
+  <!-- Question Starts -->
+
+  <!-- What I Created Start -->
+  <div class="section whatICreated">
+    <div class="label">Solution</div>
+    <div class="heading">What I Created</div>
+    <div class="subHeader">An Evolving UX-Driven Experience</div>
+    <div class="bodyCopyHeader">Result</div>
+    <p class="bodyCopy">I created a unique portfolio experience designed to stand out to hiring managers. It gives users control over how much content they see, offers the opportunity to provide live feedback, and demonstrates my approach to solving real problems, not just within case studies but through the portfolio itself. It is a working, evolving case study that users are actively participating in.</p>
+    <!-- Section Video Start -->    
+    <video
+    id="dataDemoVideo"
+    width="600"
+    muted
+    playsinline
+    preload="metadata"
+    loop>
+    <source src="/Images/dataDemo.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <!-- Section Video End -->
+    <div class="bodyCopyHeader">Differentiating Factor</div>
+    <p class="bodyCopy">In my research, I found that a common issue with portfolios is either being overloaded with information or too minimal, lacking enough detail. To solve this, I introduced a toggle that lets users choose the level of content they want to see. This keeps the experience immersive while also being respectful of the user's time. Another one of my core UX beliefs is that a portfolio should never be static. It should actively evolve. This portfolio revolves around receiving feedback, showing that I'm not just open to critique but actively inviting it in order to iterate and improve.</p>
+    <div class="bodyCopyHeader">Skills Shown</div>
+    <p class="bodyCopy">This project puts my UX thinking, UI design, and frontend development into action. It demonstrates:</p>
+    <p class="bodyCopy">Clear communication of ideas</p>
+    <p class="bodyCopy">Prototyping in Figma</p>
+    <p class="bodyCopy">Frontend development with custom code and GSAP animations</p>
+    <p class="bodyCopy">Visual design principles through typography, layout, and interaction</p>
+    <p class="bodyCopy">Illustration and animation to support storytelling</p>
+    <p class="bodyCopy">Working effectively within technical and time constraints</p>
+    <p class="bodyCopy">Prioritising the user experience in every decision</p>
+  </div>
+  <!-- What I Created End -->
+
+  <!-- Reflection Start -->
+  <div class="section reflection">
+    <div class="label">REFLECTION</div>
+    <div class="heading">What's Next</div>
+    <div class="subHeader">Improving Through Feedback</div>
+    <div class="bodyCopyHeader">Ongoing Project</div>
+    <p class="bodyCopy">This portfolio is a live case study that will continue to evolve. Every interaction and piece of feedback contributes to its next iteration. My goal moving forward is to keep refining not just the portfolio, but also myself as a designer who listens, learns, and creates with purpose.</p>
+  </div>
+
+  <!-- Reflection End -->
+  <!-- Feedback Question Start -->
+  <div class="section feedbackQuestion">
+    <div class="formGroup">
+      <label for="improvement">Your Thoughts (optional)</label>
+      <textarea id="improvement"  class="hover-this" name="improvement" placeholder="Type your feedback here..."></textarea>
+      <button id="submitFeedback" class="hover-this" type="button">Submit</button>
+    <div class="whenSubmitted"></div>
+    </div>
+  </div>
+  <!-- Feedback Question End -->
+  <!-- Footer Start -->
+   <div class="footer"></div>
+  <!-- Footer End -->
+</div>
+<!-- Main End -->
+<footer>
+  <div class="footerContent">
+    <p>&copy; 2025 Lachoutlaws. All rights reserved.</p>
+    <div class="socialLinks">
+      <a href="https://twitter.com" target="_blank" class="hoverMe"><i class="fab fa-twitter"></i></a>
+      <a href="https://github.com" target="_blank" class="hoverMe"><i class="fab fa-github"></i></a>
+      <a href="https://instagram.com" target="_blank" class="hoverMe"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+</footer>
+  <!-- Javascript Start -->
+  <script type="module" src="/app.js"></script>
+  <script type="module" src="caseStudy.js"></script>
+  <script type="module" src="../app.js"></script>
+  <script type="module" src="../firestore.js"></script>
+  <!-- Javascript End -->
+
+<!-- Body Ends -->
+</body>
+</html>

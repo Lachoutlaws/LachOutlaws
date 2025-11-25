@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head Starts -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link rel="icon" type="image/png"
+    href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO2HqWkAAAAASUVORK5CYII=">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="global.css" />
+  <link rel="stylesheet" href="home.css" />
+
+  <!-- Theme -->
+  <meta name="theme-color" content="#0e0e11">
+
+  <!-- Icons -->
+  <script src="https://kit.fontawesome.com/159c5c66b8.js" crossorigin="anonymous"></script>
+
+  <!-- Firebase (v8) -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script>
+
+  <meta name="description"
+    content="Lachlan McGhie — UX designer. Case studies in product design, research, prototypes, and writing.">
+  <meta property="og:title" content="Lachlan McGhie — Portfolio">
+  <meta property="og:description" content="UX case studies, writing, and illustration.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lachoutlaws.com/">
+  <meta property="og:image" content="https://lachoutlaws.com/Images/og/home-og.jpg">
+</head>
+<!-- Head Ends -->
+
+<body>
+  <!-- ========= HEADER ========= -->
+  <header>
+    <div class="headerInner">
+      <a href="index.html" class="headerLogoLink" aria-label="Home">
+        <div class="headerLogo"></div>
+      </a>
+
+      <!-- hamburger (mobile) -->
+      <button class="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <svg class="menuIcon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 6h18v2H3zM3 11h18v2H3zM3 16h18v2H3z" fill="currentColor" />
+        </svg>
+      </button>
+
+      <!-- desktop links -->
+      <nav class="headerNav" aria-label="Primary">
+        <!-- <a class="nav" href="#">ABOUT</a> -->
+        <!-- download attribute will suggest download when supported -->
+        <a class="nav" href="Data/UX Design Resume.pdf" target="_blank" download>RÉSUMÉ</a>
+        <button class="themeToggle" id="themeToggle" aria-label="Toggle color theme" aria-pressed="false">
+          <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <path
+              d="M12 4V2m0 20v-2m8-8h2M2 12h2m12.95 6.95 1.41 1.41M4.64 4.64 6.05 6.05m0 11.9-1.41 1.41m12.9-12.9 1.41-1.41"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" fill="currentColor" />
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- mobile menu -->
+  <nav id="mobileMenu" class="mobileMenu" hidden aria-label="Mobile">
+    <ul>
+      <li><a href="#">ABOUT</a></li>
+      <li><a href="Data/UX Design Resume.pdf" download>RÉSUMÉ</a></li>
+    </ul>
+  </nav>
+
+  <!-- ========= HERO ========= -->
+  <section class="heroIntro" aria-label="Intro">
+    <div class="heroIntro__wrap container heroIntroGrid">
+      <!-- LEFT: text -->
+      <div class="heroLeft">
+        <p class="heroIntro__kicker">My Name Is</p>
+        <h1 class="heroIntro__title">
+          <span class="name-gradient is-anim">Lachlan McGhie</span>
+        </h1>
+        <p class="heroIntro__sub">
+          I use problem solving skills and intuitive design to solve real world problems,
+        </p>
+        <ul class="heroIntro__chips" role="list">
+          <li class="chip">Figma, Adobe Suite, Github, Spline</li>
+          <li class="chip chip--soft">Html, CSS, Javascript</li>
+        </ul>
+      </div>
+
+      <!-- RIGHT: portrait card -->
+      <aside class="heroRight" aria-label="Portrait">
+        <div class="avatarCard">
+          <div class="avatarGlow" aria-hidden="true"></div>
+          <figure class="avatarFrame">
+            <img src="Images/tempMePic.png" alt="Portrait of Lachlan (Lachie) McGhie" />
+          </figure>
+          <div class="avatarBadge">
+            <span class="dot"></span>
+            Sydney · UTC+11
+          </div>
+        </div>
+      </aside>
+    </div>
+    <div class="heroIntro__bg" aria-hidden="true"></div>
+  </section>
+
+  <!-- ========= CONTENT ========= -->
+  <div class="container">
+    <!-- ===== (Case Studies) ===== -->
+    <section id="projects-caseStudies" class="projectsRow" aria-label="workProjects">
+      <div class="projectsRowTOC">
+        <div class="projectsTOC">
+          <h3 class="projectsTOCTitle" data-work="caseStudy"><span><span>CASE STUDIES</span></span></h3>
+          <ul class="projectsTOCLists res-caseStudy"></ul>
+        </div>
+      </div>
+      <div class="projectsRowContent">
+        <ul class="projectRowWorks"></ul>
+      </div>
+    </section>
+
+    <!-- ===== (Illustrations) ===== -->
+    <section id="projects-illustrations" class="projectsRow" aria-label="illustrationProjects">
+      <div class="projectsRowTOC">
+        <div class="projectsTOC">
+          <h3 class="projectsTOCTitle" data-work="illustration"><span><span>ILLUSTRATIONS</span></span></h3>
+          <ul class="projectsTOCLists res-illustration"></ul>
+        </div>
+      </div>
+      <div class="projectsRowContent">
+        <ul class="projectRowWorks"></ul>
+      </div>
+    </section>
+
+    <!-- ===== (Other) ===== -->
+    <section id="projects-other" class="projectsRow" aria-label="otherProjects">
+      <div class="projectsRowTOC">
+        <div class="projectsTOC">
+          <h3 class="projectsTOCTitle" data-work="other"><span><span>OTHER</span></span></h3>
+          <ul class="projectsTOCLists res-other"></ul>
+        </div>
+      </div>
+      <div class="projectsRowContent">
+        <ul class="projectRowWorks"></ul>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===== FULLSCREEN GALLERY ===== -->
+  <div class="galleryContainer" id="gallery" aria-hidden="true" role="dialog" aria-modal="true">
+    <button class="galleryClose" aria-label="Close">&times;</button>
+
+    <div class="galleryOverlay">
+      <!-- Left -->
+      <div class="gallerySection is-left">
+        <img class="gallerySectionPreview is-prev" alt="Previous image preview">
+        <button class="gallerySectionArrow is-prev" aria-label="Previous">
+          <svg class="gallerySectionArrowIcon" viewBox="0 0 58 16" aria-hidden="true">
+            <path
+              d="M0.293 7.293a1 1 0 0 0 0 1.414l6.364 6.364a1 1 0 0 0 1.414-1.414L2.414 8l5.657-5.657A1 1 0 0 0 6.657.93L0.293 7.293ZM58 8V7H1v1H58Z"
+              fill="currentColor" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Center (wrapped in glow) -->
+      <div class="gallerySection is-center">
+        <div class="glow-wrap">
+          <div class="projectCard" role="group" aria-labelledby="case-title">
+            <div class="projectCardBody">
+              <div class="projectCardInfoContainer">
+                <h3 id="case-title" class="projectCardTitle"></h3>
+                <p class="projectCardSubtitle"></p>
+
+                <h4 class="projectCardHeading">Overview</h4>
+                <!-- JS fills this from JSON -->
+                <p class="projectCardInfo"></p>
+
+                <div class="projectCardButtonsContainer">
+                  <a class="btn projectCardButton" href="#" target="_self" rel="noopener"></a>
+                </div>
+              </div>
+
+              <figure class="projectCardMediaContainer">
+                <img id="casePoster" class="projectCardMedia" alt="">
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right -->
+      <div class="gallerySection is-right">
+        <img class="gallerySectionPreview is-next" alt="Next image preview">
+        <button class="gallerySectionArrow is-next" aria-label="Next">
+          <svg class="gallerySectionArrowIcon" viewBox="0 0 58 16" aria-hidden="true">
+            <g transform="scale(-1,1) translate(-58,0)">
+              <path
+                d="M0.293 7.293a1 1 0 0 0 0 1.414l6.364 6.364a1 1 0 0 0 1.414-1.414L2.414 8l5.657-5.657A1 1 0 0 0 6.657.93L0.293 7.293ZM58 8V7H1v1H58Z"
+                fill="currentColor" />
+            </g>
+          </svg>
+        </button>
+      </div>
+
+      <div class="gallerySectionGlow is-left" aria-hidden="true"></div>
+      <div class="gallerySectionGlow is-right" aria-hidden="true"></div>
+    </div>
+
+    <div class="gallerySectionBottomBar" role="group" aria-label="Slide navigation">
+      <button class="gallerySectionArrow is-prev" aria-label="Previous">
+        <svg class="gallerySectionArrowIcon" viewBox="0 0 58 16" aria-hidden="true">
+          <path
+            d="M0.293 7.293a1 1 0 0 0 0 1.414l6.364 6.364a1 1 0 0 0 1.414-1.414L2.414 8l5.657-5.657A1 1 0 0 0 6.657.93L0.293 7.293ZM58 8V7H1v1H58Z"
+            fill="currentColor" />
+        </svg>
+      </button>
+
+      <div class="gallerySectionSpacer" aria-hidden="true"></div>
+
+      <button class="gallerySectionArrow is-next" aria-label="Next">
+        <svg class="gallerySectionArrowIcon" viewBox="0 0 58 16" aria-hidden="true">
+          <g transform="scale(-1,1) translate(-58,0)">
+            <path
+              d="M0.293 7.293a1 1 0 0 0 0 1.414l6.364 6.364a1 1 0 0 0 1.414-1.414L2.414 8l5.657-5.657A1 1 0 0 0 6.657.93L0.293 7.293ZM58 8V7H1v1H58Z"
+              fill="currentColor" />
+          </g>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ========= FOOTER ========= -->
+  <footer class="footer" role="contentinfo">
+    <div class="footerInner">
+      <div class="footerWrapper">
+        <div class="emailContainer">
+          <div class="kicker">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+            GET IN TOUCH
+          </div>
+
+          <div class="footerEmail">
+            <a class="emailAddress" href="mailto:lachiemcghie@gmail.com">lachi​emcghie@gmail.com</a>
+          </div>
+
+          <nav class="socialsContainer" aria-label="Social links">
+            <a href="https://www.instagram.com/lachoutlaws/" aria-label="LinkedIn" target="_blank" rel="noopener">
+              <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+            </a>
+          </nav>
+        </div>
+
+        <div class="footerRight" aria-hidden="true"></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script type="module" src="reveal.js"></script>
+  <script type="module" src="home.js"></script>
+  <script type="module" src="appContent.js"></script>
+  <script type="module" src="./firestore.js"></script>
+</body>
+
+</html>

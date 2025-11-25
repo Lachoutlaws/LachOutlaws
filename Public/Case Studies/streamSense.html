@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head Starts -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stream Sense</title>
+  <link rel="icon" href="data:,">
+  
+  <!-- CSS Links Start -->
+  <link href="../global.css" rel="stylesheet">
+  <!-- <link href="caseStudy.css" rel="stylesheet"> -->
+  <link href="caseStudyGlobal.css" rel="stylesheet">
+
+  <!-- CSS Links End -->
+  
+  <!-- Google Fonts Link Start -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Syne:wght@400..800&family=Texturina:ital,opsz,wght@0,12..72,100..900;1,12..72,100..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <!-- Google Fonts Link End -->
+
+  <!-- Font Awesome Links -->
+  <script src="https://kit.fontawesome.com/159c5c66b8.js" crossorigin="anonymous"></script>
+
+<!-- Firebase Core SDK -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<!-- Firebase Firestore SDK -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<!-- Firebase Analytics SDK -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script>
+
+
+      <!-- GSAP Links -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script> <!-- GSAP Core -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script> <!-- ScrollTrigger Plugin -->
+  <script src="../Gsap/TextPlugin.min.js"></script> <!-- ScrambleText Plugin -->
+
+</head>
+<!-- Head Ends -->
+
+<!-- Body Starts -->
+<body>
+
+<!-- Cursor Start -->
+<div class="cursor"></div>
+<!-- Cursor End -->
+
+<!-- Navigation Bar/Header Starts -->
+<header class="globalHeader">
+  <div class="nav-wrapper">
+    <a href="../index.html" class="logo hover-this">
+      <img src="../Images/Logo.svg" alt="Logo" />
+    </a>
+    <nav>
+      <a href="../index.html" class="hover-this">Home</a>
+      <a href="../work.html" class="hover-this">Work</a>
+      <a href="../play/play.html" class="hover-this">Play</a>
+      <a href="#" class="hover-this">Resume</a>
+      <a href="#" class="hover-this">Contact</a>
+    </nav>
+  </div>
+  <div class="scrollProgressBar"></div>
+</header>  
+<!-- Navigation Bar/Header Ends -->
+
+
+<!-- University Case Study HTML (using your existing portfolio structure) -->
+
+<!-- Main Container Start -->
+<div class="main">
+
+    <!-- Hero Image -->
+    <div class="heroImage">
+        <div class="expiryContainer">CASE STUDY: STREAMSENSE – TWITCH TOOL</div>
+    </div>
+  
+    <div class="section">
+        <div class="label">INTRODUCTION</div>
+        <div class="heading">StreamSense – A Twitch Game Analytics Tool</div>
+        <p class="bodyCopy">
+          Role: UX/UI Designer & Front-End Developer & Back-End Development<br>
+          Tools: HTML, CSS, JavaScript, Firebase, Twitch API<br>
+          Timeframe: April 2025<br>
+          Focus: Real-time data display, responsive UI, viewer-to-streamer ratio analysis
+        </p>
+      </div>
+
+      <div class="blackBox">
+        <div class="label">PROBLEM</div>
+        <div class="heading">The Challenge</div>
+        <div class="subHeader">Helping Streamers Stand Out with Smarter Game Choices</div>
+      
+        <div class="cards">
+          <div class="bodyCopyHeader"><div class="circle"></div>The Problem</div>
+          <p class="bodyCopy">
+            New and growing streamers often struggle to find discoverable games on Twitch. While popular titles attract high viewership, they’re overcrowded with thousands of streamers, reducing visibility.
+          </p>
+        </div>
+      
+        <div class="cards">
+          <div class="bodyCopyHeader"><div class="circle"></div>Why It Matters</div>
+          <p class="bodyCopy">
+            Twitch doesn’t offer a native way to compare viewer demand against competition. Existing tools are either too complex, outdated, or not mobile-friendly — making discovery a frustrating process.
+          </p>
+        </div>
+      </div>
+
+      <div class="section whatToKnow">
+        <div class="label">SOLUTION</div>
+        <div class="heading">What I Created</div>
+        <p class="bodyCopy">
+          StreamSense is a tool designed to help Twitch streamers make smarter decisions by displaying the real-time viewer-to-streamer ratio for top games.
+        </p>
+      
+        <div class="bodyCopyHeader">Key Features</div>
+        <p class="bodyCopy">
+          • Live search bar for specific games<br>
+          • Toggle to only show “good games” with favourable ratios<br>
+          • Game cards showing: total streams, average views, and top stream title<br>
+          • Smooth skeleton loaders for better UX during fetch<br>
+          • Responsive, accessible layout across all devices
+        </p>
+      </div>
+
+      <div class="section bringingItToLife">
+        <div class="label">PROCESS</div>
+        <div class="heading">My Approach</div>
+      
+        <div class="bodyCopyHeader">1. Research & Ideation</div>
+        <p class="bodyCopy">
+          I spoke with my client (a Twitch streamer) about their discovery challenges. We identified a need for real-time data that showed demand vs. competition. I also analysed Twitch’s interface and tools like SullyGnome and TwitchTracker for gaps in usability.
+        </p>
+      
+        <div class="bodyCopyHeader">2. Design & Structure</div>
+        <p class="bodyCopy">
+          I used a card-based UI to clearly present game metrics. The layout was responsive, with consistent spacing and a strong visual rhythm. A skeleton loading state was included to reduce perceived wait time.
+        </p>
+      
+        <div class="bodyCopyHeader">3. Development</div>
+        <p class="bodyCopy">
+          I used the Twitch API to fetch live game data. Backend logic (via Firebase Cloud Functions) calculated viewer-to-streamer ratios. The front end was developed in HTML, CSS, and JS — built for future scalability.
+        </p>
+      
+        <div class="bodyCopyHeader">4. Testing & Feedback</div>
+        <p class="bodyCopy">
+          I tested across desktop and mobile. Feedback on spacing and visual hierarchy led to improvements in card layout, mobile responsiveness, and search result clarity.
+        </p>
+      </div>
+
+      <div class="section whatICreated">
+        <div class="label">OUTCOME</div>
+        <div class="heading">Final Result</div>
+        <div class="subHeader">Empowering Streamers with Smart Data</div>
+      
+        <div class="bodyCopyHeader">Results</div>
+        <p class="bodyCopy">
+          StreamSense empowers streamers to choose games that offer better visibility without high competition. The clean UI and real-time metrics allow for quick, informed decisions before going live.
+        </p>
+      
+        <div class="bodyCopyHeader">Skills Shown</div>
+        <p class="bodyCopy">
+          • UX Research<br>
+          • UI Design<br>
+          • Front-end development with HTML/CSS/JS<br>
+          • Firebase Functions for backend logic<br>
+          • API Integration (Twitch)<br>
+          • Responsive design & performance optimization
+        </p>
+      </div>
+
+      <div class="section reflection">
+        <div class="label">REFLECTION</div>
+        <div class="heading">What I Learned</div>
+        <div class="subHeader">Tight Scope, Real Value</div>
+      
+        <div class="bodyCopyHeader">Project Takeaways</div>
+        <p class="bodyCopy">
+          StreamSense showed me how small tools can deliver high impact when they’re solving a real need. It deepened my understanding of designing with live data, balancing visual clarity with functionality, and building interfaces that empower users.
+        </p>
+      </div>
+
+      
+
+</div>
+<!-- Main Container End -->
+
+
+<footer>
+  <div class="footerContent">
+    <p>&copy; 2025 Lachoutlaws. All rights reserved.</p>
+    <div class="socialLinks">
+      <a href="https://twitter.com" target="_blank" class="hoverMe"><i class="fab fa-twitter"></i></a>
+      <a href="https://github.com" target="_blank" class="hoverMe"><i class="fab fa-github"></i></a>
+      <a href="https://instagram.com" target="_blank" class="hoverMe"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+</footer>
+
+
+  <!-- Javascript Start -->
+  <script type="module" src="caseStudy.js"></script>
+  <script type="module" src="../app.js"></script>
+  <script type="module" src="../firestore.js"></script>
+  <!-- Javascript End -->
+</body>
+<!-- Body Ends -->
+
+</html>

@@ -1,0 +1,351 @@
+/* ──────────────────────────────────────────────────────────────
+   Design tokens (light theme + 8px scale)
+   ────────────────────────────────────────────────────────────── */
+:root{
+  /* Palette */
+  --bg-color:#ffffff;
+  --surface:#f7f7f8;
+  --surface-2:#f0f1f2;
+  --text:#111111;
+  --muted:#5f6368;
+  --accent:#007aff;
+  --radius:14px;
+
+  /* Spacing (8px scale) */
+  --space-1:8px;   --space-2:16px;  --space-3:24px;
+  --space-4:32px;  --space-5:48px;  --space-6:64px;
+
+  /* Layout */
+  --header-space:72px; /* sticky header offset */
+}
+
+/* Base */
+body{
+  background:var(--bg-color);
+  color:var(--text);
+  scroll-padding-top:var(--header-space);
+  font-family:"Urbanist", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   Header
+   ────────────────────────────────────────────────────────────── */
+.globalHeader{
+  position:sticky; top:0; z-index:1000;
+  background:#fff;
+  border-bottom:1px solid #eaecef;
+  transition:background .3s, border-color .3s, box-shadow .3s;
+}
+.globalHeader .nav-wrapper{
+  max-width:1200px; margin:0 auto;
+  padding:1rem 2rem;
+  display:flex; align-items:center; justify-content:space-between;
+  transition:padding .25s;
+}
+.globalHeader .logoBox{
+  width:34px; height:34px;
+  display:flex; align-items:center; justify-content:center;
+  text-decoration:none;
+  border:2px solid #111; border-radius:6px;
+  color:#111; font:700 1rem "Urbanist", system-ui, sans-serif;
+  transition:color .2s, border-color .2s, background .2s;
+}
+.globalHeader nav a{
+  margin-left:2rem; text-decoration:none;
+  font-weight:600; font-size:.95rem; color:#111;
+  transition:color .2s;
+}
+.globalHeader nav a:hover{ color:var(--accent); }
+.globalHeader nav a.btn-link{
+  background:var(--accent); color:#fff;
+  padding:.45rem 1rem; border-radius:8px;
+  transition:background .2s, color .2s;
+}
+.globalHeader nav a.btn-link:hover{ filter:brightness(.95); }
+
+/* Header (scrolled) */
+.globalHeader.scrolled{
+  background:#111; border-color:#222; box-shadow:0 10px 24px rgba(0,0,0,.25);
+}
+.globalHeader.scrolled .nav-wrapper{ padding:.65rem 2rem; }
+.globalHeader.scrolled .logoBox{ border-color:#f5f5f5; color:#f5f5f5; }
+.globalHeader.scrolled nav a{ color:#f5f5f5; }
+.globalHeader.scrolled nav a:hover{ color:#29b6f6; }
+.globalHeader.scrolled nav a.btn-link{ background:#29b6f6; color:#001018; }
+.globalHeader.scrolled nav a.btn-link:hover{ filter:brightness(.93); }
+
+/* Reduce motion */
+@media (prefers-reduced-motion:reduce){
+  .globalHeader, .globalHeader .nav-wrapper, .globalHeader .logoBox,
+  .globalHeader nav a, .globalHeader nav a.btn-link{ transition:none !important; }
+}
+
+/* ──────────────────────────────────────────────────────────────
+   Layout & Typography
+   ────────────────────────────────────────────────────────────── */
+.main{ max-width:1040px; margin:0 auto; padding:var(--space-4) var(--space-2); }
+
+.section{
+  margin:clamp(var(--space-4), 6vw, var(--space-6)) 0;
+  padding-bottom:clamp(var(--space-3), 4vw, var(--space-5));
+  border-bottom:1px solid #eaecef;
+}
+
+.label{
+  font-weight:600; font-size:.78rem; line-height:1;
+  letter-spacing:.12em; text-transform:uppercase;
+  color:var(--accent); margin-bottom:.6rem;
+}
+.heading{
+  font-size:clamp(1.8rem, 3.6vw, 2.75rem);
+  line-height:1.15; letter-spacing:.2px; margin-bottom:.6rem; color:#111;
+}
+.subHeader{ color:var(--muted); font-size:clamp(1rem, 1.6vw, 1.125rem); line-height:1.6; margin-bottom:1rem; }
+.bodyCopy{ font-size:clamp(.98rem, 1.2vw, 1.06rem); line-height:1.7; color:#222; }
+.bodyCopyHeader{ font-size:24px; font-weight:700; line-height:1.35; margin:1.6rem 0 .4rem; }
+
+/* ──────────────────────────────────────────────────────────────
+   Hero
+   ────────────────────────────────────────────────────────────── */
+.heroImage{
+  height:min(60vh,560px);
+  border-radius:var(--radius); overflow:hidden;
+  background:url() center/cover no-repeat, var(--surface);
+  margin-top:1rem;
+}
+.expiryContainer{
+  background:#00000080; border:1px solid #2a2c31;
+  border-radius:999px; padding:.4rem .8rem; color:#fff;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   Content blocks
+   ────────────────────────────────────────────────────────────── */
+.blackBox{
+  background:var(--surface); border:1px solid #e5e7ea;
+  border-radius:var(--radius);
+  padding:clamp(1.5rem, 3vw, 2.25rem);
+}
+.cards{
+  background:var(--surface-2); border:1px solid #e1e3e7;
+  border-radius:10px; padding:1rem 1.1rem; margin-bottom:1rem;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   Accordion
+   ────────────────────────────────────────────────────────────── */
+.rolesAccordion{ --dash:#d5d9de; }
+.rolesAccordion .accordion,
+.rolesAccordion .accordion-item{ background:transparent; border:0 !important; margin:0; box-shadow:none; }
+.rolesAccordion .accordion + .accordion{ border-top:0 !important; }
+
+.rolesAccordion .accordion-item{
+  border-bottom:2px dashed var(--dash) !important;
+}
+.rolesAccordion .accordion:first-of-type .accordion-item{
+  border-top:2px dashed var(--dash) !important;
+}
+
+.rolesAccordion .accordion-header{
+  display:flex; align-items:center; justify-content:space-between; gap:.75rem;
+  cursor:pointer; padding:14px 0; text-transform:uppercase;
+  font-weight:800; font-size:clamp(.95rem, 1.2vw, 1.15rem);
+  letter-spacing:.02em; color:inherit; border:0 !important;
+}
+.rolesAccordion .accordion-header:hover,
+.rolesAccordion .accordion-header:active{ color:inherit; }
+.rolesAccordion .accordion-title{ flex:1; }
+.rolesAccordion .accordion-icon{
+  width:28px; height:28px; display:grid; place-items:center; border-radius:6px; line-height:1;
+  transition:transform .2s, background .2s, opacity .2s; opacity:.9;
+}
+.rolesAccordion .accordion-header:hover .accordion-icon{ background:rgba(0,0,0,.06); }
+.rolesAccordion .accordion-item.open .accordion-icon{ transform:rotate(180deg); }
+.rolesAccordion .accordion-content{
+  max-height:0; overflow:hidden; padding:0; transition:max-height .28s, padding .28s;
+}
+.rolesAccordion .accordion-item.open .accordion-content{ padding:8px 0 14px; }
+.rolesAccordion .accordion-header:focus-visible{
+  outline:2px solid var(--accent); outline-offset:3px; border-radius:6px;
+}
+@media (max-width:720px){
+  .rolesAccordion .accordion-header{ padding:12px 0; font-size:.95rem; }
+  .rolesAccordion .accordion-icon{ width:24px; height:24px; }
+}
+
+/* ──────────────────────────────────────────────────────────────
+   Forms
+   ────────────────────────────────────────────────────────────── */
+.formGroup{
+  display:flex; position:relative; flex-direction:column; align-items:flex-start;
+  gap:var(--space-2);
+  padding:var(--space-3);
+  border-radius:10px;
+  width:100%; max-width:100%;
+  --choice-selected:var(--accent);
+}
+.formGroup > label{
+  margin-bottom:var(--space-2);
+  font-size:clamp(1rem, 1.4vw, 1.25rem);
+  font-weight:700; line-height:1.2; color:#0b1b17;
+}
+
+/* options row */
+.options{ display:flex; gap:var(--space-2); flex-wrap:nowrap; align-items:center; }
+
+/* hide radios off-canvas (prevents invisible hitboxes) */
+.formGroup input[type="radio"]{
+  position:absolute !important;
+  left:-9999px !important;
+  opacity:0 !important;
+  width:0; height:0;
+  pointer-events:none;
+}
+
+/* choice tiles */
+.options input[type="radio"] + label{
+  box-sizing:border-box;
+  border:2px solid #cfd7d4; background:#fff; color:#0e2f2a;
+  padding:.5rem .85rem; min-height:36px; border-radius:10px; cursor:pointer;
+  font-size:.95rem; font-weight:600; white-space:nowrap;
+  display:inline-flex; align-items:center; justify-content:center;
+  box-shadow:0 1px 2px rgba(0,0,0,.06);
+  transition:border-color .2s, box-shadow .2s, background .2s, color .2s, transform .02s;
+}
+.options input[type="radio"] + label:hover{
+  border-color:#7aa69b; box-shadow:0 4px 10px rgba(0,0,0,.08);
+}
+.options input[type="radio"] + label:active{ transform:translateY(1px); }
+.options input[type="radio"]:checked + label{
+  background:var(--choice-selected); color:#fff; border-color:var(--choice-selected);
+  box-shadow:0 0 0 2px color-mix(in oklab, var(--choice-selected) 22%, transparent);
+  font-weight:700;
+}
+/* keyboard focus */
+.formGroup input[type="radio"]:focus-visible + label{
+  outline:3px solid var(--choice-selected); outline-offset:2px;
+}
+
+/* submitted dot */
+.whenSubmitted{
+  width:12px; height:12px; background:#fff; border-radius:50%;
+  position:absolute; top:10px; right:10px;
+  border:2px solid #cbd5dc; transition:background-color .3s, border-color .3s;
+  pointer-events:none; /* never block clicks */
+}
+.formGroup:has(input[type="radio"]:checked) .whenSubmitted,
+.whenSubmitted.submitted{ background-color:#4caf50; border-color:#4caf50; }
+
+/* textarea */
+textarea{
+  width:100%; min-height:140px; border-radius:10px;
+  background:#f2fbf9; border:1px solid #d7e6e2; color:#0b1b17;
+  font-size:1rem; line-height:1.5; padding:10px 12px; resize:vertical;
+}
+textarea::placeholder{ color:#4a5a57; }
+textarea:focus{ outline:2px solid color-mix(in oklab, var(--accent) 50%, transparent); outline-offset:2px; }
+
+/* submit */
+#submitFeedback{
+  position:relative; z-index:1; /* ensure clickability */
+  width:100%; padding:10px 0; border-radius:10px;
+  background:var(--accent); color:#fff;
+  font-weight:700; border:none; cursor:pointer; transition:filter .2s;
+}
+#submitFeedback:hover{ filter:brightness(1.05); }
+#submitFeedback:active{ filter:brightness(.98); }
+#submitFeedback:focus-visible{ outline:3px solid var(--accent); outline-offset:2px; }
+#submitFeedback:disabled{ opacity:.6; cursor:not-allowed; }
+
+/* wrap options on small screens */
+@media (max-width:700px){ .formGroup .options{ flex-wrap:wrap; } }
+
+/* ──────────────────────────────────────────────────────────────
+   Media / video
+   ────────────────────────────────────────────────────────────── */
+#dataDemoVideo, .toolsContainer img, .section video{
+  width:100%; height:auto; max-width:960px; display:block;
+  border-radius:10px; border:1px solid #eaecef; background:#000; margin-top:.8rem;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   Footer
+   ────────────────────────────────────────────────────────────── */
+footer{
+  border-top:1px solid #eaecef; padding:2rem; background:#fff; color:#111;
+}
+footer .footerContent{
+  max-width:1040px; margin:0 auto;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:1rem; flex-wrap:wrap;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   Two-column case layout (sticky sidebar within section)
+   ────────────────────────────────────────────────────────────── */
+/* ── Two-column case layout (GSAP pin handles the stickiness) ── */
+.caseLayout{
+  position: relative;                               /* contains pin spacer */
+  display: grid;
+  grid-template-columns: 280px minmax(0,1fr);
+  gap: var(--space-4);
+  align-items: start;
+  margin-top: var(--space-5);
+}
+
+.toc{
+  /* no sticky here — GSAP will pin it */
+  width: 280px;                                     /* matches grid column */
+  background: var(--surface);
+  border: 1px solid #e5e7ea;
+  border-radius: 12px;
+  padding: var(--space-3);
+  will-change: transform;                           /* smoother during pin */
+}
+
+.toc h3{
+  margin: 0 0 var(--space-2);
+  font-size: .9rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.toc nav ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.toc a{
+  display:block;
+  padding: 6px 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #0b1b17;
+  font-weight: 600;
+}
+.toc a:hover,
+.toc a:focus-visible{
+  background: #eef5ff;
+  outline: none;
+}
+
+/* Ensure anchors aren’t hidden under the sticky header */
+.anchor-target{ scroll-margin-top: calc(var(--header-space) + 12px); }
+
+/* Right column content stack */
+.caseContent{ display: grid; gap: var(--space-4); }
+
+/* Responsive collapse: TOC becomes non-sticky and full-width */
+@media (max-width:1024px){
+  .caseLayout{
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+  .toc{
+    width: auto;
+  }
+}

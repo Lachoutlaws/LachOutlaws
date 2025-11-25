@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head Starts -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uni Case Study</title>
+  <link rel="icon" href="data:,">
+  
+  <!-- CSS Links Start -->
+  <link href="../global.css" rel="stylesheet">
+  <!-- <link href="caseStudy.css" rel="stylesheet"> -->
+  <link href="caseStudyGlobal.css" rel="stylesheet">
+
+  <!-- CSS Links End -->
+  
+  <!-- Google Fonts Link Start -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Syne:wght@400..800&family=Texturina:ital,opsz,wght@0,12..72,100..900;1,12..72,100..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <!-- Google Fonts Link End -->
+
+  <!-- Font Awesome Links -->
+  <script src="https://kit.fontawesome.com/159c5c66b8.js" crossorigin="anonymous"></script>
+
+<!-- Firebase Core SDK -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<!-- Firebase Firestore SDK -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<!-- Firebase Analytics SDK -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script>
+
+
+      <!-- GSAP Links -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script> <!-- GSAP Core -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script> <!-- ScrollTrigger Plugin -->
+  <script src="../Gsap/TextPlugin.min.js"></script> <!-- ScrambleText Plugin -->
+
+</head>
+<!-- Head Ends -->
+
+<!-- Body Starts -->
+<body>
+
+<!-- Cursor Start -->
+<div class="cursor"></div>
+<!-- Cursor End -->
+<!-- Navigation Bar/Header Starts -->
+<header class="globalHeader">
+  <div class="nav-wrapper">
+    <a href="../index.html" class="logo hover-this">
+      <img src="../Images/Logo.svg" alt="Logo" />
+    </a>
+    <nav>
+      <a href="../index.html" class="hover-this">Home</a>
+      <a href="../work.html" class="hover-this">Work</a>
+      <a href="../play/play.html" class="hover-this">Play</a>
+      <a href="#" class="hover-this">Resume</a>
+      <a href="#" class="hover-this">Contact</a>
+    </nav>
+  </div>
+  <div class="scrollProgressBar"></div>
+</header>
+<!-- Navigation Bar/Header Ends -->
+
+<!-- Main Container Start -->
+<div class="main">
+
+  <!-- Hero (full width) -->
+  <div class="heroImage">
+    <div class="expiryContainer">CASE STUDY: UNIVERSITY PROJECT</div>
+  </div>
+
+  <!-- Two-column case layout -->
+  <section class="caseLayout" aria-label="Case study layout">
+
+    <!-- Sticky Contents (left column) -->
+    <aside class="toc" aria-labelledby="toc-title">
+      <h3 id="toc-title">Contents</h3>
+      <nav aria-label="On this page">
+        <ul>
+          <li><a href="#intro">Intro</a></li>
+          <li><a href="#problem">Problem</a></li>
+          <li><a href="#users">Users</a></li>
+          <li><a href="#solution">Solution</a></li>
+          <li><a href="#testing">Testing</a></li>
+          <li><a href="#reflection">Reflection</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Content (right column) -->
+    <div class="caseContent">
+
+      <!-- Introduction -->
+      <section id="intro" class="section anchor-target">
+        <div class="label">INTRODUCTION</div>
+        <div class="heading">University Case Study</div>
+        <p class="bodyCopy">
+          This case study explores how a digital solution can improve access to international groceries in Australia while preserving cultural and emotional value. It emerged from a design challenge focused on user-centered research, prototyping, and iterative testing.
+        </p>
+      </section>
+
+      <!-- Problem Framing -->
+      <section id="problem" class="blackBox anchor-target">
+        <div class="label">PROBLEM</div>
+        <div class="heading">The Challenge</div>
+        <div class="subHeader">Defining the Tension Between Craving and Convenience</div>
+
+        <div class="cards">
+          <div class="bodyCopyHeader"><div class="circle"></div>Problem Statement</div>
+          <p class="bodyCopy">How might we conveniently discover and access international food and drink while preserving their cultural and emotional value?</p>
+        </div>
+
+        <div class="cards">
+          <div class="bodyCopyHeader"><div class="circle"></div>Who's Affected</div>
+          <p class="bodyCopy">Travellers, immigrants, international students, home cooks, and cultural explorers looking for authentic food experiences.</p>
+        </div>
+
+        <div class="cards">
+          <div class="bodyCopyHeader"><div class="circle"></div>Why It Matters</div>
+          <p class="bodyCopy">Food connects us to memory and identity. For many, it represents home, health, and joy. These products are difficult to find and often expensive or unavailable in mainstream outlets.</p>
+        </div>
+
+        <div class="cards">
+          <div class="bodyCopyHeader"><div class="circle"></div>The Five Whys</div>
+          <p class="bodyCopy">Users want authenticity, but face limited availability, high shipping costs, customs delays, and poor substitutes.</p>
+        </div>
+      </section>
+
+      <!-- Users / Personas -->
+      <section id="users" class="section rolesAccordion anchor-target">
+        <div class="label">USERS</div>
+        <div class="heading">Key Personas</div>
+
+        <div class="accordion">
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <div class="accordion-title">Marcus – International Student</div>
+              <div class="accordion-icon">▾</div>
+            </div>
+            <div class="accordion-content">
+              <p>Reconnecting with culture through familiar ingredients.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <div class="accordion-title">Sophie – Host &amp; Teacher</div>
+              <div class="accordion-icon">▾</div>
+            </div>
+            <div class="accordion-content">
+              <p>Loves recreating meals from her travels for friends and family.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <div class="accordion-title">Nathan – Teen Trend-Follower</div>
+              <div class="accordion-icon">▾</div>
+            </div>
+            <div class="accordion-content">
+              <p>Influenced by online trends and interested in international food culture.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Solution -->
+      <section id="solution" class="section bringingItToLife anchor-target">
+        <div class="label">SOLUTION</div>
+        <div class="heading">Bringing It To Life</div>
+
+        <div class="bodyCopyHeader">Design Challenge</div>
+        <p class="bodyCopy">How might we create a digital platform that helps people in Australia access international grocery items more easily—while also addressing barriers like pricing, availability, language, and discoverability?</p>
+
+        <div class="bodyCopyHeader">Goals</div>
+        <p class="bodyCopy">Improve accessibility to international food, maintain authenticity, simplify product discovery, and support small local businesses.</p>
+
+        <div class="bodyCopyHeader">Features Brainstormed</div>
+        <p class="bodyCopy">Map-based search, item saving, product pages, reviews, barcode scanning, recipe forums, and a simple backend for business listings.</p>
+
+        <div class="bodyCopyHeader">Market &amp; UX Inspiration</div>
+        <p class="bodyCopy">Google Maps, Uber Eats, Woolworths filters, and vitamin stores informed feature design and usability patterns.</p>
+
+        <div class="bodyCopyHeader">Business Integration</div>
+        <p class="bodyCopy">Shops can select products from a database to appear on the customer map without needing inventory syncing.</p>
+
+        <div class="bodyCopyHeader">Tools</div>
+        <div class="toolsContainer">
+          <p>Figma</p>
+          <p>HTML, CSS, JavaScript</p>
+          <p>Firebase</p>
+          <p>GSAP</p>
+          <p>Illustrator</p>
+        </div>
+      </section>
+
+      <!-- Testing -->
+      <section id="testing" class="section bringingItToLife anchor-target">
+        <div class="label">VALIDATION</div>
+        <div class="heading">Usability Testing</div>
+
+        <div class="bodyCopyHeader">Approach</div>
+        <p class="bodyCopy">Five participants with varied cultural and dietary needs completed tasks including language switching, product search, and sign-up flow.</p>
+
+        <div class="bodyCopyHeader">Findings</div>
+        <p class="bodyCopy">Users preferred list view at the bottom, clearer log in/sign up buttons, and product info directly from search results.</p>
+
+        <div class="bodyCopyHeader">Design Iterations</div>
+        <p class="bodyCopy">We moved log-in buttons, added a shopping list, improved product visibility, and clarified GPS/map interaction patterns.</p>
+      </section>
+
+      <!-- Reflection -->
+      <section id="reflection" class="section reflection anchor-target">
+        <div class="label">REFLECTION</div>
+        <div class="heading">What I Learned</div>
+        <div class="subHeader">Designing With Empathy and Iteration</div>
+
+        <div class="bodyCopyHeader">Outcome</div>
+        <p class="bodyCopy">User feedback led to impactful changes. The final prototype now better aligns with mental models and real-world shopping behavior.</p>
+
+        <div class="bodyCopyHeader">Next Steps</div>
+        <p class="bodyCopy">Explore expanded retailer participation, local events, cultural storytelling, and better real-time inventory tracking.</p>
+      </section>
+
+    </div><!-- /.caseContent -->
+  </section><!-- /.caseLayout -->
+
+  <!-- Back to single column for final product -->
+  <section class="section finalSection">
+    <div class="label">FINAL</div>
+    <div class="heading">Final Product</div>
+    <!-- Drop your final image/video/embed here -->
+    <!-- <img src="../Images/final-product.jpg" alt="Final product mockup"> -->
+  </section>
+
+</div>
+<!-- Main Container End -->
+
+<!-- Footer stays after this -->
+
+<!-- Main Container End -->
+
+<footer>
+  <div class="footerContent">
+    <p>&copy; 2025 Lachoutlaws. All rights reserved.</p>
+    <div class="socialLinks">
+      <a href="https://twitter.com" target="_blank" class="hoverMe"><i class="fab fa-twitter"></i></a>
+      <a href="https://github.com" target="_blank" class="hoverMe"><i class="fab fa-github"></i></a>
+      <a href="https://instagram.com" target="_blank" class="hoverMe"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+</footer>
+
+
+
+  <!-- Javascript Start -->
+  <script type="module" src="caseStudy.js"></script>
+  <script type="module" src="../app.js"></script>
+  <script type="module" src="../firestore.js"></script>
+  <!-- Javascript End -->
+</body>
+<!-- Body Ends -->
+
+</html>

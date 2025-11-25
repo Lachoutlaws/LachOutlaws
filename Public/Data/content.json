@@ -1,0 +1,85 @@
+{
+  "mode": "tiles",
+  "items": [
+    {
+      "id": "metle",
+      "slug": "metle-casestudy",
+      "section": "case",
+      "title": "Metle",
+      "subtitle": "METLE STREAMING SERVICE",
+      "image": "Images/metleThumbnail.png",
+      "caseUrl": "metleCasestudy.html",
+      "overview": "Metle is an app i've designed to take the joy of streaming services like spotify and have it focus on the mental health benefits of music",
+      "linkLabel": "View Case Study",
+      "openNewTab": false
+    },
+    {
+      "id": "live-portfolio",
+      "slug": "portfolio-casestudy",
+      "section": "case",
+      "title": "Live Portfolio",
+      "subtitle": "LIVE PORTFOLIO CASE STUDY",
+      "image": "Images/portfolioThumb.png",
+      "caseUrl": "portfolioCasestudy.html",
+      "overview": "My portfolio was built from the ground up, this includes back and front end programming, ideation, project planning and design",
+      "linkLabel": "View Case Study",
+      "openNewTab": false
+    },
+    {
+      "id": "university",
+      "slug": "uni-casestudy",
+      "section": "case",
+      "title": "University",
+      "subtitle": "UNIVERSITY CASE STUDY",
+      "image": "Images/uniThumb.png",
+      "caseUrl": "uniCasestudy.html",
+      "overview": "A uni assignment where we took a real life problem and turned it into a working solution, in my case it was locating food you enjoyed overseas",
+      "linkLabel": "View Case Study",
+      "openNewTab": false
+    },
+    {
+      "id": "club-love-sick-logo",
+      "section": "illustration",
+      "title": "CLS Logo",
+      "subtitle": "BRANDING",
+      "image": "Images/clsLogo.png",
+      "overview": "A logo for a clothing brand called Club Love Sick"
+    },
+    {
+      "id": "illustration-2",
+      "section": "illustration",
+      "title": "COLLAGE",
+      "subtitle": "DIGITAL ILLUSTRATION",
+      "image": "Images/collage.png",
+      "overview": "This is a mix of some digital illustrations I've done combined together"
+    },
+    {
+      "id": "illustration-3",
+      "section": "illustration",
+      "title": "EDGY CHARACTER EATING A LOLLY",
+      "subtitle": "PEN AND PAPER",
+      "image": "Images/lollipop.png",
+      "overview": "My friend and I would set drawing challenges each week this is the result of one of them"
+    },
+    {
+      "id": "illustration-4",
+      "section": "illustration",
+      "title": "CHARACTER WEARING A DOG HAT",
+      "subtitle": "DIGITAL ILLUSTRATION",
+      "image": "Images/charHat.png",
+      "overview": "An Illustration of a character wearing a hat that resembles my dog"
+    },
+    {
+      "id": "math-is-wild",
+      "section": "other",
+      "title": "Math Is Wild",
+      "subtitle": "Coding Fun",
+      "image": "Images/mathIsWild.png",
+      "caseUrl": "https://lachoutlaws.github.io/MathIsWild/index.html",
+      "open": "blank",
+      "overview": "This is a website combined with a friend where we practice programming",
+      "linkLabel": "View Website",
+      "openNewTab": true
+    }
+  ]
+}
