@@ -1,3 +1,7 @@
+/* =========================================
+   HOME.CSS — CLEANED & CONSOLIDATED
+   ========================================= */
+
 /* ========== Core tokens (Dark default) ========== */
 :root {
     /* Palette */
@@ -59,39 +63,7 @@
     --shadow-l: inset 0 1px 2px #ffffff70, 0 4px 6px #00000030, 0 6px 10px #00000015;
 }
 
-/* ========== Light theme overrides ========== */
-:root[data-theme="light"] {
-    --bg: #f6f7f9;
-    --fg: #111318;
-    --muted: #5d646b;
-    --accent: #2AA7FF;
-    --accent50: color-mix(in oklab, var(--accent) 66%, transparent);
 
-    --card: #fff;
-    --surface-0: var(--bg);
-    --surface-1: var(--card);
-    --surface-2: color-mix(in oklab, #fff 88%, #c9d1d9 12%);
-
-    --line-weak: #00000012;
-    --line-mid: #0000001f;
-    --grad-a: #f7f8fa;
-    --grad-b: #eef1f6;
-
-    --scrim: rgba(240, 242, 245, .86);
-    --edge-hint: rgba(0, 123, 193, .18);
-    --thumb-bg: #e9edf3;
-
-    --glass-top-hl: rgba(255, 255, 255, .65);
-    --glass-shadow: 0 10px 24px rgba(0, 0, 0, .10);
-
-    --shadow: 0 10px 24px rgba(0, 0, 0, .10);
-    --shadow-thumb: 0 6px 12px rgba(0, 0, 0, .10);
-    --shadow-thumb-hover: 0 12px 20px rgba(0, 0, 0, .16);
-
-    --shadow-s: inset 0 1px 2px #ffffff20, 0 1px 2px #00000025, 0 2px 4px #00000012;
-    --shadow-m: inset 0 1px 2px #ffffff30, 0 2px 4px #00000025, 0 4px 8px #00000012;
-    --shadow-l: inset 0 1px 2px #ffffff36, 0 4px 6px #00000025, 0 6px 10px #00000012;
-}
 
 /* ========== Base ========== */
 * {
@@ -120,7 +92,7 @@ body {
     font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
 }
 
-/* smooth theme transitions on main surfaces */
+/* smooth theme transitions on main surfaces — limit to paint-friendly props */
 html,
 body,
 header,
@@ -140,7 +112,7 @@ header,
     padding: var(--pad);
 }
 
-/* ========== HeroIntro (with subtle purple glow + portrait card) ========== */
+/* ========== HeroIntro (with subtle glow + portrait card) ========== */
 .heroIntro {
     position: relative;
     isolation: isolate;
@@ -410,7 +382,7 @@ header,
     line-height: 1.2;
 }
 
-/* hover link state */
+/* hover/link state */
 .yWorks__titleLists li.is-linked::before,
 .projectsTOCLists li.is-linked::before {
     content: "";
@@ -426,10 +398,6 @@ header,
     color: #fff;
 }
 
-:root[data-theme="light"] .yWorks__titleLists li.is-linked .yWorks__titleLists--title,
-:root[data-theme="light"] .projectsTOCLists li.is-linked .projectsTOCLists--title {
-    color: #000;
-}
 
 .yWorks__titleLists li.is-linked .yWorks__titleLists--date,
 .projectsTOCLists li.is-linked .projectsTOCLists--subtitle {
@@ -495,7 +463,7 @@ header,
     position: relative;
 }
 
-/* Thumbs */
+/* Thumbs (canonical rules) */
 .yWorksLists__thumb,
 .projectRowWorksThumbnail {
     background: var(--thumb-bg) center/cover no-repeat;
@@ -504,8 +472,8 @@ header,
     position: relative;
     overflow: hidden;
     box-shadow: var(--shadow);
-    transform: translateZ(0);
-    transition: transform .18s ease, filter .18s ease, box-shadow .18s ease;
+    /* limit to paint-friendly props */
+    transition: filter .18s ease, box-shadow .18s ease;
 }
 
 .yWorksLists__thumb img,
@@ -515,9 +483,15 @@ header,
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0;
+    opacity: 1;
+    /* ensure visible on desktop */
+    display: block;
+    transform: scale(1);
+    transition: transform 260ms cubic-bezier(.2, .8, .2, 1);
+    will-change: transform;
 }
 
+/* focus/hover rings via ::after */
 .yWorksLists__thumb::after,
 .projectRowWorksThumbnail::after {
     content: "";
@@ -529,49 +503,34 @@ header,
     transition: all .25s;
 }
 
+/* anchor wrapper */
 .link-a a {
     display: block;
+    outline: none;
 }
 
-.link-a a:focus .yWorksLists__thumb::after,
 .link-a a:hover .yWorksLists__thumb::after,
-.link-a a:focus .projectRowWorksThumbnail::after,
-.link-a a:hover .projectRowWorksThumbnail::after {
+.link-a a:hover .projectRowWorksThumbnail::after,
+.link-a a:focus-visible .yWorksLists__thumb::after,
+.link-a a:focus-visible .projectRowWorksThumbnail::after {
     box-shadow: inset 0 0 0 3px var(--accent);
-    opacity: .85;
+    opacity: .9;
 }
 
-.yWorksLists>li.is-linked .yWorksLists__thumb,
-.projectRowWorks>li.is-linked .projectRowWorksThumbnail {
-    transform: translateY(-2px);
-    filter: brightness(1.05) contrast(1.03);
-    box-shadow: var(--shadow-thumb-hover);
-}
-
-.yWorksLists>li.is-linked .yWorksLists__thumb::after,
-.projectRowWorks>li.is-linked .projectRowWorksThumbnail::after {
-    box-shadow: inset 0 0 0 3px var(--accent);
-    opacity: .85;
-}
-
-/* subtle hover zoom for tile image */
-.projectRowWorksThumbnail {
-    overflow: hidden;
-}
-
-.projectRowWorksThumbnail img {
-    transition: transform .6s cubic-bezier(.2, .8, .2, 1);
-}
-
-.link-a a:hover .projectRowWorksThumbnail img {
+/* hover/linked: image zoom only */
+.projectRowWorks li:hover .projectRowWorksThumbnail img,
+.projectRowWorks li.is-linked .projectRowWorksThumbnail img,
+.yWorksLists>li:hover .yWorksLists__thumb img,
+.yWorksLists>li.is-linked .yWorksLists__thumb img {
     transform: scale(1.06);
 }
 
-.link-a a:hover .projectRowWorksThumbnail {
-    transform: scale(1.03);
+.projectRowWorks li:hover .projectRowWorksThumbnail,
+.projectRowWorks li.is-linked .projectRowWorksThumbnail {
+    filter: saturate(1.02);
 }
 
-/* ========== Fullscreen Overlay Gallery ========== */
+/* ========== Fullscreen Overlay Gallery (shell) ========== */
 .galleryContainer {
     position: fixed;
     inset: 0;
@@ -613,18 +572,6 @@ header,
 }
 
 /* Sections */
-.gallerySection.is-center {
-    position: relative;
-    z-index: 2;
-    width: clamp(680px, 70vw, 1280px);
-    max-height: 100%;
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    display: grid;
-    place-items: center;
-    padding: 0;
-}
-
 .gallerySection.is-left,
 .gallerySection.is-right {
     position: absolute;
@@ -714,159 +661,7 @@ header,
     filter: brightness(1);
 }
 
-/* Edge glows */
-.gallerySectionGlow {
-    position: fixed;
-    top: 0;
-    height: calc(var(--vh, 1vh) * 100);
-    width: 15px;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity .2s ease;
-    z-index: 8;
-}
-
-.gallerySectionGlow.is-left {
-    left: 0;
-    background: linear-gradient(to right, var(--edge-hint), rgba(0, 0, 0, 0));
-}
-
-.gallerySectionGlow.is-right {
-    right: 0;
-    background: linear-gradient(to left, var(--edge-hint), rgba(0, 0, 0, 0));
-}
-
-.gallerySection.is-left:hover~.gallerySectionGlow.is-left,
-.gallerySection.is-right:hover~.gallerySectionGlow.is-right,
-.gallerySectionArrow:focus-visible~.gallerySectionGlow {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-/* Card */
-.projectCard {
-    width: 100%;
-    height: min-content;
-    display: grid;
-    justify-items: center;
-    align-content: start;
-    padding: 0;
-    border-radius: var(--radius-lg);
-    background: var(--surface-2);
-    border: 1px solid var(--line-weak);
-    box-shadow: inset 0 1px 2px var(--glass-top-hl), var(--glass-shadow);
-}
-
-.projectCardBody {
-    width: min(1120px, 92%);
-    max-height: 100%;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr var(--poster-col);
-    gap: 16px;
-    border-radius: var(--radius-lg);
-    overflow: auto;
-    padding: clamp(24px, 6vh, 56px) clamp(16px, 5vw, 48px);
-    align-items: center;
-}
-
-.projectCardInfoContainer>* {
-    margin: 0;
-}
-
-.projectCardInfoContainer>*+* {
-    margin-top: 14px;
-}
-
-.projectCardTitle {
-    font-weight: 700;
-    font-size: 28px;
-    line-height: 1.25;
-    letter-spacing: .2px;
-    color: var(--fg);
-}
-
-.projectCardSubtitle {
-    color: var(--muted);
-    font: 500 13px/1.4 system-ui;
-    letter-spacing: .12em;
-    margin-top: 4px;
-}
-
-.projectCardHeading {
-    color: var(--fg);
-    font: 700 12px/1 system-ui;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    margin-top: 18px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid var(--line-mid);
-    width: min-content;
-}
-
-.projectCardInfo {
-    color: var(--fg);
-    opacity: .92;
-    font: 500 14px/1.55 system-ui;
-}
-
-.projectCardButtonsContainer {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 6px;
-}
-
-.projectCardButton.btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    height: auto;
-    padding: 12px 16px;
-    border-radius: 9999px;
-    border: none;
-    background: var(--accent50);
-    color: var(--accent-ink);
-    font: 600 14px/1 Inter, system-ui;
-    letter-spacing: .01em;
-    text-decoration: none;
-    box-shadow: inset 0 1px 2px rgba(255, 255, 255, .35), 0 4px 10px rgba(0, 0, 0, .20);
-    transform: translateY(0);
-    transition: box-shadow .25s ease, transform .18s ease, filter .25s ease;
-    will-change: transform;
-}
-
-.projectCardButton.btn:hover,
-.projectCardButton.btn:focus-visible {
-    background: var(--accent);
-    box-shadow: inset 0 1px 2px rgba(255, 255, 255, .35), 0 6px 14px rgba(0, 0, 0, .25);
-    transform: translateY(-1px);
-    outline: none;
-}
-
-.projectCardButton.btn:active {
-    transform: translateY(0);
-    box-shadow: inset 0 1px 2px rgba(255, 255, 255, .35), 0 3px 6px rgba(0, 0, 0, .22);
-}
-
-.projectCardMediaContainer {
-    margin: 0;
-    padding: 0;
-    display: grid;
-    place-items: center;
-    border-radius: 12px;
-}
-
-.projectCardMediaContainer img#casePoster.projectCardMedia {
-    width: 85%;
-    margin: 0 auto;
-    max-width: var(--poster-col);
-    aspect-ratio: 3/4;
-    object-fit: cover;
-    border-radius: var(--radius-sm);
-}
-
-/* Bottom bar (mobile overlay nav) */
+/* Bottom bar (mobile overlay nav placeholder) */
 .gallerySectionBottomBar {
     width: 100%;
     height: 50px;
@@ -882,23 +677,10 @@ header,
     z-index: 140;
 }
 
-.gallerySectionBottomBar .gallerySectionArrow {
-    position: static;
-    height: 44px;
-    padding: 0 8px;
-    display: grid;
-    place-items: center;
-    background: transparent;
-    border: 0;
-    color: var(--fg);
-}
-
 .gallerySectionSpacer {
     width: 1px;
     height: 1px;
 }
-
-
 
 /* ========== Utilities ========== */
 .btn.is-disabled,
@@ -920,7 +702,7 @@ header,
     border: 0;
 }
 
-/* Reveal-on-scroll default anim */
+/* Reveal-on-scroll base (JS toggles .is-visible) */
 .reveal {
     opacity: 0;
     transform: translateY(14px);
@@ -942,7 +724,6 @@ header,
         order: -1;
     }
 
-    /* photo above title on mid screens */
     .avatarCard {
         width: min(520px, 86vw);
     }
@@ -974,12 +755,6 @@ header,
         display: none;
     }
 
-    .menuBtn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-    }
-
     .mobileMenu {
         top: var(--header-h);
     }
@@ -1006,70 +781,6 @@ header,
     .gallerySection.is-right .gallerySectionArrow,
     .gallerySectionGlow {
         display: none !important;
-    }
-
-    .gallerySection.is-center {
-        width: 100%;
-        height: 100%;
-        border-radius: 0;
-        overflow: hidden;
-    }
-
-    /* project card overlays */
-    .projectCard {
-        width: 100% !important;
-        height: 100% !important;
-        padding: 0 0 var(--bottom-h) 0;
-        background: transparent !important;
-        border-radius: 0;
-    }
-
-    .projectCardBody {
-        width: 100% !important;
-        max-width: none !important;
-        box-sizing: border-box;
-        padding: 16px 16px 0;
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: min-content 1fr;
-        gap: 16px;
-        min-height: 0;
-        overflow: hidden;
-        background: transparent !important;
-    }
-
-    /* keep heading/info hidden on mobile, but show CTA (restored below) */
-    .projectCardHeading,
-    .projectCardInfo {
-        display: none !important;
-    }
-
-    .projectCardMediaContainer {
-        min-height: 0;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        border-radius: 0;
-    }
-
-    .projectCardMediaContainer img#casePoster.projectCardMedia {
-        width: auto !important;
-        max-width: 100% !important;
-        height: 100% !important;
-        max-height: 100% !important;
-        object-fit: contain !important;
-        aspect-ratio: auto !important;
-        border-radius: 0 !important;
-        margin: 0 !important;
-    }
-
-    .gallerySectionBottomBar {
-        display: flex;
-        background: color-mix(in oklab, var(--bg) 94%, black 6%);
-        padding-bottom: calc(env(safe-area-inset-bottom) + 56px);
-        /* room for CTA */
     }
 
     /* Mobile year rail hidden (we add our own sticky rail UI in JS) */
@@ -1167,30 +878,6 @@ header,
         opacity: 1;
     }
 
-    /* --- Restore/float CTA on mobile (single place) --- */
-    .projectCardButtonsContainer {
-        display: flex !important;
-        position: fixed;
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: calc(12px + var(--bottom-h, 50px));
-        z-index: 160;
-        gap: 10px;
-        padding: 8px 10px;
-        border-radius: 999px;
-        background: color-mix(in oklab, #000 30%, transparent);
-        backdrop-filter: blur(10px) saturate(120%);
-        -webkit-backdrop-filter: blur(10px) saturate(120%);
-        box-shadow: 0 10px 24px rgba(0, 0, 0, .28);
-        border: 1px solid color-mix(in oklab, var(--fg) 10%, transparent);
-    }
-
-    .projectCardButton.btn {
-        height: 44px;
-        padding: 0 18px;
-        box-shadow: none;
-    }
-
     /* hero tweaks for small screens */
     .heroIntro {
         padding-top: 12px;
@@ -1222,24 +909,18 @@ header,
     }
 }
 
+/* Utility */
 .caseLink[hidden] {
     display: none !important;
 }
 
 /* Gradient text utility */
 :root {
-    /* tweak these stops to taste */
-    --name-gradient: linear-gradient(90deg,
-            #ff7b6e 0%,
-            #ff5bbd 25%,
-            #8a46ff 55%,
-            #63b4ff 100%);
+    --name-gradient: linear-gradient(90deg, #ff7b6e 0%, #ff5bbd 25%, #8a46ff 55%, #63b4ff 100%);
 }
 
-/* sensible fallback: use normal color unless the browser supports clip */
 .name-gradient {
     color: var(--fg);
-    /* fallback solid */
 }
 
 @supports (-webkit-background-clip:text) or (background-clip:text) {
@@ -1252,7 +933,6 @@ header,
     }
 }
 
-/* Optional: gentle shimmer on hover */
 .name-gradient.is-anim {
     background-size: 200% 100%;
     transition: background-position .8s cubic-bezier(.2, .8, .2, 1);
@@ -1269,67 +949,7 @@ header,
     }
 }
 
-/* --- Tile image hover zoom (image only) --- */
-.projectRowWorksThumbnail {
-    overflow: hidden;
-    /* clip the zoom */
-}
-
-.projectRowWorksThumbnail img {
-    display: block;
-    transform: scale(1);
-    transition: transform 260ms cubic-bezier(.2, .8, .2, 1);
-    will-change: transform;
-}
-
-/* Hovering the tile or being “linked” from the TOC will zoom the IMG */
-.projectRowWorks li:hover .projectRowWorksThumbnail img,
-.projectRowWorks li.is-linked .projectRowWorksThumbnail img {
-    transform: scale(1.06);
-    /* adjust amount as you like */
-}
-
-/* Optional: subtle elevation on hover/linked */
-.projectRowWorks li:hover .projectRowWorksThumbnail,
-.projectRowWorks li.is-linked .projectRowWorksThumbnail {
-    filter: saturate(1.02);
-}
-
-/* --- Left TOC highlight when linked/hovered --- */
-.projectsTOCLists li.is-linked .projectsTOCLists--title,
-.projectsTOCLists li.is-linked .projectsTOCLists--subtitle {
-    color: var(--accent, #79DAFF);
-}
-
-.projectsTOCLists li.is-linked .projectsTOCLists--number span {
-    color: var(--accent, #79DAFF);
-}
-
-/* === FIXES — put at very end of CSS === */
-
-/* 1) Show desktop thumbnails that use <img> (they were opacity:0 earlier) */
-.yWorksLists__thumb img,
-.projectRowWorksThumbnail img {
-    opacity: 1 !important;
-}
-
-/* 2) Scale the IMG on hover/linked, not the wrapper */
-.link-a a:hover .projectRowWorksThumbnail,
-.link-a a:hover .yWorksLists__thumb {
-    transform: none !important;
-}
-
-/* 3) Keep the image zoom when hovered or linked (already defined, this ensures priority) */
-.projectRowWorks li:hover .projectRowWorksThumbnail img,
-.projectRowWorks li.is-linked .projectRowWorksThumbnail img,
-.yWorksLists>li:hover .yWorksLists__thumb img,
-.yWorksLists>li.is-linked .yWorksLists__thumb img {
-    transform: scale(1.06) !important;
-}
-
 /* ======= FX GRADIENT SYSTEM (scoped utilities) ======= */
-
-/* palette + opacities */
 :root {
     --g-pink: #ff5bbd;
     --g-coral: #ff7b6e;
@@ -1346,14 +966,7 @@ header,
     --g-drift: 38s;
 }
 
-:root[data-theme="light"] {
-    --g-vignette: rgba(0, 0, 0, .10);
-    --g-strong: .38;
-    --g-soft: .22;
-    --g-faint: .10;
-}
 
-/* base layer */
 .fx-bg {
     position: absolute;
     inset: -10% -6%;
@@ -1363,7 +976,6 @@ header,
     will-change: transform, opacity;
 }
 
-/* optional soft edge darken */
 .fx-bg.vignette::after {
     content: "";
     position: absolute;
@@ -1396,21 +1008,13 @@ header,
 }
 
 .fx-wash {
-    background:
-        linear-gradient(160deg,
-            color-mix(in oklab, var(--g-blue) 10%, transparent) 0%,
-            transparent 38% 62%,
-            color-mix(in oklab, var(--g-pink) 10%, transparent) 100%);
+    background: linear-gradient(160deg, color-mix(in oklab, var(--g-blue) 10%, transparent) 0%, transparent 38% 62%, color-mix(in oklab, var(--g-pink) 10%, transparent) 100%);
     opacity: .75;
     filter: blur(18px);
 }
 
 .fx-beams {
-    background:
-        conic-gradient(from 300deg at 15% 20%,
-            color-mix(in oklab, var(--g-cyan) 12%, transparent),
-            transparent 20% 70%,
-            color-mix(in oklab, var(--g-violet) 10%, transparent) 90% 100%);
+    background: conic-gradient(from 300deg at 15% 20%, color-mix(in oklab, var(--g-cyan) 12%, transparent), transparent 20% 70%, color-mix(in oklab, var(--g-violet) 10%, transparent) 90% 100%);
     opacity: .55;
     filter: blur(22px);
 }
@@ -1463,99 +1067,426 @@ header,
     pointer-events: none;
 }
 
-.galleryTopLabel {
-    position: absolute;
-    top: 12px;
-    left: 18px;
-    z-index: 5;
-    padding: 6px 10px;
-    border-radius: 999px;
-    font: 800 11px/1 system-ui, -apple-system, Segoe UI, Inter, sans-serif;
-    letter-spacing: .16em;
-    text-transform: uppercase;
-    color: var(--fg);
-    background: color-mix(in oklab, var(--bg) 72%, transparent);
-    border: 1px solid var(--line-weak);
-    box-shadow: 0 8px 22px rgba(0, 0, 0, .22), inset 0 1px 2px var(--glass-top-hl);
-    pointer-events: none;
+/* --- TOC highlight sync (keep) --- */
+.projectsTOCLists li.is-linked .projectsTOCLists--title,
+.projectsTOCLists li.is-linked .projectsTOCLists--subtitle,
+.projectsTOCLists li.is-linked .projectsTOCLists--number span {
+    color: var(--accent);
 }
 
-/* keep – already present */
+/* Main content column: consistent breathing room */
+.rightContainer {
+    display: grid;
+    gap: var(--cs-section-gap);
+    min-width: 0;
+    padding-bottom: clamp(40px, 6vw, 72px);
+}
+
+/* section block spacing stays tied to the rhythm tokens above */
+section {
+    display: grid;
+    gap: var(--cs-block-gap);
+    align-content: start;
+    scroll-margin-top: calc(var(--header-h) + 12px);
+}
+
+/* Sticky TOC card */
+.toc {
+    position: sticky;
+    top: calc(var(--header-h) + 12px);
+    border-radius: 16px;
+    padding: 18px 16px 16px;
+    display: grid;
+    gap: 14px;
+    background: color-mix(in oklab, var(--surface-1) 92%, transparent);
+    border: 1px solid var(--border-soft);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(4px);
+}
+
+/* TOC heading */
+.tocHeader {
+    font: 800 clamp(22px, 3vw, 32px)/1.15 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    letter-spacing: .02em;
+    color: var(--fg);
+    margin: 0 0 2px;
+}
+
+.tocHeader::after {
+    content: "";
+    display: block;
+    height: 3px;
+    width: min(200px, 60%);
+    margin-top: 8px;
+    background: linear-gradient(90deg,
+            var(--accent),
+            color-mix(in oklab, var(--accent) 20%, transparent));
+    border-radius: 3px;
+    opacity: .95;
+}
+
+/* TOC links */
+.tocContainer {
+    display: grid;
+    gap: 4px;
+}
+
+.toc .contents {
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--fg);
+    white-space: nowrap;
+    line-height: 1.2;
+    padding-block: 6px;
+    position: relative;
+    font-size: 14px;
+}
+
+.toc .contents.current {
+    color: var(--accent);
+    text-shadow: 0 0 1px color-mix(in oklab, var(--accent) 35%, transparent);
+}
+
+.toc .contents::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    border: 1px solid color-mix(in oklab, var(--muted) 50%, transparent);
+}
+
+.toc .contents.current::before {
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+/* =========================================
+   CENTER PANEL
+   ========================================= */
+
+/* Center panel shell */
+.gallerySection {
+    padding: 0 !important;
+}
+
 .gallerySection.is-center {
     position: relative;
+    z-index: 2;
+    width: clamp(680px, 70vw, 1280px);
+    height: clamp(480px, 70vh, 640px);
+    max-height: 100vh;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
 }
 
-/* upgrade this block */
+/* Card fills the center panel */
+.gallerySection.is-center>.projectCard {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background-color: #224bd26e;
+}
+
+/* Card base */
+.projectCard {
+    position: relative;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    justify-items: center;
+    align-content: start;
+    padding: 0;
+    border-radius: var(--radius-lg);
+    background: var(--surface-2);
+    border: 1px solid var(--line-weak);
+    box-shadow: inset 0 1px 2px var(--glass-top-hl), var(--glass-shadow);
+}
+
+article.projectCard {
+    margin: 0;
+}
+
+/* Top label pill inside card */
 .galleryTopLabel {
     position: absolute;
-    top: 18px;
-    left: 25px;
-    z-index: 100;
-    /* was 5 */
+    z-index: 50;
+    left: clamp(10px, 1.2vw, 16px);
+    top: clamp(10px, 1.2vw, 16px);
+    white-space: nowrap;
+    pointer-events: none;
+
     padding: 6px 10px;
     border-radius: 999px;
-    font: 800 11px/1 system-ui, -apple-system, Segoe UI, Inter, sans-serif;
-    letter-spacing: .16em;
-    text-transform: uppercase;
+    font: 700 12px/1.1 system-ui, -apple-system, Segoe UI, Inter, Roboto, Arial, sans-serif;
+    letter-spacing: .02em;
+
+    background: color-mix(in oklab, var(--accent) 18%, transparent);
+    border: 1px solid color-mix(in oklab, var(--accent) 45%, transparent);
+    color: color-mix(in oklab, var(--accent) 85%, white 15%);
+    backdrop-filter: blur(6px);
+}
+
+@supports not (backdrop-filter: blur(2px)) {
+    .galleryTopLabel {
+        backdrop-filter: none;
+    }
+}
+
+/* Inner body grid (shared) */
+.projectCardBody {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    /* text | image */
+    gap: 32px;
+    border-radius: var(--radius-lg);
+    padding: clamp(40px, 7vh, 80px) clamp(16px, 5vw, 48px) clamp(24px, 5vh, 56px);
+    align-items: center;
+    overflow: hidden;
+    /* text column scrolls inside */
+}
+
+/* Text column */
+.projectCardInfoContainer>* {
+    margin: 0;
+}
+
+.projectCardInfoContainer>*+* {
+    margin-top: 14px;
+}
+
+.projectCardTitle {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1.25;
+    letter-spacing: .2px;
     color: var(--fg);
-    background: color-mix(in oklab, var(--bg) 72%, transparent);
-    border: 1px solid var(--line-weak);
-    box-shadow: 0 8px 22px rgba(0, 0, 0, .22), inset 0 1px 2px var(--glass-top-hl);
-    pointer-events: none;
 }
 
-/* Default hidden state stays hidden, but we still set the gap value */
-#gallery .projectCardButtonsContainer {
-    display: none;
-    margin-top: var(--cta-gap, clamp(14px, 2.2vw, 28px));
-    /* ⬅️ space above the button */
+.projectCardSubtitle {
+    color: var(--muted);
+    font: 500 13px/1.4 system-ui;
+    letter-spacing: .12em;
+    margin-top: 4px;
 }
 
-/* When a slide has a link, the container shows with the same gap */
-#gallery.has-cta .projectCardButtonsContainer {
+.projectCardHeading {
+    color: var(--fg);
+    font: 700 12px/1 system-ui;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    margin-top: 18px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--line-mid);
+    width: min-content;
+}
+
+.projectCardInfo {
+    color: var(--fg);
+    opacity: .92;
+    font: 500 14px/1.55 system-ui;
+}
+
+.projectCardButtonsContainer {
     display: flex;
-    /* or block, depending on your layout */
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 6px;
 }
 
-/* Ensure the label is positioned relative to the CENTER section */
-.gallerySection.is-center { position: relative; }
-
-/* Top-left pill inside the center section, all screen sizes */
-.galleryTopLabel{
-  position: absolute;
-  left: clamp(10px, 1.2vw, 16px);
-  top:  clamp(10px, 1.2vw, 16px);
-  z-index: 3;                 /* above the poster but under close button */
-  pointer-events: none;       /* never block clicks on the poster */
-  padding: 6px 10px;
-  border-radius: 999px;
-  font: 700 12px/1.1 system-ui, -apple-system, Segoe UI, Inter, Roboto, Arial, sans-serif;
-  letter-spacing: .03em;
-  color: color-mix(in oklab, var(--accent) 85%, white 15%);
-  background: color-mix(in oklab, var(--accent) 18%, transparent);
-  border: 1px solid color-mix(in oklab, var(--accent) 45%, transparent);
+.projectCardButton.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    height: auto;
+    padding: 12px 16px;
+    border-radius: 9999px;
+    border: none;
+    background: var(--accent50);
+    color: var(--accent-ink);
+    font: 600 14px/1 Inter, system-ui;
+    letter-spacing: .01em;
+    text-decoration: none;
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, .35), 0 4px 10px rgba(0, 0, 0, .20);
+    transform: translateY(0);
+    transition: box-shadow .25s ease, transform .18s ease, filter .25s ease;
+    will-change: transform;
 }
 
-/* ===== Gallery top label (fixed size + pinned position) ===== */
-.galleryTopLabel{
-  position:absolute;         /* pinned; not part of the card’s flow */
-  z-index:50;                /* above the card */
-  top:0; left:0;             /* JS sets the exact offsets per slide */
-  transform:none!important;  /* ignore any parent transforms */
-  pointer-events:none;       /* purely decorative */
-  white-space:nowrap;
-  padding:6px 10px;
-  border-radius:999px;
-  font-weight:700;
-  font-size:12px;            /* fixed size so it never grows/shrinks */
-  line-height:1.1;
-  letter-spacing:.02em;
-
-  /* styling — match your pill look */
-  color:var(--fg);
-  background:rgba(120,160,180,.15);
-  border:1px solid rgba(120,160,180,.35);
-  backdrop-filter:blur(6px);
+.projectCardButton.btn:hover,
+.projectCardButton.btn:focus-visible {
+    background: var(--accent);
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, .35), 0 6px 14px rgba(0, 0, 0, .25);
+    transform: translateY(-1px);
+    outline: none;
 }
 
+.projectCardButton.btn:active {
+    transform: translateY(0);
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, .35), 0 3px 6px rgba(0, 0, 0, .22);
+}
 
+/* Image column */
+.projectCardMediaContainer {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+}
+
+.projectCardMediaContainer img#casePoster.projectCardMedia {
+    width: 100%;
+    max-width: 360px;
+    max-height: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+}
+
+/* Desktop / tablet: scrollable text column */
+@media (min-width: 721px) {
+    .gallerySection.is-center {
+        height: clamp(520px, 70vh, 640px);
+    }
+
+    .projectCardInfoContainer {
+        min-height: 0;
+        max-height: 100%;
+        overflow-y: auto;
+        padding-right: 8px;
+    }
+}
+
+/* Mobile center panel behaviour (overlay) */
+@media (max-width: 720px) {
+    .gallerySection.is-center {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        overflow: hidden;
+    }
+
+    .gallerySection.is-center>.projectCard {
+        width: 100% !important;
+        height: 100% !important;
+        padding: 0 0 var(--bottom-h) 0;
+        background: transparent !important;
+        border-radius: 0;
+    }
+
+    .projectCardBody {
+        width: 100% !important;
+        max-width: none !important;
+        box-sizing: border-box;
+        padding: 16px 16px 0;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: min-content 1fr;
+        gap: 16px;
+        min-height: 0;
+        overflow: hidden;
+        background: transparent !important;
+    }
+
+    /* keep heading/info hidden on mobile, but show CTA */
+    .projectCardHeading,
+    .projectCardInfo {
+        display: none !important;
+    }
+
+    .projectCardMediaContainer {
+        min-height: 0;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        border-radius: 0;
+    }
+
+    .projectCardMediaContainer img#casePoster.projectCardMedia {
+        width: auto !important;
+        max-width: 100% !important;
+        height: 100% !important;
+        max-height: 100% !important;
+        object-fit: contain !important;
+        aspect-ratio: auto !important;
+        border-radius: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* bottom nav bar that carries arrows, plus room for floating CTA */
+    .gallerySectionBottomBar {
+        width: 100%;
+        height: 50px;
+        background: color-mix(in oklab, var(--bg) 94%, black 6%);
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 12px;
+        z-index: 140;
+        padding-bottom: calc(env(safe-area-inset-bottom) + 56px);
+    }
+
+    .gallerySectionBottomBar .gallerySectionArrow {
+        position: static;
+        height: 44px;
+        padding: 0 8px;
+        display: grid;
+        place-items: center;
+        background: transparent;
+        border: 0;
+        color: var(--fg);
+    }
+
+    /* floating CTA pill on mobile */
+    .projectCardButtonsContainer {
+        display: flex !important;
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: calc(12px + var(--bottom-h, 50px));
+        z-index: 160;
+        gap: 10px;
+        padding: 8px 10px;
+        border-radius: 999px;
+        background: color-mix(in oklab, #000 30%, transparent);
+        backdrop-filter: blur(10px) saturate(120%);
+        -webkit-backdrop-filter: blur(10px) saturate(120%);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, .28);
+        border: 1px solid color-mix(in oklab, var(--fg) 10%, transparent);
+    }
+
+    @supports not (backdrop-filter: blur(4px)) {
+        .projectCardButtonsContainer {
+            background: rgba(0, 0, 0, .55);
+        }
+    }
+
+    .projectCardButton.btn {
+        height: 44px;
+        padding: 0 18px;
+        box-shadow: none;
+    }
+}
+
+/* =========================================
+   CENTER PANEL
+   ========================================= */
+
+   

@@ -1,11 +1,12 @@
 // ------------------------------------------------------------------
 // Imports / setup
 // ------------------------------------------------------------------
-import { firebaseApp } from "../firebaseInit.js";
-gsap.registerPlugin(ScrollTrigger);
-
-const db = firebase.firestore(firebaseApp);
-console.log("Firestore initialized:", db);
+import { firebaseApp, db } from "../firebaseInit.js";
+import {
+  collection,
+  addDoc,
+  serverTimestamp,
+} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
 // ------------------------------------------------------------------
 // Extended mode toggle (keeps original text, guarded)
@@ -41,24 +42,23 @@ let isExtended = false;
 // ------------------------------------------------------------------
 // Firestore feedback helpers
 // ------------------------------------------------------------------
-function sendFeedback(question, response, formGroup) {
-  db.collection("feedback")
-    .add({
+async function sendFeedback(question, response, formGroup) {
+  try {
+    await addDoc(collection(db, "feedback"), {
       question,
       response,
-      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-    })
-    .then(() => {
-      console.log(`✅ Feedback Submitted: "${question}" -> "${response}"`);
-      const indicator = formGroup?.querySelector(".whenSubmitted");
-      if (indicator) {
-        indicator.classList.add("submitted");
-        setTimeout(() => indicator.classList.remove("submitted"), 1500);
-      }
-    })
-    .catch((error) => {
-      console.error("❌ Error submitting feedback:", error);
+      timestamp: serverTimestamp(),
     });
+
+    console.log(`✅ Feedback Submitted: "${question}" -> "${response}"`);
+    const indicator = formGroup?.querySelector(".whenSubmitted");
+    if (indicator) {
+      indicator.classList.add("submitted");
+      setTimeout(() => indicator.classList.remove("submitted"), 1500);
+    }
+  } catch (error) {
+    console.error("❌ Error submitting feedback:", error);
+  }
 }
 
 // Radio tiles (safe if none on the page)

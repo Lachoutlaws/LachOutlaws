@@ -48,7 +48,7 @@
     {
       "id": "illustration-2",
       "section": "illustration",
-      "title": "COLLAGE",
+      "title": "Collage",
       "subtitle": "DIGITAL ILLUSTRATION",
       "image": "Images/collage.png",
       "overview": "This is a mix of some digital illustrations I've done combined together"
@@ -56,7 +56,7 @@
     {
       "id": "illustration-3",
       "section": "illustration",
-      "title": "EDGY CHARACTER EATING A LOLLY",
+      "title": "Drawing Challenge",
       "subtitle": "PEN AND PAPER",
       "image": "Images/lollipop.png",
       "overview": "My friend and I would set drawing challenges each week this is the result of one of them"
@@ -64,10 +64,26 @@
     {
       "id": "illustration-4",
       "section": "illustration",
-      "title": "CHARACTER WEARING A DOG HAT",
+      "title": "Dog Hat",
       "subtitle": "DIGITAL ILLUSTRATION",
       "image": "Images/charHat.png",
       "overview": "An Illustration of a character wearing a hat that resembles my dog"
+    },
+    {
+      "id": "illustration-5",
+      "section": "illustration",
+      "title": "Klayat Redesign",
+      "subtitle": "DIGITAL ILLUSTRATION",
+      "image": "Images/rainyDay.png",
+      "overview": "This was submitted to an illustrator who goes by the name Klayat in response to his challenge to recreate his drawing in our own style"
+    },
+    {
+      "id": "illustration-6",
+      "section": "illustration",
+      "title": "Sin Of Sloth",
+      "subtitle": "DIGITAL ILLUSTRATION",
+      "image": "Images/slothSin.png",
+      "overview": "In Illustration based around the seven deadly sins 'Sloth'"
     },
     {
       "id": "math-is-wild",

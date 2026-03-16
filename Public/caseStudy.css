@@ -1,8 +1,11 @@
 /* =========================================================
-   THEME TOKENS (Dark default) + Light overrides
+   CASE STUDY STYLES (refined) — dark default, light override
+   Keep class names as-is for your HTML
    ========================================================= */
+
+/* ================= Tokens ================ */
 :root {
-    /* Core palette */
+    /* Palette */
     --bg: #0e0e11;
     --fg: #e7e7ea;
     --muted: #9aa1a6;
@@ -10,23 +13,15 @@
 
     /* Surfaces */
     --card: #16161a;
-    /* cards / panels */
     --surface-0: var(--bg);
     --surface-1: var(--card);
     --surface-2: color-mix(in oklab, var(--bg) 80%, white 12%);
-    /* subtle frosted */
 
-    /* Lines / outlines */
+    /* Lines */
     --border-soft: #ffffff14;
     --border-mid: #ffffff26;
 
-    /* Header/Footer gradients */
-    --grad-a: #0f0f12;
-    /* top */
-    --grad-b: #0d0d10;
-    /* base */
-
-    /* Component tints */
+    /* Tints */
     --media-blue: color-mix(in oklab, var(--accent) 65%, #5ba7ff 35%);
     --table-bg: #121217;
     --table-head: #0f1016;
@@ -42,50 +37,24 @@
     --shadow: 0 10px 30px rgba(0, 0, 0, .35);
     --shadow-focus: 0 0 0 3px color-mix(in oklab, var(--accent) 20%, transparent), var(--shadow);
 
-    /* Layout tokens */
+    /* Layout */
     --pad: 20px;
     --container-max: 1400px;
     --header-h: 100px;
-    --gutter-x: 44px;
     --radius: 18px;
     --leftCol: minmax(300px, 360px);
+
+    /* Rhythm */
+    --cs-head-gap: clamp(10px, 1.6vw, 18px);
+    --cs-para-gap: clamp(12px, 2vw, 22px);
+    --cs-block-gap: clamp(22px, 3vw, 36px);
+    --cs-section-gap: clamp(36px, 5vw, 72px);
+    --measure: 72ch;
 }
 
-:root[data-theme="light"] {
-    --bg: #f6f7f9;
-    --fg: #111318;
-    --muted: #5d646b;
-    --accent: #2AA7FF;
 
-    --card: #ffffff;
-    --surface-0: var(--bg);
-    --surface-1: var(--card);
-    --surface-2: color-mix(in oklab, #ffffff 88%, #c9d1d9 12%);
 
-    --border-soft: #00000012;
-    --border-mid: #0000001f;
-
-    --grad-a: #f7f8fa;
-    --grad-b: #eef1f6;
-
-    --media-blue: color-mix(in oklab, var(--accent) 78%, #6fb8ff 22%);
-    --table-bg: #ffffff;
-    --table-head: #f3f6fb;
-    --table-line: #d7dde5;
-    --persona-grad-a: #ffffff;
-    --persona-grad-b: #f3f6fb;
-    --russell-bg: #f6f8fd;
-    --img-bg: #eef2f7;
-    --persona-img: #dfe8e3;
-    --indent-bar: #3aa986;
-
-    --shadow: 0 10px 24px rgba(0, 0, 0, .10);
-    --shadow-focus: 0 0 0 3px color-mix(in oklab, var(--accent) 22%, transparent), var(--shadow);
-}
-
-/* =========================================================
-   BASE / MEDIA DEFAULTS
-   ========================================================= */
+/* ================= Base ================ */
 * {
     box-sizing: border-box;
 }
@@ -106,7 +75,7 @@ body {
     font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
 }
 
-/* Global media defaults */
+/* Media defaults */
 img,
 video,
 picture,
@@ -119,39 +88,30 @@ canvas {
     background: var(--img-bg);
 }
 
-/* =========================================================
-   TYPOGRAPHY
-   ========================================================= */
+/* ================= Typography ================ */
 p,
 .bodyCopy,
 .rightContainer p,
 .rightContainer li,
 .doubleSpread .rightSpread p {
     color: var(--fg);
-    opacity: .92;
-    font: 500 clamp(15.5px, 1.8vw, 18px)/1.7 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
-    margin: 0 0 .8em;
+    opacity: .95;
+    font: 500 clamp(15.5px, 1.8vw, 18px)/1.7 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    margin: 0;
+    max-width: var(--measure);
 }
 
 .bodyCopy {
-    opacity: .95;
-    font: 500 clamp(18px, 2.2vw, 20px)/1.7 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    font: 500 clamp(17px, 2.1vw, 19px)/1.7 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     letter-spacing: .01em;
-    margin: 0;
 }
 
 .subHeading {
-    font: 800 clamp(22px, 3vw, 28px)/1.2 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    margin: 0;
+    font: 800 clamp(22px, 3vw, 30px)/1.2 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    margin: 0 0 var(--cs-head-gap);
 }
 
-section> :last-child {
-    margin-bottom: 0;
-}
-
-/* =========================================================
-   CONTAINER
-   ========================================================= */
+/* ================= Container ================ */
 .container {
     max-width: var(--container-max);
     margin: 0 auto;
@@ -159,10 +119,7 @@ section> :last-child {
     padding-top: 50px;
 }
 
-
-/* =========================================================
-   MAIN LAYOUT (2-col)
-   ========================================================= */
+/* ================= 2-Col Layout ================ */
 .mainContainer {
     display: grid;
     grid-template-columns: var(--leftCol) 1fr;
@@ -178,33 +135,33 @@ section> :last-child {
     padding-right: 4px;
 }
 
-/* =========================================================
-   SIDEBAR TOC
-   ========================================================= */
+/* ================= TOC ================ */
 .toc {
     position: sticky;
     top: calc(var(--header-h) + 12px);
-    padding: 28px 26px 22px;
-    border-radius: 22px;
+    padding: 20px 20px 18px;
+    border-radius: 18px;
     display: grid;
-    gap: 22px;
-    /* background: var(--surface-2); */
-    /* border: 1px solid var(--border-soft); */
-    /* box-shadow: var(--shadow); */
+    gap: 18px;
+    /* uncomment if you want a card
+  background: var(--surface-2);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow);
+  */
 }
 
 .tocHeader {
-    font: 900 clamp(26px, 5.2vw, 42px)/1 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    font: 900 clamp(24px, 5vw, 40px)/1.1 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     letter-spacing: .02em;
     color: var(--fg);
-    margin: 0 0 8px;
+    margin: 0;
 }
 
 .tocHeader::after {
     content: "";
     display: block;
     height: 3px;
-    width: min(260px, 70%);
+    width: min(240px, 70%);
     margin-top: 10px;
     background: linear-gradient(90deg, var(--accent), color-mix(in oklab, var(--accent) 20%, transparent));
     border-radius: 3px;
@@ -213,45 +170,24 @@ section> :last-child {
 
 .tocContainer {
     display: grid;
-    gap: 22px;
-    counter-reset: cs;
+    gap: clamp(12px, 2vw, 18px);
 }
 
 .contents {
-    counter-increment: cs;
     display: flex !important;
     align-items: center;
     gap: 10px;
     text-decoration: none;
     color: var(--fg);
     white-space: nowrap;
+    line-height: 1.2;
+    padding-block: 8px;
+    position: relative;
 }
 
-/* .contents::before {
-    content: counter(cs, decimal-leading-zero);
-    font: 700 22px/1 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    color: color-mix(in oklab, var(--fg) 64%, transparent);
-    opacity: .9;
-    font-variant-numeric: tabular-nums;
-}
-
-.tocContainer .contents+.contents {
-    padding-top: 14px;
-    border-top: 1px dashed var(--border-soft);
-} */
-
-/* Active link style */
 .toc .contents.current {
     color: var(--accent);
     text-shadow: 0 0 1px color-mix(in oklab, var(--accent) 35%, transparent);
-    position: relative;
-    /* Optional fun: background-image: url(images/bunny.png); */
-}
-
-.toc .contents.current::before {
-    color: var(--accent);
-    text-shadow: 0 0 6px color-mix(in oklab, var(--accent) 35%, transparent);
-    font-weight: 800;
 }
 
 .toc .contents.current::after {
@@ -261,47 +197,55 @@ section> :last-child {
     top: 50%;
     transform: translateY(-50%);
     width: 3px;
-    height: 18px;
+    height: 1.2em;
     border-radius: 2px;
     background: var(--accent);
     opacity: .9;
 }
 
-/* =========================================================
-   RIGHT COLUMN / SECTIONS
-   ========================================================= */
+/* ================= Right Column / Sections ================ */
 .rightContainer {
     display: grid;
-    gap: 48px;
+    gap: var(--cs-section-gap);
     min-width: 0;
 }
 
 section {
     display: grid;
-    gap: 16px;
+    gap: var(--cs-block-gap);
     align-content: start;
     scroll-margin-top: calc(var(--header-h) + 12px);
+}
+
+section p+p,
+section p+.list,
+section .list+p,
+.subHeading+p,
+.subHeading+.bodyCopy,
+.bodyCopy+.bodyCopy {
+    margin-top: var(--cs-para-gap);
 }
 
 .divider {
     height: 1px;
     background: var(--border-soft);
     border-radius: 1px;
+    margin: var(--cs-section-gap) 0 var(--cs-block-gap);
 }
 
-/* =========================================================
-   COMPONENTS
-   ========================================================= */
+/* ================= Components ================ */
+/* 3-up stats */
 .threeColumnContainer {
     display: flex;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: var(--cs-block-gap);
+    margin-top: var(--cs-block-gap);
 }
 
 .column {
     flex: 1 1 calc(33.33% - 16px);
     min-width: 240px;
-    padding: 16px;
+    padding: clamp(14px, 2.2vw, 20px);
     background: var(--surface-1);
     border: 1px solid var(--border-soft);
     border-radius: 12px;
@@ -312,11 +256,12 @@ section {
 /* Accordion */
 .accordionContainer {
     display: grid;
-    gap: 8px;
+    gap: 10px;
     border-radius: 12px;
     overflow: hidden;
     border: 1px solid var(--border-soft);
     background: transparent;
+    margin-top: var(--cs-block-gap);
 }
 
 .accordionPanel {
@@ -336,16 +281,13 @@ section {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 2rem;
-    font: 600 16px/1.3 system-ui;
+    padding: 12px 1.25rem;
+    font: 600 16px/1.3 Inter, system-ui;
 }
 
 .accordionButton h2 {
     margin: 0;
-    font-family: Inter, system-ui, sans-serif;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 30px;
+    font: 600 18px/1.5 Inter, system-ui, sans-serif;
     color: color-mix(in oklab, var(--fg) 92%, white 8%);
 }
 
@@ -360,9 +302,9 @@ section {
 .accordionContent {
     display: grid;
     grid-template-rows: 0fr;
-    transition: grid-template-rows .35s ease;
+    transition: grid-template-rows .3s ease;
     color: var(--fg);
-    padding: 0 16px;
+    padding: 0 12px;
 }
 
 .accordionContent[aria-hidden="false"] {
@@ -382,12 +324,9 @@ section {
 
 .accordionContent p {
     color: var(--fg);
-    padding: 0 20px;
-    font-family: Inter, system-ui, sans-serif;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 150%;
-    margin: 0 0 1rem;
+    padding: 0 8px;
+    font: 500 16px/1.6 Inter, system-ui, sans-serif;
+    margin: 0 0 12px;
 }
 
 /* Personas */
@@ -408,7 +347,7 @@ section {
 }
 
 .personaHeading {
-    font: italic 700 clamp(28px, 5vw, 48px)/1 "Ibarra Real Nova", serif;
+    font: italic 700 clamp(28px, 5vw, 42px)/1 "Ibarra Real Nova", serif;
     color: var(--fg);
     margin: 0;
 }
@@ -458,11 +397,6 @@ section {
     display: grid;
     grid-template-columns: 2fr 3fr;
     gap: clamp(16px, 3vw, 32px);
-}
-
-.spreadImage {
-    width: 100%;
-    border-radius: 12px;
 }
 
 /* Russell model */
@@ -548,9 +482,7 @@ section {
     background: #37b24d;
 }
 
-/* =========================================================
-   CASE-STUDY HERO (stacked, centered)
-   ========================================================= */
+/* ================= Hero (case study) ================ */
 .heroCS {
     display: grid;
     place-items: center;
@@ -580,14 +512,14 @@ section {
 }
 
 .heroCS-title {
-    font: 900 clamp(28px, 5.2vw, 56px)/1.05 system-ui;
+    font: 900 clamp(28px, 5vw, 56px)/1.05 Inter, system-ui;
     color: var(--fg);
     letter-spacing: .01em;
 }
 
 .heroCS-sub {
     color: var(--muted);
-    font: 500 clamp(16px, 2vw, 20px)/1.6 system-ui;
+    font: 500 clamp(16px, 2vw, 20px)/1.6 Inter, system-ui;
 }
 
 .heroCS-chips {
@@ -607,7 +539,7 @@ section {
     border: 1px solid color-mix(in oklab, var(--accent) 45%, transparent);
 }
 
-/* Media blocks (match text width) */
+/* Media blocks */
 .heroCS-media,
 .finalHero-media {
     justify-self: stretch;
@@ -628,9 +560,7 @@ section {
     box-shadow: var(--shadow);
 }
 
-/* =========================================================
-   FINAL SECTION
-   ========================================================= */
+/* ================= Final Section ================ */
 .finalHero {
     display: grid;
     row-gap: clamp(20px, 3vw, 28px);
@@ -651,7 +581,7 @@ section {
 
 .finalHero-title {
     margin: 0;
-    font: 900 clamp(28px, 4.8vw, 56px)/1.06 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+    font: 900 clamp(28px, 4.8vw, 56px)/1.06 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     color: var(--fg);
     letter-spacing: .01em;
 }
@@ -659,7 +589,7 @@ section {
 .finalHero-sub {
     margin: 0;
     color: var(--muted);
-    font: 500 clamp(16px, 2vw, 20px)/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+    font: 500 clamp(16px, 2vw, 20px)/1.6 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
 .finalHero-rule {
@@ -670,9 +600,55 @@ section {
     margin: 10px 0 12px;
 }
 
-/* =========================================================
-   PREV/NEXT RAIL (mappa-style)
-   ========================================================= */
+/* Framed video (optional wrapper) */
+.finalHero-media .finalMediaBox {
+    --final-max: 1280px;
+    --final-radius: 18px;
+    position: relative;
+    width: min(100%, var(--final-max));
+    margin: 28px auto 0;
+    border-radius: var(--final-radius);
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 14px 36px rgba(0, 0, 0, .28);
+    aspect-ratio: 16 / 9;
+}
+
+.finalHero-media .finalMediaBox>.heroVideo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border: 0;
+    outline: 0;
+}
+
+.finalHero-media .finalMediaBox.portrait {
+    aspect-ratio: 9 / 16;
+    max-height: 80vh;
+}
+
+.finalHero-media .finalMediaBox.portrait>.heroVideo {
+    object-fit: contain;
+    background: #000;
+}
+
+/* Standalone video element */
+.finalVideo {
+    display: block;
+    margin: 24px auto 0;
+    width: min(1200px, 92vw);
+    max-height: 80vh;
+    height: auto;
+    border: 0;
+    border-radius: 16px;
+    background: #000;
+    box-shadow: 0 14px 36px rgba(0, 0, 0, .28);
+}
+
+/* ================= Prev / Next Rail ================ */
 .sr-only {
     position: absolute !important;
     width: 1px;
@@ -690,7 +666,7 @@ section {
     justify-content: space-between;
     align-items: stretch;
     gap: clamp(12px, 3vw, 24px);
-    margin: clamp(24px, 5vw, 56px) 0;
+    margin: var(--cs-section-gap) 0;
     border-top: 1px solid var(--border-soft);
     padding-top: 14px;
 }
@@ -783,7 +759,6 @@ section {
     opacity: 0;
 }
 
-/* fade to nothing */
 .railPreview::after {
     content: "";
     position: absolute;
@@ -799,9 +774,7 @@ section {
     opacity: 1;
 }
 
-/* =========================================================
-   SURVEY / QUESTION COMPONENTS (de-duped)
-   ========================================================= */
+/* ================= Survey / Question Cards ================ */
 .qsCard,
 .svCard {
     display: grid;
@@ -947,15 +920,11 @@ section {
     min-height: 120px;
 }
 
-/* =========================================================
-   REVEAL (scoped, respects reduced motion)
-   ========================================================= */
+/* ================= Reveal (respect reduced motion) ================ */
 .js .reveal {
     opacity: 0;
     transform: translateY(10px);
-    transition:
-        opacity .45s cubic-bezier(.2, .8, .2, 1),
-        transform .45s cubic-bezier(.2, .8, .2, 1);
+    transition: opacity .45s cubic-bezier(.2, .8, .2, 1), transform .45s cubic-bezier(.2, .8, .2, 1);
     will-change: opacity, transform;
 }
 
@@ -974,9 +943,7 @@ section {
     }
 }
 
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
+/* ================= Responsive ================ */
 @media (max-width: 900px) {
     .mainContainer {
         grid-template-columns: 1fr;
@@ -998,29 +965,6 @@ section {
 @media (max-width: 720px) {
     :root {
         --header-h: 50px;
-        --gutter-x: 16px;
-    }
-
-    .headerNav {
-        display: none;
-    }
-
-    .menuBtn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .mobileMenu {
-        top: var(--header-h);
-    }
-
-    .footer {
-        padding: 24px var(--gutter-x);
-    }
-
-    .footerRight {
-        display: none;
     }
 
     .tableContainer {
@@ -1030,7 +974,7 @@ section {
     }
 
     .accordionButton {
-        padding: 10px 14px;
+        padding: 10px 12px;
     }
 
     .accordionButton h2 {
@@ -1039,29 +983,32 @@ section {
     }
 
     .accordionContent {
-        padding-left: 12px;
-        padding-right: 12px;
+        padding-left: 8px;
+        padding-right: 8px;
     }
 
     .accordionContent p {
         font-size: 14px;
         line-height: 22px;
-        padding: 0 8px;
-        margin: 0 0 .75rem;
     }
 
-    .qsBtn {
-        padding: 12px;
+    .finalVideo {
+        width: 96vw;
+        max-height: 76vh;
+        border-radius: 14px;
     }
 
-    .svInput {
-        font-size: 15px;
+    .finalHero-media .finalMediaBox {
+        --final-radius: 14px;
+        aspect-ratio: 16/9;
+    }
+
+    .finalHero-media .finalMediaBox.portrait {
+        max-height: 78vh;
     }
 }
 
-/* =========================================================
-   POLISH: smooth theme transitions for key surfaces
-   ========================================================= */
+/* ================= Smooth theme transitions ================ */
 header,
 .footer,
 .column,
@@ -1076,494 +1023,219 @@ body {
     transition: background-color .25s ease, color .25s ease, border-color .25s ease;
 }
 
-/* Bigger, darker frame (no white letterbox) */
-.finalHero-media .finalMediaBox {
-    --final-max: 1280px;
-    /* bump width cap */
-    --final-radius: 18px;
+/* ============== CASE STUDY TOC → match index feel ============== */
 
-    position: relative;
-    width: min(100%, var(--final-max));
-    margin: 28px auto 0;
-    border-radius: var(--final-radius);
-    overflow: hidden;
-    background: #000;
-    /* kill white panel look */
-    box-shadow: 0 14px 36px rgba(0, 0, 0, .28);
-    aspect-ratio: 16 / 9;
-    /* the frame defines the height */
+/* Panel look (card, soft border, shadow) */
+.toc {
+  /* background: linear-gradient(180deg, var(--persona-grad-a), var(--persona-grad-b)); */
+  /* border: 1px solid var(--border-soft); */
+  /* box-shadow: var(--shadow); */
+  padding: 18px 16px;
+  border-radius: 16px;
 }
 
-/* Make the video fill the frame */
-.finalHero-media .finalMediaBox>.heroVideo {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* fills the frame; crops edges slightly */
-    display: block;
-    border: 0;
-    outline: 0;
+/* Title */
+.tocHeader {
+  font: 900 clamp(22px, 2.6vw, 28px)/1.1 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  margin: 0 0 8px;
 }
 
-/* If your source is a PORTRAIT screen recording, use this modifier */
-.finalHero-media .finalMediaBox.portrait {
-    aspect-ratio: 9 / 16;
-    /* tall frame */
-    max-height: 80vh;
-    /* don't exceed viewport */
+/* Subtle accent underline, shorter like index */
+.tocHeader::after {
+  width: 120px;
+  height: 2px;
+  margin-top: 8px;
 }
 
-.finalHero-media .finalMediaBox.portrait>.heroVideo {
-    object-fit: contain;
-    /* show whole phone without cropping */
-    background: #000;
-    /* keeps nice black bars if needed */
-}
-
-/* Mobile tweaks */
-@media (max-width: 720px) {
-    .finalHero-media .finalMediaBox {
-        --final-radius: 14px;
-        aspect-ratio: 16 / 9;
-    }
-
-    .finalHero-media .finalMediaBox.portrait {
-        max-height: 78vh;
-    }
-}
-
-/* Big, centered, no cropping, respects both width and height */
-.finalVideo {
-    display: block;
-    margin: 24px auto 0;
-
-    /* Size constraints */
-    width: min(1200px, 92vw);
-    /* wide but never overflow */
-    max-height: 80vh;
-    /* tall but never exceed viewport */
-
-    /* Preserve the full frame (landscape or portrait) */
-    height: auto;
-    /* keep the video’s intrinsic aspect ratio */
-
-    /* Polish */
-    border: 0;
-    border-radius: 16px;
-    background: #000;
-    /* hides any letterbox as clean black */
-    box-shadow: 0 14px 36px rgba(0, 0, 0, .28);
-}
-
-/* Slightly tighter on small screens */
-@media (max-width: 720px) {
-    .finalVideo {
-        width: 96vw;
-        max-height: 76vh;
-        border-radius: 14px;
-    }
-}
-
-/* ============================
-   CASE STUDY — VERTICAL RHYTHM
-   (drop-in; no HTML changes)
-   ============================ */
-:root {
-    --cs-tight: 10px;
-    --cs-block: clamp(14px, 1.8vw, 22px);
-    --cs-section: clamp(28px, 3.2vw, 48px);
-}
-
-/* Section and article pacing */
-.rightContainer {
-    gap: var(--cs-section);
-}
-
-section {
-    gap: var(--cs-block);
-}
-
-/* Add space between any siblings inside sections */
-section>*+* {
-    margin-top: var(--cs-block);
-}
-
-/* Headings lead tighter than default */
-.subHeading+* {
-    margin-top: var(--cs-tight);
-}
-
-/* Paragraphs & body copy */
-.bodyCopy {
-    margin: 0 0 var(--cs-tight);
-}
-
-/* was 0; gives breathing room */
-.rightContainer p {
-    margin: 0 0 var(--cs-tight);
-}
-
-/* reinforce for generic <p> */
-
-/* Lists */
-.bodyCopy.list {
-    margin: var(--cs-tight) 0;
-}
-
-p+ul,
-p+ol,
-.bodyCopy+.list,
-.list+.bodyCopy {
-    margin-top: var(--cs-tight);
-}
-
-/* Images / videos (your wrappers) */
-.imageContainer {
-    margin: var(--cs-tight) 0 var(--cs-section);
-}
-
-.imageBox img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-}
-
-.heroImage,
-.finalHero-media {
-    margin-top: var(--cs-block);
-}
-
-/* Accordions: space around and within */
-.accordionContainer {
-    margin-top: var(--cs-block);
-}
-
-.accordionContent p {
-    margin: 0 0 var(--cs-tight);
-}
-
-/* Three-up “key facts” */
-.threeColumnContainer {
-    margin-top: var(--cs-block);
-}
-
-/* Dividers sit at section cadence */
-.divider {
-    margin: var(--cs-section) 0;
-}
-
-/* Final hero: keep the header copy tight, then breathe */
-.finalHero-head+.finalHero-media {
-    margin-top: var(--cs-block);
-}
-
-/* TOC rail spacing from main content */
-.rail {
-    margin: var(--cs-section) 0;
-}
-
-/* ================================
-   CASE STUDY — CLASSIC SPACING
-   ================================ */
-:root {
-    /* Tune these three to taste */
-    --cs-tight: 10px;
-    /* heading → first para */
-    --cs-block: clamp(18px, 1.8vw, 24px);
-    /* spacing between normal blocks */
-    --cs-section: clamp(40px, 6vw, 72px);
-    /* spacing between big sections */
-    --cs-measure: 72ch;
-    /* comfortable text width */
-}
-
-/* Section cadence + overall rhythm */
-.rightContainer {
-    gap: var(--cs-section);
-}
-
-section {
-    gap: var(--cs-block);
-}
-
-section>*+* {
-    margin-top: var(--cs-block);
-}
-
-/* Headings “kiss” the first paragraph like your ref shot */
-.subHeading+* {
-    margin-top: var(--cs-tight) !important;
-}
-
-/* Comfortable measure like the old build */
-.rightContainer :where(p, ul, ol) {
-    max-width: var(--cs-measure);
-}
-
-/* Paragraph & list breathing room */
-.rightContainer p {
-    margin: 0 0 var(--cs-tight);
-}
-
-.bodyCopy {
-    margin: 0 0 var(--cs-tight);
-}
-
-.rightContainer :where(ul, ol) {
-    margin: var(--cs-tight) 0 0 1.2em;
-}
-
-.rightContainer li+li {
-    margin-top: .45em;
-}
-
-/* Key facts / stats rows & image blocks sit on their own rhythm */
-.threeColumnContainer {
-    margin-top: var(--cs-section);
-}
-
-.imageContainer,
-.heroImage,
-.finalHero-media {
-    margin-top: var(--cs-block);
-}
-
-/* Accordions read like distinct chunks */
-.accordionContainer {
-    margin-top: var(--cs-section);
-}
-
-.accordionPanel+.accordionPanel {
-    margin-top: 8px;
-}
-
-.accordionContent p {
-    margin: 0 0 var(--cs-tight);
-}
-
-/* Dividers mark section breaks, not tiny seams */
-.divider {
-    margin: var(--cs-section) 0;
-}
-
-/* Final section pacing */
-.finalHero-head+.finalHero-media {
-    margin-top: var(--cs-block);
-}
-
-/* Rail gets the same vertical rhythm as a section break */
-.rail {
-    margin: var(--cs-section) 0;
-}
-
-/* =========================================
-   CASE STUDY — RHYTHM LAYER (drop-in)
-   ========================================= */
-
-/* Tune if you want a bit looser/tighter overall */
-:root {
-    --section-gap: clamp(48px, 6vw, 112px);
-    --block-gap: clamp(20px, 3vw, 36px);
-    --head-gap: clamp(14px, 2vw, 26px);
-    --para-gap: clamp(12px, 1.8vw, 22px);
-    --measure: 70ch;
-}
-
-/* Sections cadence */
-.rightColumn {
-    display: grid;
-    gap: var(--section-gap);
-    /* big space between sections */
-}
-
-/* Make each section flow from tokens (kills random built-in margins) */
-.rightSection {
-    display: grid;
-    gap: var(--block-gap);
-    /* space between blocks inside a section */
-    padding-top: 0;
-    /* you already do this in places */
-}
-
-.rightSection :is(h1, h2, h3, .pumpkinHeader, .pumpkinSubheader, .disc__title,
-    p, .pumpkinBody, .disc__lead, .list, ul, ol, figure, video) {
-    margin: 0;
-    /* reset */
-}
-
-.rightSection>*+* {
-    margin-top: var(--block-gap);
-}
-
-/* Headline “kiss” to first paragraph (like your screenshot) */
-.rightSection :is(h1, h2, h3, .pumpkinHeader, .pumpkinSubheader, .disc__title)+ :is(p, .pumpkinBody, .disc__lead, .list, ul, ol) {
-    margin-top: var(--head-gap) !important;
-}
-
-/* Comfortable reading width */
-.rightSection :is(p, ul, ol) {
-    max-width: var(--measure);
-}
-
-/* Stats / grids / media get their own breathing room */
-.disc__grid {
-    margin: var(--block-gap) 0;
-}
-
-.imagePanel,
-.imgPanel,
-.finalInner,
-.finalDisplay,
-.moodWheel,
-.concepts__matrix,
-.concepts__narrative {
-    margin-top: var(--block-gap);
-}
-
-/* Accordions read as separate chunks */
-.accordion {
-    margin-top: var(--block-gap);
-}
-
-.accordion+* {
-    margin-top: var(--block-gap);
-}
-
-/* SplitBar tweaks (in case older rules leak in) */
-.splitBar {
-    margin-top: clamp(16px, 2.5vw, 24px);
-}
-
-.splitBar__panel p {
-    margin: 0;
-}
-
-/* Dividers behave like true section breaks */
-.overview__rule,
-.disc__rule,
-.sectionRule {
-    margin: var(--head-gap) 0 var(--block-gap) !important;
-}
-
-/* Final area & “More projects” align to the same rhythm */
-.finalDisplay {
-    margin-top: var(--section-gap);
-}
-
-.moreProjects {
-    margin: calc(var(--section-gap)*0.75) 0 var(--section-gap);
-}
-
-/* TOC — keep link heights consistent & center the active bar */
-.tocContainer .contents {
-    position: relative;
-    display: flex !important;
-    align-items: center;
-    /* vertical centering */
-    line-height: 1.2;
-    padding-block: 10px;
-    /* uniform height for all rows */
-}
-
-/* Draw separators WITHOUT affecting height */
-.tocContainer .contents+.contents {
-    border-top: 0;
-    /* kill the border that changes height */
-}
-
-.tocContainer .contents+.contents::before {
-    content: "";
-    position: absolute;
-    inset-inline: 0;
-    top: 0;
-    border-top: 1px dashed var(--border-soft);
-    opacity: .9;
-}
-
-/* Active link marker — truly centered and sized to the text line */
-.toc .contents.current::after {
-    content: "";
-    position: absolute;
-    left: -12px;
-    height: 1.2em;
-    /* matches link line-height */
-    width: 3px;
-    border-radius: 2px;
-    background: var(--accent);
-    top: 50%;
-    transform: translateY(-50%);
-    /* perfect vertical center */
-}
-
-/* ===== Case-study rhythm overrides (paste at END) ===== */
-:root {
-    --cs-head-gap: clamp(10px, 1.6vw, 18px);
-    --cs-para-gap: clamp(12px, 2vw, 22px);
-    /* space between paragraphs / text blocks */
-    --cs-block-gap: clamp(22px, 3vw, 36px);
-    /* space between mixed components */
-    --cs-section-gap: clamp(36px, 5vw, 72px);
-    /* space between sections */
-}
-
-/* Right column: bigger section gaps */
-.rightContainer {
-    gap: var(--cs-section-gap);
-}
-
-/* Inside each section: use block rhythm instead of the fixed 16px */
-section {
-    gap: var(--cs-block-gap);
-}
-
-/* Headings sit closer to the text than to other components */
-.subHeading {
-    margin: 0 0 var(--cs-head-gap) 0;
-}
-
-/* Paragraph/list rhythm (don’t double up margins elsewhere) */
-.rightContainer p,
-.rightContainer .bodyCopy,
-.rightContainer ul.bodyCopy.list {
-    margin: 0;
-}
-
-section p+p,
-section p+.list,
-section .list+p,
-section .subHeading+p,
-section .subHeading+.bodyCopy,
-section .bodyCopy+.bodyCopy {
-    margin-top: var(--cs-para-gap);
-}
-
-/* Dividers create a proper “scene change” */
-.divider {
-    margin: var(--cs-section-gap) 0 var(--cs-block-gap);
-}
-
-/* 3-up stat cards: give real air around them */
-.threeColumnContainer {
-    gap: var(--cs-block-gap);
-}
-
-.column {
-    padding: clamp(14px, 2.2vw, 20px);
-}
-
-/* Accordion spacing polish */
-.accordionContainer {
-    margin-top: var(--cs-block-gap);
-}
-
-.accordionPanel+.accordionPanel {
-    margin-top: 10px;
-}
-
-/* TOC: slightly looser rows for scanability */
+/* List container spacing */
 .tocContainer {
-    gap: clamp(14px, 2.2vw, 22px);
+  margin-top: 6px;
+  gap: 0;                 /* we’ll draw our own row separators */
+  counter-reset: cs;
+}
+
+/* Row */
+.toc .contents {
+  position: relative;
+  display: grid !important;
+  grid-template-columns: 34px 1fr; /* number column + label */
+  align-items: center;
+  column-gap: 10px;
+  padding: 10px 8px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--fg);
+}
+
+/* Row separators like index */
+.toc .contents + .contents {
+  border-top: 1px dashed var(--border-soft);
+}
+
+/* Number badge (01, 02…) */
+.toc .contents::before {
+  counter-increment: cs;
+  content: counter(cs, decimal-leading-zero);
+  display: inline-block;
+  text-align: right;
+  font: 800 12px/1 Inter, system-ui;
+  letter-spacing: .02em;
+  color: color-mix(in oklab, var(--fg) 65%, transparent);
+  opacity: .95;
+}
+
+/* Hover state */
+.toc .contents:hover {
+  background: color-mix(in oklab, var(--accent) 12%, transparent);
+  border-color: var(--border-mid);
+}
+
+/* Current (active) state — accent + left marker */
+.toc .contents.current {
+  color: var(--accent);
+  background: color-mix(in oklab, var(--accent) 10%, transparent);
+}
+
+.toc .contents.current::after {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 18px;
+  border-radius: 2px;
+  background: var(--accent);
+  opacity: .9;
+}
+
+/* Make the number match the accent a bit when active */
+.toc .contents.current::before {
+  color: color-mix(in oklab, var(--accent) 85%, white 15%);
+}
+
+/* Compact on small screens */
+@media (max-width: 720px) {
+  .toc {
+    padding: 14px 12px;
+    border-radius: 14px;
+  }
+  .toc .contents {
+    grid-template-columns: 28px 1fr;
+    padding: 9px 8px;
+  }
+  .toc .contents.current::after {
+    left: -8px;
+    height: 16px;
+  }
+}
+
+/* =========== CASE STUDY POLISH =========== */
+
+/* 1) make TOC column visually match index header cards */
+.leftContainer .toc {
+  background: linear-gradient(180deg, var(--persona-grad-a), var(--persona-grad-b));
+  border: 1px solid var(--border-soft);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 20px 18px;
+}
+
+.tocHeader {
+  font: 900 clamp(22px, 3.2vw, 26px)/1.1 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  letter-spacing: .01em;
+}
+
+.tocContainer .contents {
+  padding: 10px 2px;
+  border-radius: 10px;
+  transition: background-color .2s ease, color .2s;
+}
+.tocContainer .contents:hover {
+  background: color-mix(in oklab, var(--accent) 10%, transparent);
+}
+.toc .contents.current {
+  background: color-mix(in oklab, var(--accent) 16%, transparent);
+  color: color-mix(in oklab, var(--accent) 88%, white 12%);
+  text-shadow: none;
+}
+
+/* tiny index-like count dot */
+.tocContainer .contents::before {
+  content: "";
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent);
+  opacity: .65;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+/* 2) right column rhythm and readable measure */
+.rightContainer {
+  gap: clamp(36px, 5vw, 72px);
+}
+.rightContainer :where(p, ul, ol) {
+  max-width: 72ch;
+}
+
+/* 3) three-up stat cards (lighter & tighter) */
+.threeColumnContainer { gap: clamp(12px, 2.4vw, 18px); }
+.column {
+  padding: clamp(14px, 2.2vw, 18px);
+  background: linear-gradient(180deg, var(--persona-grad-a), var(--persona-grad-b));
+}
+
+/* 4) accordion refinements (hit area + typography) */
+.accordionButton {
+  padding: 14px 18px;
+  font: 700 15px/1.3 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+.accordionButton h2 {
+  font: 800 clamp(16px, 2vw, 18px)/1.35 Inter, system-ui;
+}
+.accordionContent {
+  padding: 0 8px 10px;
+}
+.accordionPanel { overflow: hidden; }
+
+/* 5) personas – cleaner type scale */
+.persona {
+  grid-template-columns: 1fr 2fr;
+  gap: clamp(12px, 2vw, 18px);
+}
+.personaHeading {
+  font: italic 800 clamp(26px, 4.5vw, 42px)/1 "Ibarra Real Nova", serif;
+}
+.personaSub { font: 700 13px/1.2 Inter, system-ui; }
+.personaBody { font: 500 15.5px/1.65 Inter, system-ui; opacity: .95; }
+
+/* 6) tables – compact head, better zebra/edges */
+.tableContainer { overflow: auto; border-radius: 12px; }
+.table thead th {
+  background: color-mix(in oklab, var(--accent) 9%, var(--table-head));
+}
+.table tbody tr:nth-child(odd) td { background: color-mix(in oklab, var(--table-bg) 86%, black 14%); }
+
+
+/* 7) final video frame: consistent radius/shadow on cs pages too */
+.finalVideo {
+  border-radius: 16px;
+  box-shadow: 0 14px 36px rgba(0,0,0,.28);
+}
+
+/* 8) small screen polish */
+@media (max-width: 900px) {
+  .rightContainer { gap: clamp(28px, 6vw, 48px); }
+  .persona { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .heroCS { margin: clamp(16px, 4vw, 28px) 0; }
+  .toc { display: none; }
+  .tableHeaderIcon { width: 20px; height: 20px; }
+}
+
+/* caseStudy.css */
+.leftContainer {
+  max-height: none;     /* let it grow with content */
+  overflow: visible;    /* no inner scroll area */
 }

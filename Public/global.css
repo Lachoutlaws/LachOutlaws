@@ -1,14 +1,16 @@
-/* Shadows (elevation tokens) */
+/* =========================================
+   GLOBAL.CSS — CLEANED & CONSOLIDATED
+   Loads BEFORE home.css
+   ========================================= */
+
+/* ---- Shadow (elevation) tokens (small set) ---- */
 :root {
   --shadow-s: inset 0 1px 2px #ffffff30, 0 1px 2px #00000030, 0 2px 4px #00000015;
-  /* small */
   --shadow-m: inset 0 1px 2px #ffffff50, 0 2px 4px #00000030, 0 4px 8px #00000015;
-  /* medium */
   --shadow-l: inset 0 1px 2px #ffffff70, 0 4px 6px #00000030, 0 6px 10px #00000015;
-  /* large */
 }
 
-/* Dark mode: dial down the white inset so it doesn’t halo */
+/* Dark-mode tuning for inset highlight */
 @media (prefers-color-scheme: dark) {
   :root {
     --shadow-s: inset 0 1px 2px #ffffff20, 0 1px 2px #00000060, 0 2px 4px #00000040;
@@ -17,127 +19,30 @@
   }
 }
 
-/* ====== THEME CORE ====== */
-/* We keep your existing :root as the Dark defaults. */
-/* Light theme overrides live under [data-theme="light"]. */
 
-:root[data-theme="light"] {
-  /* palette */
-  --bg: #f6f7f9;
-  --fg: #111318;
-  --muted: #5d646b;
-  --accent: #2AA7FF;
-  /* a bit cleaner on light */
-  --card: #ffffff;
-
-  /* shadows tuned for light backgrounds */
-  --shadow: 0 10px 24px rgba(0, 0, 0, .10);
-  --shadow-thumb: 0 6px 14px rgba(0, 0, 0, .10);
-  --shadow-thumb-hover: 0 12px 22px rgba(0, 0, 0, .16);
-
-  /* frosted surfaces */
-  --glass-tint: color-mix(in oklab, #ffffff 80%, #c9d1d9 20%);
-}
-
-/* Use the var if present; fall back to dark formula */
+/* Example glass usage (kept for cases/cards that rely on this var) */
 .caseCard {
   background: var(--glass-tint, color-mix(in oklab, var(--bg) 80%, white 12%));
 }
 
-/* Scrim for overlay per theme */
+/* Scrim per theme for the overlay backdrop */
 .gallery {
   background: rgba(8, 8, 10, .86);
 }
 
-:root[data-theme="light"] .gallery {
-  background: rgba(240, 242, 245, .86);
-}
-
-/* Text on glass a notch darker on light */
-:root[data-theme="light"] .caseLeft p {
-  color: color-mix(in oklab, var(--fg) 88%, black 12%);
-}
-
-/* Outline/keylines visible on light */
-:root[data-theme="light"] .socialsContainer a,
-:root[data-theme="light"] .footerRight {
-  border-color: #00000014;
-}
-
-/* Year card glass tweak for light */
-:root[data-theme="light"] .yearCard {
-  background: color-mix(in oklab, #ffffff 88%, #c9d1d9 12%);
-  border-color: #00000012;
-  box-shadow:
-    inset 0 1px 2px rgba(255, 255, 255, .65),
-    0 10px 24px rgba(0, 0, 0, .10);
-}
-
-/* Hero/CTA pills keep the same two-layer recipe; colors swap via vars */
-:root[data-theme="light"] .btn,
-:root[data-theme="light"] .btn-cta {
-  box-shadow:
-    inset 0 1px 2px rgba(255, 255, 255, .9),
-    0 4px 10px rgba(0, 0, 0, .12);
-}
-
-/* ====== THEME TOGGLE BUTTON ====== */
-.themeToggle {
-  appearance: none;
-  border: 1px solid #ffffff26;
-  background: var(--card);
-  color: var(--fg);
-  width: 38px;
-  height: 32px;
-  display: inline-grid;
-  place-items: center;
-  border-radius: 10px;
-  margin-left: 10px;
-  cursor: pointer;
-  box-shadow: var(--shadow);
-  transition: transform .12s ease, box-shadow .18s ease, border-color .18s ease, background-color .18s ease;
-}
-
-.themeToggle:hover {
-  transform: translateY(-1px);
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 18%, transparent), var(--shadow);
-}
-
-.themeToggle:active {
-  transform: translateY(0);
-}
-
-.themeToggle .icon-sun {
-  display: none;
-}
-
-.themeToggle .icon-moon {
-  display: block;
-}
-
-/* In light mode, show sun icon */
-:root[data-theme="light"] .themeToggle .icon-sun {
-  display: block;
-}
-
-:root[data-theme="light"] .themeToggle .icon-moon {
-  display: none;
-}
-
-/* Nice, low-cost color transition */
+/* ========= Smooth color transitions on primary surfaces ========= */
 html,
 body,
 .yearCard,
 .caseCard,
 header,
 .footer,
-.yWorksLists__thumb {
+.yWorksLists__thumb,
+.projectRowWorksThumbnail {
   transition: background-color .25s ease, color .25s ease, border-color .25s ease;
 }
 
-
-/* Gate: only animate when JS is present */
+/* ========= Reveal-on-scroll gate (pairs with reveal.js) ========= */
 .js .reveal {
   opacity: 0;
   transform: translateY(12px);
@@ -158,29 +63,26 @@ header,
   }
 }
 
-/* ===== Illustrations module (simple grid) ===== */
+/* ========= Illustrations module ========= */
 .illGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: var(--gap);
+  gap: var(--gap, 16px);
 }
 
-/* Cards */
 .illCard {
   list-style: none;
   display: block;
   border-radius: 16px;
   overflow: hidden;
-  background: var(--card);
+  background: var(--card, #16161a);
   border: 1px solid var(--border-soft, #ffffff14);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow, 0 10px 24px rgba(0, 0, 0, .10));
 }
 
-/* Thumb uses aspect-ratio (no absolute math needed) */
 .illThumb {
   width: 100%;
-  aspect-ratio: 4 / 3;
-  /* default shape */
+  aspect-ratio: 4/3;
   background: #222 center/cover no-repeat;
 }
 
@@ -188,34 +90,26 @@ header,
   display: none;
 }
 
-/* bg does the preview; keep <img> for gallery fallback */
-
-/* Optional width spans on wide screens */
+/* Optional spans */
 .illCard.span-2x1 {
   grid-column: span 2;
 }
 
-/* wider card */
 .illCard.span-2x2 {
   grid-column: span 2;
 }
 
-/* still just wider; square look via ratio */
 .illCard.span-1x2 .illThumb {
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 3/4;
 }
 
-/* portrait */
 .illCard.span-2x1 .illThumb {
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16/9;
 }
 
-/* landscape wide */
 .illCard.span-2x2 .illThumb {
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1/1;
 }
-
-/* square */
 
 .illMeta {
   padding: 10px 12px 12px;
@@ -231,11 +125,10 @@ header,
 
 .illSub {
   margin: 0;
-  color: var(--muted);
+  color: var(--muted, #9aa1a6);
   font: 500 12px/1.2 system-ui;
 }
 
-/* mobile: single column anyway */
 @media (max-width: 720px) {
 
   .illCard.span-2x1,
@@ -244,349 +137,401 @@ header,
   }
 }
 
-.imgPlaceholder {
-  width: 100%;
-  /* aspect-ratio: 16/9; */
-  background: #5ba7ff;
-  border: 1px solid var(--border-soft, #ffffff14);
-  border-radius: 12px;
-  box-shadow: var(--shadow, 0 10px 30px rgba(0, 0, 0, .35));
-}
-
-/* ===== Force header/footer to respect theme (wins specificity) ===== */
-
-/* 1) Make sure we have theme tokens for gradients */
+/* ========= Force header/footer theme gradients ========= */
 :root {
   --grad-a: #0f0f12;
-  /* dark top */
   --grad-b: #0d0d10;
-  /* dark base */
   --line-weak: #ffffff14;
 }
 
-:root[data-theme="light"] {
-  --grad-a: #f7f8fa;
-  /* light top */
-  --grad-b: #eef1f6;
-  /* light base */
-  --line-weak: #00000012;
-}
 
-
-
-/* 2) Override any earlier background rules */
-html:not([data-theme="light"]) header,
-html:not([data-theme="light"]) .footer {
-  background: linear-gradient(180deg, var(--grad-a) 0%, var(--grad-b) 60%, var(--grad-b)) !important;
-}
-
-/* In light mode, flip to the light gradient */
-html[data-theme="light"] header {
-  background: linear-gradient(180deg, var(--grad-a) 0%, var(--grad-b) 60%, var(--grad-b)) !important;
-  border-bottom-color: var(--line-weak) !important;
-}
-
-html[data-theme="light"] .footer {
-  background: linear-gradient(180deg, var(--grad-b) 0%, var(--grad-a) 60%, var(--grad-a)) !important;
-  border-top-color: var(--line-weak) !important;
-}
-
-/* 3) Kill any stray component-level backgrounds fighting us */
+/* Reset any stray backgrounds */
 header,
 .footer {
   background-color: transparent !important;
-  /* in case some rule set a plain color */
   background-image: none;
-  /* reset before we apply our gradient above */
 }
 
-
-
-/* ========== Header (sticky) ========== */
+/* ========= Header (sticky) ========= */
 header {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 200;
-    height: var(--header-h);
-    background: linear-gradient(180deg, var(--grad-a) 0%, var(--grad-b) 60%, var(--grad-b));
-    border-bottom: 1px solid var(--line-weak);
-    display: flex;
-    justify-content: center;
-    padding: 0 var(--gutter-x);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: var(--z-header, 4000);
+  height: var(--header-h, 100px);
+  background: linear-gradient(180deg, var(--grad-a) 0%, var(--grad-b) 60%, var(--grad-b));
+  border-bottom: 1px solid var(--line-weak);
+  display: flex;
+  justify-content: center;
+  padding: 0 var(--gutter-x, 20px);
 }
 
 .headerInner {
-    width: 100%;
-    max-width: var(--container-max);
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  width: 100%;
+  max-width: var(--container-max, 1400px);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .headerLogo {
-    width: 196px;
-    height: 33px;
-    border-radius: 6px;
-    background: color-mix(in oklab, var(--fg) 12%, var(--surface-1));
-    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .25);
+  width: 196px;
+  height: auto;
+  border-radius: 6px;
 }
 
 .headerNav {
-    display: inline-flex;
-    align-items: center;
-    gap: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
 }
 
 .headerNav .nav {
-    display: flex;
-    padding: 4px 22px;
-    justify-content: center;
-    align-items: center;
-    gap: 4px;
-    border-left: 1px solid var(--line-mid);
-    color: var(--fg);
-    font-size: 14px;
-    font-weight: 600;
-    text-decoration: none;
+  display: flex;
+  padding: 4px 22px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  border-left: 1px solid var(--line-mid, #ffffff26);
+  color: var(--fg, #e7e7ea);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
 }
 
 .headerNav .nav:last-child {
-    border-right: 1px solid var(--line-mid);
+  border-right: 1px solid var(--line-mid, #ffffff26);
 }
 
+/* Hamburger (mobile) */
 .menuBtn {
-    display: none;
-    appearance: none;
-    border: 0;
-    background: transparent;
-    padding: 8px;
-    line-height: 0;
-    color: var(--fg);
-    cursor: pointer;
+  display: none;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 8px;
+  line-height: 0;
+  color: var(--fg, #e7e7ea);
+  cursor: pointer;
 }
 
 .menuIcon {
-    width: 28px;
-    height: 28px;
-    display: block;
+  width: 28px;
+  height: 28px;
+  display: block;
 }
 
 .menuBtn:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 3px;
-    border-radius: 6px;
+  outline: 2px solid var(--accent, #79DAFF);
+  outline-offset: 3px;
+  border-radius: 6px;
 }
 
 /* Mobile nav panel */
 .mobileMenu {
-    position: fixed;
-    top: var(--header-h);
-    left: 0;
-    right: 0;
-    background: var(--surface-1);
-    color: var(--fg);
-    padding: 16px var(--gutter-x) 24px;
-    transform: translateY(-8px);
-    opacity: 0;
-    transition: opacity .18s ease, transform .18s ease;
-    z-index: 120;
-    border-bottom: 1px solid var(--line-weak);
+  position: fixed;
+  top: var(--header-h, 100px);
+  left: 0;
+  right: 0;
+  background: var(--surface-1, #16161a);
+  color: var(--fg, #e7e7ea);
+  padding: 16px var(--gutter-x, 20px) 24px;
+  transform: translateY(-8px);
+  opacity: 0;
+  transition: opacity .18s ease, transform .18s ease;
+  z-index: 120;
+  border-bottom: 1px solid var(--line-weak);
 }
 
 .mobileMenu[hidden] {
-    display: block;
-    opacity: 0;
-    pointer-events: none;
+  display: block;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .mobileMenu.is-open {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .mobileMenu ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
 
 .mobileMenu a {
-    color: var(--fg);
-    text-decoration: none;
-    font: 700 20px/1.2 system-ui;
+  color: var(--fg);
+  text-decoration: none;
+  font: 700 20px/1.2 system-ui;
 }
 
-
-/* ========== Footer ========== */
+/* ========= Footer ========= */
 .footer {
-    width: 100%;
-    background: linear-gradient(180deg, var(--grad-b) 0%, var(--surface-0) 60%, var(--surface-0));
-    border-top: 1px solid var(--line-weak);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 var(--gutter-x);
-    min-height: var(--header-h);
+  width: 100%;
+  border-top: 1px solid var(--line-weak);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 var(--gutter-x, 20px);
+  min-height: var(--header-h, 100px);
 }
 
 .footerInner {
-    width: 100%;
-    max-width: var(--container-max);
-    margin: 0 auto;
+  width: 100%;
+  max-width: var(--container-max, 1400px);
+  margin: 0 auto;
 }
 
 .footerWrapper {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    padding: 18px 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px 0;
 }
 
 .emailContainer .kicker {
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 6px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted, #9aa1a6);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .footerEmail {
-    display: flex;
-    align-items: baseline;
-    gap: 14px;
-    flex-wrap: wrap;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
 }
 
 .emailAddress {
-    text-decoration: none;
-    color: var(--fg);
-    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-    font-size: clamp(24px, 4.5vw, 44px);
-    line-height: 1.2;
-    font-weight: 700;
-    letter-spacing: -.02em;
-    text-underline-offset: 4px;
-    text-decoration-thickness: 2px;
-    transition: color .18s ease, text-decoration-color .18s ease, opacity .18s ease;
+  text-decoration: none;
+  color: var(--fg, #e7e7ea);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: clamp(24px, 4.5vw, 44px);
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+  transition: color .18s ease, text-decoration-color .18s ease, opacity .18s ease;
 }
 
 .emailAddress:hover,
 .emailAddress:focus-visible {
-    text-decoration: underline;
-    text-decoration-color: var(--accent);
-    color: var(--fg);
-    opacity: .95;
-    outline: none;
+  text-decoration: underline;
+  text-decoration-color: var(--accent, #79DAFF);
+  color: var(--fg);
+  opacity: .95;
+  outline: none;
 }
 
 .socialsContainer {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 16px;
 }
 
 .socialsContainer a {
-    width: 42px;
-    height: 42px;
-    display: grid;
-    place-items: center;
-    border-radius: 12px;
-    border: 1px solid var(--line-mid);
-    color: var(--fg);
-    background: var(--surface-1);
-    box-shadow: var(--shadow);
-    text-decoration: none;
-    transition: transform .15s ease, background-color .15s ease, border-color .15s ease, box-shadow .15s ease;
-    outline: none;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  border: 1px solid var(--line-mid, #ffffff26);
+  color: var(--fg);
+  background: var(--surface-1, #16161a);
+  box-shadow: var(--shadow, 0 10px 24px rgba(0, 0, 0, .10));
+  text-decoration: none;
+  transition: transform .15s ease, background-color .15s ease, border-color .15s ease, box-shadow .15s ease;
+  outline: none;
 }
 
 .socialsContainer a:hover,
 .socialsContainer a:focus-visible {
-    transform: translateY(-2px);
-    background: color-mix(in oklab, var(--surface-1) 92%, var(--bg) 8%);
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 20%, transparent), var(--shadow);
+  transform: translateY(-2px);
+  background: color-mix(in oklab, var(--surface-1, #16161a) 92%, var(--bg, #0e0e11) 8%);
+  border-color: var(--accent, #79DAFF);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent, #79DAFF) 20%, transparent), var(--shadow, 0 10px 24px rgba(0, 0, 0, .10));
 }
 
 .footerRight {
-    width: 120px;
-    height: 84px;
-    border-radius: 12px;
-    background: var(--surface-1);
-    box-shadow: var(--shadow);
-    border: 1px solid var(--line-weak);
-    flex-shrink: 0;
+  width: 120px;
+  height: 84px;
+  border-radius: 12px;
+  background: var(--surface-1, #16161a);
+  box-shadow: var(--shadow, 0 10px 24px rgba(0, 0, 0, .10));
+  border: 1px solid var(--line-weak);
+  flex-shrink: 0;
 }
 
 .footerRight img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    border-radius: inherit;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: inherit;
 }
 
-
-:root{
+/* ========= Z-index & Gallery overlay spacing vs sticky header ========= */
+:root {
   --z-header: 4000;
   --z-gallery: 3000;
-  --header-h: 100px;           /* desktop default */
+  --header-h: 100px;
+  /* desktop default (overridden in home.css @media) */
   --gallery-pad-top: calc(var(--header-h) + max(14px, env(safe-area-inset-top)));
 }
 
-/* your fixed header stays on top */
-header{
+/* keep header on top */
+header {
   position: fixed;
   inset: 0 0 auto 0;
   z-index: var(--z-header);
 }
 
-/* overlay */
-#gallery{
+/* overlay container (fullscreen gallery) */
+#gallery {
   position: fixed;
   inset: 0;
   z-index: var(--z-gallery);
   height: 100svh;
-  padding-top: var(--gallery-pad-top);  /* ⬅️ the important bit */
+  padding-top: var(--gallery-pad-top);
+  /* keeps content clear of header */
   padding-bottom: max(10px, env(safe-area-inset-bottom));
   overflow: auto;
 }
 
-/* make the center panel a positioning context for your label chip */
-#gallery .gallerySection.is-center{ position: relative; }
-
-/* nudge the chip down a touch so it never touches the header */
-.galleryTopLabel{
-  position: absolute;
-  left: clamp(10px, 1.2vw, 16px);
-  top: clamp(12px, 1.6vw, 20px);
+/* center panel positioning context for chips/badges */
+#gallery .gallerySection.is-center {
+  position: relative;
 }
 
-/* extra breathing room above the first card area */
+/* extra breathing room above first card area */
 #gallery .gallerySection.is-center .projectCard,
-#gallery .gallerySection.is-center .projectCardHeader{
+#gallery .gallerySection.is-center .projectCardHeader {
   margin-top: clamp(6px, 1.5vh, 18px);
 }
 
-@media (max-width: 720px){
-  :root{ --header-h: 50px; }   /* your mobile header */
-  /* a touch more pad on small screens */
-  #gallery{ padding-top: calc(var(--gallery-pad-top) + 6px); }
+/* mobile header + overlay tweak (mirrors home.css) */
+@media (max-width: 720px) {
+  :root {
+    --header-h: 50px;
+  }
+
+  #gallery {
+    padding-top: calc(var(--gallery-pad-top) + 6px);
+  }
 }
 
+/* Hide the floating “top label” on very small screens (kept for safety) */
 @media (max-width: 720px) {
-  .galleryTopLabel { display: none !important; }
+  .galleryTopLabel {
+    display: none !important;
+  }
 }
+
+/* =========== GLOBAL POLISH =========== */
+
+/* Smoother defaults */
+:root {
+  --container-max: 1400px;                 /* already used in your files */
+  --gutter: clamp(16px, 4vw, 32px);
+  --radius: 16px;
+  --focus: 0 0 0 3px color-mix(in oklab, var(--accent) 28%, transparent);
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  hanging-punctuation: first last;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth; /* safe with your anchor math */
+}
+
+img, video { max-width: 100%; height: auto; display: block; }
+picture, canvas, svg { display: block; }
+
+/* Links + focus */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover { opacity: .96; }
+:where(a, button, [tabindex]):focus-visible {
+  outline: none;
+  box-shadow: var(--focus);
+  border-radius: 10px;
+}
+
+/* Buttons (match index aesthetic) */
+.btn {
+  --btn-pad-y: 10px;
+  --btn-pad-x: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: .6em;
+  padding: var(--btn-pad-y) var(--btn-pad-x);
+  border-radius: 12px;
+  border: 1px solid var(--border-soft);
+  background: linear-gradient(180deg, var(--persona-grad-a), var(--persona-grad-b));
+  color: var(--fg);
+  font: 700 14px/1 system-ui, -apple-system, Segoe UI, Inter, Roboto, Arial, sans-serif;
+  box-shadow: var(--shadow);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.btn:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 12%, transparent), var(--shadow);
+}
+.btn:active { transform: none; }
+
+/* Chips (used in hero on index) */
+.chip,
+.chip--soft {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  font: 700 12px/1 system-ui;
+  border-radius: 999px;
+  border: 1px solid color-mix(in oklab, var(--accent) 35%, transparent);
+  background: color-mix(in oklab, var(--accent) 16%, transparent);
+  color: color-mix(in oklab, var(--accent) 84%, white 16%);
+}
+
+/* Reduced motion respect */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+/* Hide ALL scrollbars but keep scroll functionality */
+:where(html, body, *) {
+  /* Firefox */
+  scrollbar-width: none;
+  /* Old Edge/IE */
+  -ms-overflow-style: none;
+}
+
+/* WebKit/Blink (Chrome, Safari, Edge Chromium) */
+:where(html, body, *)::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
