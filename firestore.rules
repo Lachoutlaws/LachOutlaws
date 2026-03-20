@@ -8,6 +8,18 @@ service cloud.firestore {
       allow write: if false;
     }
 
+    // Users can submit quiz answers - write only, no reading others' answers
+    match /quizAnswers/{document=**} {
+      allow read: if false;
+      allow write: if true;
+    }
+
+    // Users can submit comments - write only, no reading others' comments
+    match /comments/{document=**} {
+      allow read: if false;
+      allow write: if true;
+    }
+
     // Deny everything else
     match /{document=**} {
       allow read, write: if false;
