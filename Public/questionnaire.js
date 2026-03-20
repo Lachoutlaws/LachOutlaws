@@ -1,12 +1,12 @@
 // ------------------------------------------------------------------
 // Imports / setup
 // ------------------------------------------------------------------
-import { firebaseApp, db } from "../firebaseInit.js";
+import { db } from "./firebaseInit.js";
 import {
   collection,
   addDoc,
   serverTimestamp,
-} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 
 // ------------------------------------------------------------------
 // Extended mode toggle (keeps original text, guarded)
@@ -44,7 +44,7 @@ let isExtended = false;
 // ------------------------------------------------------------------
 async function sendFeedback(question, response, formGroup) {
   try {
-    await addDoc(collection(db, "feedback"), {
+    await addDoc(collection(db, "comments"), {
       question,
       response,
       timestamp: serverTimestamp(),
