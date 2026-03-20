@@ -76,3 +76,4 @@ Public/Images/*
 !Public/Images/web/**
 
 !Public/Images/web/**
+.DS_Store
